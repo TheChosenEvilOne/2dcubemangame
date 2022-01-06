@@ -1,0 +1,2 @@
+/area
+	name = "Area"
