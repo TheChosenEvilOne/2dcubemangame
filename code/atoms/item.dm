@@ -7,9 +7,9 @@
 /obj/item/left_click(adjacent, params)
 	if (!adjacent)
 		return
-	if (!istype(usr, /mob/inventory))
+	if (!istype(usr, /mob/living/inventory))
 		return
-	var/mob/inventory/M = usr
+	var/mob/living/inventory/M = usr
 	if (!M.inventory.selected_slot)
 		return
 	M.inventory.insert_item(src, M.inventory.selected_slot)

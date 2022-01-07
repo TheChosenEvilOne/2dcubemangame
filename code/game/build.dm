@@ -17,8 +17,10 @@
 		/turf/floor/dort,
 		/turf/floor/grass,
 		/turf/floor/wood,
+		/turf/floor/sand,
 		/obj/window,
 		/obj/campfire,
+		/obj/torch,
 		/obj/table
 	)
 
@@ -46,13 +48,6 @@
 /mob
 	var/building = 0
 	var/datum/builder/builder
-
-/mob/Del()
-	if (builder && builder.hud)
-		builder.hud.remove()
-	del builder
-	builder = null
-	. = ..()
 
 /client/verb/toggle_build()
 	set name = "Build"

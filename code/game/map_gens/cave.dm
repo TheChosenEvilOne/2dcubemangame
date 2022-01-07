@@ -17,7 +17,7 @@
 					map[L[1]+dx][L[2]+dy] = 1
 			L[1] += L[3]
 			L[2] += L[4]
-			var/theta = rand(-5, 5)
+			var/theta = rand() * 10 - 5
 			L[3] = L[3] * cos(theta) - L[4] * sin(theta)
 			L[4] = L[3] * sin(theta) + L[4] * cos(theta)
 			L[5]--

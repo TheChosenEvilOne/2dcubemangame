@@ -10,6 +10,11 @@
 /hud_object/Click(location, control, params)
 	return
 
+/hud_object/proc/call_handler(handler)
+	// BYOND sadly doesn't have a way to pass rest of the arguments in a list
+	// so using args - handler will have to do.
+	call(hud, handler)(arglist(args - handler))
+
 /hud_object/proc/remove()
 
 /hud_object/proc/setup()

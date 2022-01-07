@@ -7,7 +7,7 @@
 /client/Move(loc, dir)
 	if (mob.next_move > world.time)
 		return
-	var/diag = 1 + (0.41421 * (dir - 1 & dir == 0))
+	var/diag = 1 + (0.41421 * ((dir - 1) & dir == 0))
 	mob.next_move = world.time + mob.movement_delay * diag
 	mob.glide_size = DELAY2GLIDESIZE(mob.movement_delay) * diag
 	step(mob, dir)

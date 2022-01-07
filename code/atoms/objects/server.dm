@@ -1,6 +1,19 @@
+var/global/obj/server
+
 /obj/server
 	name = "Server"
 	icon_state = "server"
+
+/obj/server/New()
+	server = src
+	..()
+
+/obj/server/destroy()
+	world << "The server was destroyed..."
+	world << "this can't be good."
+	master.pause = 1
+	server = null
+	..()
 
 /obj/server/left_click(adjacent, params)
 	if (!adjacent)

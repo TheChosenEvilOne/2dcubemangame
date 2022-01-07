@@ -20,3 +20,7 @@
 /turf/floor/wood
 	name = "\proper wooden planks"
 	icon_state = "planks"
+
+/turf/floor/sand
+	name = "\proper sand"
+	icon_state = "sand"

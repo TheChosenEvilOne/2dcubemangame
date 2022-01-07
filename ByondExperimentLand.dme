@@ -8,6 +8,7 @@
 // BEGIN_FILE_DIR
 #define FILE_DIR .
 #define FILE_DIR "icons"
+#define FILE_DIR "sound"
 // END_FILE_DIR
 
 // BEGIN_PREFERENCES
@@ -16,8 +17,10 @@
 
 // BEGIN_INCLUDE
 #include "code\__defines.dm"
+#include "code\_global.dm"
 #include "code\chat.dm"
 #include "code\client.dm"
+#include "code\datum.dm"
 #include "code\experiment.dm"
 #include "code\helpers.dm"
 #include "code\mouse.dm"
@@ -32,10 +35,12 @@
 #include "code\atoms\objects\campfire.dm"
 #include "code\atoms\objects\cannon.dm"
 #include "code\atoms\objects\door.dm"
+#include "code\atoms\objects\lighting_overlay.dm"
 #include "code\atoms\objects\projectile.dm"
 #include "code\atoms\objects\respawn.dm"
 #include "code\atoms\objects\server.dm"
 #include "code\atoms\objects\table.dm"
+#include "code\atoms\objects\torch.dm"
 #include "code\atoms\objects\window.dm"
 #include "code\atoms\objects\z_entrance.dm"
 #include "code\atoms\objects\items\beer.dm"
@@ -51,13 +56,21 @@
 #include "code\game\hud_object.dm"
 #include "code\game\inventory.dm"
 #include "code\game\map_generator.dm"
+#include "code\game\master.dm"
 #include "code\game\movement.dm"
 #include "code\game\pointing.dm"
+#include "code\game\system.dm"
 #include "code\game\throw.dm"
 #include "code\game\huds\build.dm"
 #include "code\game\huds\inventory.dm"
+#include "code\game\huds\status.dm"
 #include "code\game\map_gens\cave.dm"
+#include "code\game\map_gens\river.dm"
 #include "code\game\map_gens\room.dm"
+#include "code\game\systems\atom_init.dm"
+#include "code\game\systems\light.dm"
+#include "code\game\systems\processing.dm"
+#include "code\game\systems\random_process.dm"
 #include "code\game\ui\button.dm"
 #include "code\game\ui\icon.dm"
 #include "code\game\ui\slot.dm"

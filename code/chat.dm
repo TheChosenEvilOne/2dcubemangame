@@ -4,7 +4,7 @@
 	maptext_height = 64
 	maptext_y = 30
 	maptext_x = -112
-	layer = MOB_LAYER+1
+	layer = OVER_LIGHTING_LAYER
 	mouse_opacity = 0
 
 /atom/movable/chat_message/New(atom/movable/A, words)
@@ -20,10 +20,12 @@
 	set name = "OOC"
 	if (!words)
 		return
+	words = html_encode(words)
 	world << "<div style='color: blue'><b>[src]</b>: [words]</div>"
 
 /client/verb/say(words as text)
 	set name = "Say"
 	if (!words)
 		return
+	words = html_encode(words)
 	mob.say(words)

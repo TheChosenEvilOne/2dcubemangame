@@ -6,6 +6,12 @@
 	for (var/hud/H in huds)
 		H.show()
 
+
+/mob/Del()
+	for (var/hud/H in huds)
+		H.remove()
+	..()
+
 /hud
 	var/mob/owner
 	var/list/hud_object/ui_objects = list()
@@ -35,9 +41,6 @@
 
 /hud/proc/create_hud(mob)
 	CRASH("Attempted to create invalid HUD")
-
-/hud/proc/call_handler(handler, arguments)
-	call(src, handler)(arglist(arguments))
 
 /hud/proc/show()
 	if (!owner || !owner.client)

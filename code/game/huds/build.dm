@@ -7,6 +7,7 @@
 
 /hud/build/remove()
 	builder = null
+	. = ..()
 
 /hud/build/create_hud()
 	var/hud_object/button/B
@@ -29,7 +30,7 @@
 	B.click_handler = .proc/change_colour
 	B.screen_loc = "NORTH,WEST+2"
 
-/hud/build/proc/change_type(location, control, params)
+/hud/build/proc/change_type(hud_object/object, params)
 	params = params2list(params)
 	if (params["right"])
 		owner.client.toggle_build()
@@ -38,10 +39,11 @@
 	if (!path)
 		return
 	builder.build_type = path
-	ui_objects["type"].hicon.icon = initial(path.icon)
-	ui_objects["type"].hicon.icon_state = initial(path.icon_state)
+	var/hud_object/button/B = object
+	B.hicon.icon = initial(path.icon)
+	B.hicon.icon_state = initial(path.icon_state)
 
-/hud/build/proc/change_mode(location, control, params)
+/hud/build/proc/change_mode(hud_object/object, params)
 	params = params2list(params)
 	if (params["right"])
 		owner.client.toggle_build()
@@ -57,7 +59,7 @@
 		ui_objects["mode"].hicon.icon_state = "build"
 
 
-/hud/build/proc/change_colour(location, control, params)
+/hud/build/proc/change_colour(hud_object/object, params)
 	params = params2list(params)
 	if (params["right"])
 		owner.client.toggle_build()

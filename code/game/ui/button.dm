@@ -18,4 +18,5 @@
 	C.screen -= hicon
 
 /hud_object/button/Click(location, control, params)
-	hud.call_handler(click_handler, args)
+	if (click_handler)
+		call_handler(click_handler, src, params)

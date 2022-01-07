@@ -8,7 +8,7 @@
 	var/damage
 	var/speed
 
-/atom/movable/projectile/New(loc, trgt, dmg = 10, spd = 16)
+/atom/movable/projectile/New(loc, trgt, dmg = 10, spd = 24)
 	..(loc)
 	if (!trgt)
 		del src
