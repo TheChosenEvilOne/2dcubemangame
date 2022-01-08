@@ -15,7 +15,6 @@
 		vis_contents -= src
 		del src
 
-
 /client/verb/ooc(words as text)
 	set name = "OOC"
 	if (!words)
@@ -29,3 +28,10 @@
 		return
 	words = html_encode(words)
 	mob.say(words)
+
+/client/verb/me(words as text)
+	set name = "Me"
+	if (!words)
+		return
+	words = html_encode(words)
+	mob.act(words)
