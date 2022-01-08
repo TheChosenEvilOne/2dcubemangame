@@ -17,9 +17,6 @@
 		in_use = 0
 		return
 	S = sound(S)
-	S.x = x
-	S.y = y
-	S.z = z
 	S.channel = 1024
 	hearers() << S
 	last_use = world.time + 100 // 10 second delay
