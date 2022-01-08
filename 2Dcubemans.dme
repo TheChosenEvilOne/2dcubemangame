@@ -7,8 +7,6 @@
 
 // BEGIN_FILE_DIR
 #define FILE_DIR .
-#define FILE_DIR "icons"
-#define FILE_DIR "sound"
 // END_FILE_DIR
 
 // BEGIN_PREFERENCES
@@ -23,6 +21,7 @@
 #include "code\datum.dm"
 #include "code\experiment.dm"
 #include "code\helpers.dm"
+#include "code\hub.dm"
 #include "code\mouse.dm"
 #include "code\world.dm"
 #include "code\map.dmm"
@@ -71,6 +70,7 @@
 #include "code\game\systems\light.dm"
 #include "code\game\systems\processing.dm"
 #include "code\game\systems\random.dm"
+#include "code\game\systems\throwing.dm"
 #include "code\game\ui\button.dm"
 #include "code\game\ui\icon.dm"
 #include "code\game\ui\slot.dm"

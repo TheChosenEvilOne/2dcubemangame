@@ -7,6 +7,7 @@
 	var/allocated_cpu = 0.3
 
 	var/next_fire = 0
+	var/overtime = 0
 	var/firing = 0
 
 /system/proc/initialize()

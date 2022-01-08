@@ -5,32 +5,58 @@
 	var/can_interact = 1
 
 /mob/Stat()
-	stat("cpu", world.cpu)
+	stat("cpu", round(world.cpu, 0.1))
+	stat("allocated", round(master.allocated_cpu, 0.1))
 	for (var/system/S in master.processing_systems)
-		stat(S.name, "[S.firing] [S.next_fire] [S.allowed_cpu_time]")
+		stat(S.name, "[S.overtime] [S.firing] [S.next_fire] [round(S.allowed_cpu_time, 0.1)]")
 
 /mob/destroy()
-	if (key)
-		var/mob/dead/ghost/G = new (loc)
-		G.name = "ghost of [key ? key : name]"
-		G.ckey = ckey
+	ghostize()
 	..()
+
+/mob/proc/ghostize()
+	if (!key)
+		return
+	for (var/hud/H in huds)
+		H.hide()
+	var/mob/dead/ghost/G = new (loc)
+	G.name = "ghost of [key ? key : name]"
+	G.ckey = ckey
 
 /mob/dead/ghost
 	name = "ghost"
 	desc = "AAAAAAAAA!!"
 	icon_state = "ghost"
+	layer = OVER_LIGHTING_LAYER
 	density = 0
 	can_interact = 0
 	sight = SEE_THRU
 	movement_delay = 0.5
+	invisibility = 50
+	see_invisible = 50
 
 /mob/living
+	var/dead_state
+	var/status = 0
 	var/kill_mode = 0
 
 /mob/living/New()
 	. = ..()
 	new /hud/status(src)
+
+/mob/living/take_damage(amount)
+	if (!status && amount >= integrity)
+		die()
+	if (integrity < -max_integrity)
+		destroy()
+	integrity -= amount
+
+/mob/living/proc/die()
+	status = 1
+	density = 0
+	layer = UNDER_MOB_LAYER
+	icon_state = dead_state
+	ghostize()
 
 /mob/living/inventory
 	var/inventory_type
@@ -55,8 +81,14 @@
 	name = "Player"
 	desc = "A cute cubeman."
 	icon_state = "player"
+	dead_state = "player_dead"
 	rotatable = 1
 	inventory_type = /datum/inventory/player
+
+/mob/living/inventory/player/die()
+	overlays.Cut()
+	flick("player_dying", src)
+	..()
 
 /mob/living/inventory/player/update_appearance()
 	if (kill_mode)

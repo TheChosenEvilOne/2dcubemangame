@@ -1,6 +1,7 @@
 /datum/master
 	var/running = 0
 	var/pause = 0
+	var/allocated_cpu = 0
 	var/system/systems
 	var/system/processing_systems
 
@@ -37,20 +38,27 @@
 			sleep(world.tick_lag)
 			continue
 
-		var/cpu_left = 100 - world.cpu
+		var/cpu_left = 100 - world.cpu - allocated_cpu
 		if (cpu_left <= 1)
 			world << "System overloaded, no CPU time left for systems."
 		for (var/system/S in processing_systems)
+			if (S.flags & S_PAUSED)
+				continue
+
 			if (S.firing)
+				allocated_cpu -= S.allowed_cpu_time
 				S.allowed_cpu_time = cpu_left * S.allocated_cpu
+				allocated_cpu += S.allowed_cpu_time
 				continue
 			if (S.next_fire > world.time)
 				continue
 			S.next_fire = world.time + S.update_rate
 			S.firing = 1
 			S.allowed_cpu_time = cpu_left * S.allocated_cpu
+			allocated_cpu += S.allowed_cpu_time
 			spawn()
 				S.process()
 				S.firing = 0
+				allocated_cpu -= S.allowed_cpu_time
 
 		sleep(world.tick_lag)

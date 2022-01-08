@@ -20,6 +20,6 @@
 	if (P["right"])
 		return right_click(A, P)
 
-/atom/proc/left_click(adjacent, params)
+/atom/proc/left_click(adjacent, params, item = null)
 
-/atom/proc/right_click(adjacent, params)
+/atom/proc/right_click(adjacent, params, item = null)

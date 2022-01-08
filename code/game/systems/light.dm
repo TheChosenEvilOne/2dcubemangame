@@ -1,9 +1,10 @@
 SYSTEM_CREATE(light)
 	name = "lighting v5" // update the number after each rewrite
 	flags = S_PROCESS
+	allocated_cpu = 0.5
 	update_rate = 0
 	var/list/prop_list = list()
-	var/ambient_light = 8
+	var/ambient_light = 4
 
 /system/light/process()
 	while (prop_list.len)
@@ -27,29 +28,44 @@ SYSTEM_CREATE(light)
 			continue
 
 		var/spread = list()
+		var/darken = list()
 		var/turf/T2 = locate(T.x + 1, T.y, T.z)
 		if (T2)
 			var/T2L = T2.lighting_overlay.light_level
 			if (T2L < (L - 1))
 				spread += T2
+			else if (L < T2L && T2.lighting_overlay.source == get_dir(T2, T))
+				darken += T2
 		T2 = locate(T.x - 1, T.y, T.z)
 		if (T2)
 			var/T2L = T2.lighting_overlay.light_level
 			if (T2L < (L - 1))
 				spread += T2
+			else if (L < T2L && T2.lighting_overlay.source == get_dir(T2, T))
+				darken += T2
 		T2 = locate(T.x, T.y + 1, T.z)
 		if (T2)
 			var/T2L = T2.lighting_overlay.light_level
 			if (T2L < (L - 1))
 				spread += T2
+			else if (L < T2L && T2.lighting_overlay.source == get_dir(T2, T))
+				darken += T2
 		T2 = locate(T.x, T.y - 1, T.z)
 		if (T2)
 			var/T2L = T2.lighting_overlay.light_level
 			if (T2L < (L - 1))
 				spread += T2
+			else if (L < T2L && T2.lighting_overlay.source == get_dir(T2, T))
+				darken += T2
 
 		for (var/turf/S in spread)
+			S.lighting_overlay.source = get_dir(S, T)
 			propagate_light(S, L - 1)
+
+		for (var/turf/S in darken)
+			S.lighting_overlay.source = 0
+			propagate_light(S, L)
+
 
 
 /system/light/proc/propagate_light(turf/T, light)

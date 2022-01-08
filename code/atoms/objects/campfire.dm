@@ -8,5 +8,5 @@
 	processing_system = /system/processing/random
 
 /obj/campfire/process()
-	if (prob(1))
+	if (prob(5))
 		act("crackles")

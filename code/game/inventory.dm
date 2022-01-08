@@ -6,6 +6,9 @@
 	var/datum/inventory/inventory
 	var/obj/item/item
 
+/inventory_slot/proc/remove_item()
+	return inventory.remove_item(id)
+
 /inventory_slot/l_hand
 	id = "lhand"
 	name = "left hand"
@@ -17,13 +20,15 @@
 	screen_loc = "SOUTH,CENTER+0.5"
 
 /datum/inventory
-	var/parent
+	var/mob/parent
+	var/throw_mode = 0
 	var/selected_slot
 	var/hud/inventory/hud
 	var/list/inventory_slot/slots
 
 /datum/inventory/New(mob/mob)
 	hud = new(mob)
+	hud.inventory = src
 	parent = mob
 	for (var/P in slots)
 		slots -= P
@@ -51,19 +56,32 @@
 	hud.remove()
 
 /datum/inventory/proc/click_handler(atom/object, location, control, params)
-	if (!slots[selected_slot].item)
-		return 0
 	var/obj/item/I = slots[selected_slot].item
+	if (throw_mode)
+		throw_mode = 0
+		hud.ui_objects["throw"].icon_state = "throw"
+		if (!I)
+			return 1
+		remove_item(selected_slot)
+		I.loc = parent.loc
+		I.throw_at_atom(object, abs(I.x - object.x) + abs(I.y - object.y), keep_pos = 1)
+		return 1
+	if (!I)
+		return 0
 	if (object == I)
 		I.attack_self()
 		return 0
 	if (object.loc == null)
 		return 0
+	var/mob/living/M = parent
+	var/priority = M.kill_mode ? 1 : 0
 	var/A = get_dist(usr, object) <= usr.interact_range
 	if (params["left"])
-		I.attack_left(object, A, params)
+		if (priority || !object.left_click(A, params, I))
+			I.attack_left(object, A, params)
 	if (params["right"])
-		I.attack_right(object, A, params)
+		if (priority || !object.right_click(A, params, I))
+			I.attack_right(object, A, params)
 	return 1
 
 /datum/inventory/proc/update()
@@ -75,6 +93,8 @@
 		return 0
 	I.loc = null
 	slots[slot].item = I
+	I.pixel_x = I.pixel_y = 0
+	I.slot = slots[slot]
 	hud.ui_objects[slot].update_item()
 	return 1
 
@@ -83,6 +103,7 @@
 		return 0
 	var/obj/item/I = slots[slot].item
 	slots[slot].item = null
+	I.slot = null
 	hud.ui_objects[slot].update_item()
 	return I
 

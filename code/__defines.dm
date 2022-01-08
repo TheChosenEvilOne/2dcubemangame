@@ -1,6 +1,8 @@
 #define ceil(x, y) -round(-x / y) * y
 #define subtypesof(x) typesof(x) - x
 #define DELAY2GLIDESIZE(delay) (32 / max(ceil(delay / world.tick_lag, 1), 1))
+#define HALF_ICON_SIZE 32
+#define ICON_SIZE 32
 
 #define DATUM_PROCESS			1
 #define DATUM_PROCESSING		2
@@ -20,11 +22,13 @@ sys_##x = src											\
 
 #define S_INIT		1
 #define S_PROCESS	2
+#define S_PAUSED	4
 
 //#define AREA_LAYER 1
 //#define TURF_LAYER 2
 //#define OBJ_LAYER 3
   #define ITEM_LAYER 3.1
+  #define UNDER_MOB_LAYER 3.9
 //#define MOB_LAYER 4
-#define LIGHTING_LAYER 100
-#define OVER_LIGHTING_LAYER 101
+  #define LIGHTING_LAYER 100
+  #define OVER_LIGHTING_LAYER 101

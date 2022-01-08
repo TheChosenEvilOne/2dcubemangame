@@ -2,6 +2,14 @@
 	var/throw_speed = 24
 	var/throw_range = 14
 
+/datum/throw_object
+	var/atom/movable/object
+	var/cur_x
+	var/cur_y
+	var/dir_x
+	var/dir_y
+	var/range
+
 /atom/movable/proc/throw_at_atom(atom/target, range, speed, keep_pos = 0)
 	throw_at(target.x, target.y, range, speed, keep_pos)
 
@@ -14,7 +22,7 @@
 		speed = throw_speed
 	if(!range)
 		range = throw_range
-	range *= 32
+	range *= ICON_SIZE
 	var/animation_time = (range / speed * world.tick_lag) / 3
 	animate(src, transform = turn(matrix(), 120), time = animation_time, loop = 1)
 	animate(transform = turn(matrix(), 240), time = animation_time)
@@ -31,23 +39,46 @@
 		nx += dx
 		ny += dy
 
-		if (nx > 16)
-			nx -= 32
-			if (!step(src, EAST))
-				break
-		else if (nx < -16)
-			nx += 32
-			if (!step(src, WEST))
-				break
-
-		if (ny > 16)
-			ny -= 32
-			if (!step(src, NORTH))
-				break
-		else if (ny < -16)
-			ny += 32
-			if (!step(src, SOUTH))
-				break
+		if (nx > HALF_ICON_SIZE)
+			var/step = get_step(src, EAST)
+			if (throw_enter(step) || !Move(step))
+				nx = HALF_ICON_SIZE
+				if (range / 2 > 1)
+					range /= 2
+					dx = -dx
+				else
+					break
+			nx -= ICON_SIZE
+		else if (nx < -HALF_ICON_SIZE)
+			var/step = get_step(src, WEST)
+			if (throw_enter(step) || !Move(step))
+				nx = -HALF_ICON_SIZE
+				if (range / 2 > 1)
+					range /= 2
+					dx = -dx
+				else
+					break
+			nx += ICON_SIZE
+		if (ny > HALF_ICON_SIZE)
+			var/step = get_step(src, NORTH)
+			if (throw_enter(step) || !Move(step))
+				ny = HALF_ICON_SIZE
+				if (range / 2 > 1)
+					range /= 2
+					dy = -dy
+				else
+					break
+			ny -= ICON_SIZE
+		else if (ny < -HALF_ICON_SIZE)
+			var/step = get_step(src, SOUTH)
+			if (throw_enter(step) || !Move(step))
+				ny = -HALF_ICON_SIZE
+				if (range / 2 > 1)
+					range /= 2
+					dy = -dy
+				else
+					break
+			ny += ICON_SIZE
 		sleep (world.tick_lag)
 		range -= glide_size
 
@@ -55,3 +86,24 @@
 	if (keep_pos)
 		pixel_x = nx
 		pixel_y = ny
+
+/atom/proc/hit_by(atom/movable/A)
+
+/atom/movable/proc/hit_object(atom/A)
+
+/atom/movable/proc/throw_enter(turf/T)
+	if (!T)
+		return
+
+	if (T.density)
+		if (hit_object(T) || T.hit_by(src))
+			return 0
+		return 1
+
+	for(var/k in T.contents)
+		var/atom/movable/A = k
+		if(!A.density)
+			continue
+		if (hit_object(k) || A.hit_by(src))
+			return 0
+		return 1

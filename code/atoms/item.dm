@@ -3,6 +3,12 @@
 	desc = "item"
 	icon = 'icons/items.dmi'
 	layer = ITEM_LAYER
+	var/inventory_slot/slot
+
+/obj/item/destroy()
+	if (slot)
+		slot.remove_item()
+	..()
 
 /obj/item/left_click(adjacent, params)
 	if (!adjacent)

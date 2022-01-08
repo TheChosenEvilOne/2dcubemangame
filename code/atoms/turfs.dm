@@ -8,17 +8,14 @@
 
 /turf/New()
 	. = ..()
-	lighting_overlay = new /atom/movable/lighting_overlay(src)
+	lighting_overlay = locate(/atom/movable/lighting_overlay) in src
+	if (!lighting_overlay)
+		lighting_overlay = new /atom/movable/lighting_overlay(src)
 	if (variation && base_state)
 		icon_state = "[base_state][rand(variation)]"
 
-/turf/Del()
-	lighting_overlay.loc = null
-	..()
-
 /turf/destroy()
 	..()
-	lighting_overlay.loc = null
 	if (base_turf)
 		new base_turf(src)
 		return

@@ -13,4 +13,4 @@
 	P.shoot(text2num(params["icon-x"]), text2num(params["icon-y"]))
 
 /obj/item/gun/attack_right(atom/target, adjacent)
-	usr.throw_at_atom(target)
+	usr.throw_at_atom(target, 1000)

@@ -58,10 +58,15 @@ window "default"
 		size = 720x501
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "2D Cubeman Game"
+		icon = 'icons\\smile.png'
 		macro = "macro"
 		menu = "menu"
+		outer-size = 736x579
+		inner-size = 720x520
 	elem "info1"
 		type = INFO
 		pos = 480,0
@@ -69,6 +74,7 @@ window "default"
 		anchor1 = 67,0
 		anchor2 = 100,51
 		saved-params = ""
+		tab-background-color = none
 	elem "input1"
 		type = INPUT
 		pos = 0,480

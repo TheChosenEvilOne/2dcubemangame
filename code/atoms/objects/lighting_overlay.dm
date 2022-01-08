@@ -1,13 +1,13 @@
 /atom/movable/lighting_overlay
 	icon = 'icons/lighting.dmi'
 	layer = LIGHTING_LAYER
-	alpha = 85
+	alpha = 0
 	mouse_opacity = 0
 	var/source
 	var/light_level = 0
 
 /atom/movable/lighting_overlay/initialize()
-	set_light_level(5)
+	set_light_level(4)
 	if (!sys_light) // XXX: Remove this once system priority is implemented
 		return
 	light_level = sys_light.ambient_light

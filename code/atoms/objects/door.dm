@@ -14,6 +14,7 @@
 		close()
 	else
 		open()
+	return 1
 
 /obj/door/proc/open()
 	if (open)
@@ -32,13 +33,6 @@
 	open = 0
 	flick("a_door0", src)
 	icon_state = "door0"
-
-/obj/door/right_click(adjacent)
-	if (!adjacent)
-		return
-	var/mob/M = usr
-	M.client.say("BEGONE FOUL DOOR!!")
-	del src
 
 /obj/door/projectile_impact(atom/movable/projectile/P)
 	if (!istype(P, /atom/movable/projectile/cannon_ball))
