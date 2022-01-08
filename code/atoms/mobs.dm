@@ -4,12 +4,6 @@
 	var/interact_range = 1.5 // close enough to sqrt(2)
 	var/can_interact = 1
 
-/mob/Stat()
-	stat("cpu", round(world.cpu, 0.1))
-	stat("allocated", round(master.allocated_cpu, 0.1))
-	for (var/system/S in master.processing_systems)
-		stat(S.name, "[S.overtime] [S.firing] [S.next_fire] [round(S.allowed_cpu_time, 0.1)]")
-
 /mob/destroy()
 	ghostize()
 	..()
