@@ -26,6 +26,7 @@ sys_##x = src											\
 
 //#define AREA_LAYER 1
 //#define TURF_LAYER 2
+  #define UNDER_OBJ_LAYER 2.9
 //#define OBJ_LAYER 3
   #define ITEM_LAYER 3.1
   #define UNDER_MOB_LAYER 3.9

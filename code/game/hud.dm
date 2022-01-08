@@ -29,11 +29,9 @@
 /hud/proc/remove()
 	for (var/O in ui_objects)
 		ui_objects[O].remove()
-		del ui_objects[O]
 	ui_objects.Cut()
 	owner.huds -= src
 	owner = null
-	del src
 
 /hud/proc/new_object(path, name)
 	if (ui_objects[name])
@@ -51,10 +49,11 @@
 		ui_objects[O].show(owner.client)
 		owner.client.screen += ui_objects[O]
 
-/hud/proc/hide()
-	if (!owner)
+/hud/proc/hide(logout = 0)
+	if (!owner || !owner.client)
 		return
-	visible = 0
+	if (!logout)
+		visible = 0
 	for (var/O in ui_objects)
 		ui_objects[O].hide(owner.client)
 		owner.client.screen -= ui_objects[O]

@@ -3,15 +3,26 @@
 
 /client/New()
 	. = ..()
-	if (usr) return
-	src << "<h2>Hey, welcome to 2D cubemans</h2>"
-	src << "The game is open source at: https://github.com/TheChosenEvilOne/2dcubemangame"
-	src << "Your contributions are appreciated."
-	world << "<b>[src]</b> has connected."
+	if (!usr)
+		src << "<h2>Hey, welcome to 2D cubemans</h2>"
+		src << "The game is open source at: https://github.com/TheChosenEvilOne/2dcubemangame"
+		src << "Your contributions are appreciated."
+		world << "<b>[src]</b> has connected."
+		return
+	else
+		for (var/hud/H in mob.huds)
+			if (!H.visible)
+				continue
+			H.show()
+
+/client/Del()
+	for (var/hud/H in mob.huds)
+		H.hide(1)
+	. = ..()
 
 /client/AllowUpload(filename, size)
-	if(size > 524288)
-		src << "[filename] is too large, maximum is 0.5MiB."
+	if(size > 2097152)
+		src << "[filename] is too large, maximum is 2 MiB."
 		return 0
 	return 1
 

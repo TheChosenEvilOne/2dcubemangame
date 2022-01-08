@@ -22,6 +22,7 @@
 	B.name = "Building type"
 	B.click_handler = .proc/change_type
 	B.screen_loc = "NORTH,WEST+1"
+	B.hicon.transform.Scale(0.8)
 	B.hicon.icon = initial(builder.build_type.icon)
 	B.hicon.icon_state = initial(builder.build_type.icon_state)
 
@@ -29,8 +30,9 @@
 	B.name = "Colour"
 	B.click_handler = .proc/change_colour
 	B.screen_loc = "NORTH,WEST+2"
+	B.hicon.icon_state = "color"
 
-/hud/build/proc/change_type(hud_object/object, params)
+/hud/build/proc/change_type(hud_object/button/B, params)
 	params = params2list(params)
 	if (params["right"])
 		owner.client.toggle_build()
@@ -39,11 +41,10 @@
 	if (!path)
 		return
 	builder.build_type = path
-	var/hud_object/button/B = object
 	B.hicon.icon = initial(path.icon)
 	B.hicon.icon_state = initial(path.icon_state)
 
-/hud/build/proc/change_mode(hud_object/object, params)
+/hud/build/proc/change_mode(hud_object/button/B, params)
 	params = params2list(params)
 	if (params["right"])
 		owner.client.toggle_build()
@@ -52,18 +53,18 @@
 	if (builder.mode == BUILDING)
 		usr << "Painting mode"
 		builder.mode = PAINTING
-		ui_objects["mode"].hicon.icon_state = "paint"
+		B.hicon.icon_state = "paint"
 	else
 		usr << "Building mode"
 		builder.mode = BUILDING
-		ui_objects["mode"].hicon.icon_state = "build"
+		B.hicon.icon_state = "build"
 
 
-/hud/build/proc/change_colour(hud_object/object, params)
+/hud/build/proc/change_colour(hud_object/button/B, params)
 	params = params2list(params)
 	if (params["right"])
 		owner.client.toggle_build()
 		return
 
 	builder.colour = input("Select colour") as color
-	ui_objects["colour"].color = builder.colour
+	B.hicon.color = builder.colour

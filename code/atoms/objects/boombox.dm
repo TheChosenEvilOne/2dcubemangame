@@ -8,6 +8,7 @@
 /obj/boombox/left_click()
 	if (last_use > world.time)
 		usr << "It has been used too recently."
+		return
 	if (in_use)
 		usr << "Someone is already using that."
 		return
