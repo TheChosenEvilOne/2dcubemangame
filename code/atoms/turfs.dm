@@ -1,6 +1,7 @@
 /turf
 	icon = 'icons/turfs.dmi'
 	datum_flags = 0
+	var/slowdown = 0
 	var/atom/movable/lighting_overlay/lighting_overlay
 	var/base_turf
 	var/variation = 0

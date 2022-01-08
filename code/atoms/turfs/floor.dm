@@ -34,3 +34,4 @@
 /turf/floor/water
 	name = "\proper water"
 	base_state = "water"
+	slowdown = 1
