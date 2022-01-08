@@ -49,5 +49,5 @@
 	new /atom/movable/chat_message(src, words)
 
 /atom/movable/proc/act(action)
-	viewers() << "<i><b>[src]</b> [action].</i>"
+	viewers() << "<i><b>[src]</b> [action]</i>"
 	new /atom/movable/chat_message(src, "<i>[action]</i>")

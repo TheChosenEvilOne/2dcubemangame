@@ -83,21 +83,45 @@
 	dead_state = "player_dead"
 	rotatable = 1
 	inventory_type = /datum/inventory/player
+	var/is_super = FALSE
+	//speed at which the super animation runs, maximum 2 seconds to avoid epilepsy
+	var/super_animation_speed = 60
 
 /mob/living/inventory/player/die()
+	//removes any special statuses
+	icon_state = initial(icon_state)
+	animate(src)
 	overlays.Cut()
 	flick("player_dying", src)
 	..()
 
 /mob/living/inventory/player/update_appearance()
+	overlays.Cut()
 	if (kill_mode)
-		overlays -= "face"
-		overlays += "face_kill"
+		overlays += mutable_appearance(icon, "face_kill", appearance_flags = RESET_COLOR)
 	else
-		overlays += "face"
-		overlays -= "face_kill"
-
+		overlays += mutable_appearance(icon, "face", appearance_flags = RESET_COLOR)
 
 /mob/living/inventory/player/projectile_impact(P)
 	say("OWW!!")
 	. = ..()
+
+/mob/living/inventory/player/proc/become_super(setup = TRUE)
+	set waitfor = FALSE
+	if(setup)
+		is_super = TRUE
+		icon_state = "super_player"
+		color = "#ff0000"
+	animate(src, color = "#00ff00", super_animation_speed)
+	sleep(super_animation_speed)
+	if(status || !src)
+		return
+	animate(src, color = "#0000ff", super_animation_speed)
+	sleep(super_animation_speed)
+	if(status || !src)
+		return
+	animate(src, color = "#ff0000", super_animation_speed)
+	sleep(super_animation_speed)
+	if(status || !src)
+		return
+	become_super(setup = FALSE)
