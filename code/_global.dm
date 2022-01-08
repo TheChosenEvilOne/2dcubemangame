@@ -1,0 +1,1 @@
+var/global/datum/master/master

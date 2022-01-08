@@ -2,7 +2,8 @@
 #define subtypesof(x) typesof(x) - x
 #define DELAY2GLIDESIZE(delay) (32 / max(ceil(delay / world.tick_lag, 1), 1))
 
-#define DATUM_PROCESS		1
+#define DATUM_PROCESS			1
+#define DATUM_PROCESSING		2
 
 #define SYSTEM_CREATE(x) var/global/system/x/sys_##x;	\
 /system/##x/New(){										\
@@ -10,6 +11,9 @@ sys_##x = src											\
 }														\
 /system/##x
 #define PROCESSING_CREATE(x) var/global/system/processing/x/sys_##x;\
+/system/processing/##x/New(){										\
+sys_##x = src											\
+}														\
 /system/processing/##x
 
 #define check_cpu if (world.cpu > allowed_cpu_time) {sleep(world.tick_lag)}

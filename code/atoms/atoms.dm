@@ -13,14 +13,12 @@
 
 /atom/destroy()
 	if (light)
-		var/turf/T = get_step(src, 0)
-		sys_light.propagate_light(T, sys_light.external_light)
+		sys_light.propagate_light(src, sys_light.ambient_light)
 
 /atom/proc/update_light()
 	if (!light || !sys_light) // XXX: remove sys_light check once initialisation priority is fixed
 		return
-	var/turf/T = get_step(src, 0)
-	sys_light.propagate_light(T, light)
+	sys_light.propagate_light(src, light)
 
 /atom/proc/update_appearance()
 

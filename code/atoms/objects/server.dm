@@ -3,6 +3,7 @@ var/global/obj/server
 /obj/server
 	name = "Server"
 	icon_state = "server"
+	density = 1
 
 /obj/server/New()
 	server = src
