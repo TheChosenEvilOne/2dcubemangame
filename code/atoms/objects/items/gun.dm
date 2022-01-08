@@ -5,7 +5,7 @@
 
 /obj/item/gun/attack_self()
 	var/atom/movable/M = usr
-	usr.act("shoots [M.p_possessive()]")
+	usr.act("shoots [M.p_possessive()].")
 	usr.take_damage(M.integrity)
 
 /obj/item/gun/attack_left(atom/target, adjacent, params)

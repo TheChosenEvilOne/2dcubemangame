@@ -2,7 +2,7 @@
 	var/function = input("function") as null|anything in list("item", "map gen")
 	switch (function)
 		if ("item")
-			var/select = input("h") as null|anything in list(/obj/item/gun, /obj/item/wrench, /obj/item/pickaxe, /obj/item/sword, /obj/item/beer, /obj/cannon, /obj/respawn_station, /obj/z_entrance, /obj/boombox)
+			var/select = input("h") as null|anything in list(/obj/item/gun, /obj/item/wrench, /obj/item/pickaxe, /obj/item/sword, /obj/item/beer, /obj/item/injector, /obj/cannon, /obj/respawn_station, /obj/z_entrance, /obj/boombox)
 			if (!select)
 				return
 			new select(usr.loc)
