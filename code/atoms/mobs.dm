@@ -45,6 +45,11 @@
 		destroy()
 	integrity -= amount
 
+/mob/living/get_movement_delay(loc, dir, turf/T)
+	if (!istype(T))
+		return ..()
+	return movement_delay + T.slowdown
+
 /mob/living/proc/die()
 	status = 1
 	density = 0

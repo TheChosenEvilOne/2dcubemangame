@@ -4,15 +4,17 @@
 	var/next_move = 0
 	var/movement_delay = 1
 
+/mob/proc/get_movement_delay(loc, dir, turf)
+	return movement_delay
+
 /client/Move(loc, dir)
 	if (mob.next_move > world.time)
 		return
-	var/turf/T = get_step(mob, dir)
 	var/diag = 1 + (0.41421 * ((dir - 1) & dir == 0))
-	var/delay = T.slowdown + mob.movement_delay * diag
+	var/delay = mob.get_movement_delay(loc, dir, get_step(mob, dir)) * diag
 	mob.next_move = world.time + delay
 	mob.glide_size = DELAY2GLIDESIZE(delay)
-	..(T)
+	mob.Move(loc, dir)
 
 // From /vg/station13 - https://github.com/vgstation-coders/vgstation13
 /client
