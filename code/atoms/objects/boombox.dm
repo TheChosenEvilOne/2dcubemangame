@@ -12,10 +12,14 @@
 		usr << "Someone is already using that."
 		return
 	in_use = 1
-	var/S = input("Select a sound file.") as null|sound
+	var/sound/S = input("Select a sound file.") as null|sound
 	if (!S)
 		in_use = 0
 		return
+	S.x = x
+	S.y = y
+	S.z = z
+	S.channel = 1024
 	hearers() << S
 	last_use = world.time + 100 // 10 second delay
 	in_use = 0
