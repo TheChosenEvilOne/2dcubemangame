@@ -29,9 +29,9 @@
 
 /turf/floor/marsh
 	name = "\proper marsh"
-	base_state = "marsh"
+	icon_state = "marsh"
 
 /turf/floor/water
 	name = "\proper water"
-	base_state = "water"
+	icon_state = "water"
 	slowdown = 1

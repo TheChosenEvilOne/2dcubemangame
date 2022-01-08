@@ -4,7 +4,7 @@
 /client/New()
 	. = ..()
 	if (usr) return
-	src << "<B>Hey, welcome to 2D cubemans</B>"
+	src << "<h>Hey, welcome to 2D cubemans</h>"
 	src << "The game is open source at: https://github.com/TheChosenEvilOne/2dcubemangame"
 	src << "Your contributions are appreciated."
 	world << "<b>[src]</b> has connected."
