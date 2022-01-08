@@ -16,6 +16,7 @@
 	if (!S)
 		in_use = 0
 		return
+	S = sound(S)
 	S.x = x
 	S.y = y
 	S.z = z
