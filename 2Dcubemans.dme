@@ -31,6 +31,7 @@
 #include "code\atoms\mobs.dm"
 #include "code\atoms\objects.dm"
 #include "code\atoms\turfs.dm"
+#include "code\atoms\objects\boombox.dm"
 #include "code\atoms\objects\campfire.dm"
 #include "code\atoms\objects\cannon.dm"
 #include "code\atoms\objects\chair.dm"

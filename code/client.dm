@@ -9,6 +9,11 @@
 	src << "Your contributions are appreciated."
 	world << "<b>[src]</b> has connected."
 
+/client/AllowUpload(filename, size)
+	if(size > 524288)
+		src << "[filename] is too large, maximum is 0.5MiB."
+		return 0
+	return 1
 
 /client/Command(command)
 	if (connection != "telnet")
