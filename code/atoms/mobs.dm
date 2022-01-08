@@ -83,13 +83,13 @@
 	dead_state = "player_dead"
 	rotatable = 1
 	inventory_type = /datum/inventory/player
+	//whether this player is super
 	var/is_super = FALSE
 	//speed at which the super animation runs, maximum 2 seconds to avoid epilepsy
 	var/super_animation_speed = 60
 
 /mob/living/inventory/player/die()
 	//removes any special statuses
-	icon_state = initial(icon_state)
 	animate(src)
 	overlays.Cut()
 	flick("player_dying", src)
