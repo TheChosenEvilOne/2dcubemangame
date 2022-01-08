@@ -53,14 +53,17 @@
 	var/building = 0
 	var/datum/builder/builder
 
+/mob/proc/toggle_build()
+	if (!builder)
+		builder = new(src)
+	building = !building
+	if (building)
+		builder.hud.show()
+		src << "enabled building."
+	else
+		builder.hud.hide()
+		src << "disabled building."
+
 /client/verb/toggle_build()
 	set name = "Build"
-	if (!mob.builder)
-		mob.builder = new(mob)
-	mob.building = !mob.building
-	if (mob.building)
-		mob.builder.hud.show()
-		mob << "enabled building."
-	else
-		mob.builder.hud.hide()
-		mob << "disabled building."
+	mob.toggle_build()

@@ -16,8 +16,9 @@
 			H.show()
 
 /client/Del()
-	for (var/hud/H in mob.huds)
-		H.hide(1)
+	if (mob)
+		for (var/hud/H in mob.huds)
+			H.hide(1)
 	. = ..()
 
 /client/AllowUpload(filename, size)

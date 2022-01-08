@@ -35,7 +35,7 @@
 /hud/build/proc/change_type(hud_object/button/B, params)
 	params = params2list(params)
 	if (params["right"])
-		owner.client.toggle_build()
+		owner.toggle_build()
 		return
 	var/atom/path = input(usr, "Select build type.") as null|anything in builder.buildable
 	if (!path)
@@ -47,7 +47,7 @@
 /hud/build/proc/change_mode(hud_object/button/B, params)
 	params = params2list(params)
 	if (params["right"])
-		owner.client.toggle_build()
+		owner.toggle_build()
 		return
 
 	if (builder.mode == BUILDING)
@@ -63,7 +63,7 @@
 /hud/build/proc/change_colour(hud_object/button/B, params)
 	params = params2list(params)
 	if (params["right"])
-		owner.client.toggle_build()
+		owner.toggle_build()
 		return
 
 	builder.colour = input("Select colour") as color
