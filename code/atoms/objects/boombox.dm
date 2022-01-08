@@ -16,6 +16,6 @@
 	if (!S)
 		in_use = 0
 		return
-	src << S
+	hearers() << S
 	last_use = world.time + 100 // 10 second delay
 	in_use = 0
