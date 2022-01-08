@@ -21,6 +21,8 @@
 		/obj/window,
 		/obj/campfire,
 		/obj/torch,
+		/obj/path,
+		/obj/chair,
 		/obj/table
 	)
 

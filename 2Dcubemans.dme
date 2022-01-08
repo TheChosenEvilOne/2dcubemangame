@@ -33,6 +33,7 @@
 #include "code\atoms\turfs.dm"
 #include "code\atoms\objects\campfire.dm"
 #include "code\atoms\objects\cannon.dm"
+#include "code\atoms\objects\chair.dm"
 #include "code\atoms\objects\door.dm"
 #include "code\atoms\objects\lighting_overlay.dm"
 #include "code\atoms\objects\path.dm"

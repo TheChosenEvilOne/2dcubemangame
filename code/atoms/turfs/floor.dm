@@ -23,4 +23,10 @@
 
 /turf/floor/sand
 	name = "\proper sand"
-	icon_state = "sand"
+	icon_state = "sand0"
+	variation = 2
+	base_state = "sand"
+
+/turf/floor/marsh
+	name = "\proper marsh"
+	base_state = "marsh"
