@@ -111,7 +111,7 @@
 	var/obj/item/I = remove_item(slot)
 	if (!I)
 		return 0
-	I.loc = usr.loc
+	I.loc = parent.loc
 
 /datum/inventory/player
 	slots = list(

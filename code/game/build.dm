@@ -18,6 +18,8 @@
 		/turf/floor/grass,
 		/turf/floor/wood,
 		/turf/floor/sand,
+		/turf/floor/marsh,
+		/turf/floor/water,
 		/obj/window,
 		/obj/campfire,
 		/obj/torch,

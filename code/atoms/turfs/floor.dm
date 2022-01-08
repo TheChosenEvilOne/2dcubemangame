@@ -30,3 +30,7 @@
 /turf/floor/marsh
 	name = "\proper marsh"
 	base_state = "marsh"
+
+/turf/floor/water
+	name = "\proper water"
+	base_state = "water"
