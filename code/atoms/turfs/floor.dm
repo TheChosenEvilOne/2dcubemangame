@@ -40,8 +40,6 @@
 /turf/floor/water/lava
 	name = "\proper lava"
 	icon_state = "lava"
-
-/turf/floor/water/lava
 	light = 8
 	datum_flags = DATUM_PROCESS
 	processing_system = /system/processing/random
