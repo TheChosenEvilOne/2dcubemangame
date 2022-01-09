@@ -2,7 +2,7 @@
 	icon = 'icons/objs.dmi'
 	icon_state = "arrow"
 	appearance_flags = RESET_COLOR | RESET_ALPHA
-	layer = MOB_LAYER+1
+	layer = UNDER_LIGHTING_LAYER
 	mouse_opacity = 0
 
 /atom/proc/point()
