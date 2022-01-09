@@ -45,10 +45,14 @@
 	processing_system = /system/processing/random
 	var/damage_amount = 5
 
-/turf/floor/water/lava/Entered(atom/movable/atom, OldLoc)
+/turf/floor/water/lava/Crossed(atom/movable/atom)
 	. = ..()
+	if(locate(/obj/path) in src)
+		return
 	atom.take_damage(damage_amount*2)
 
 /turf/floor/water/lava/process()
+	if(locate(/obj/path) in src)
+		return
 	for(var/atom/movable/atom as anything in src)
 		atom.take_damage(damage_amount)

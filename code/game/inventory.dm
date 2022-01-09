@@ -82,6 +82,7 @@
 	var/A = get_dist(usr, object) <= usr.interact_range
 	if (params["left"])
 		if (priority || !object.left_click(A, params, I))
+			world << "go fuck yourself"
 			I.attack_left(object, A, params)
 	if (params["right"])
 		if (priority || !object.right_click(A, params, I))
