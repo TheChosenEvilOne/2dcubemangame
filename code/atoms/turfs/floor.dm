@@ -37,6 +37,11 @@
 	icon_state = "water"
 	slowdown = 1
 
+/turf/floor/water/get_slowdown(mob, dir)
+	if (locate(/obj/path) in src)
+		return 0
+	return slowdown
+
 /turf/floor/water/lava
 	name = "\proper lava"
 	icon_state = "lava"
