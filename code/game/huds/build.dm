@@ -23,9 +23,9 @@
 	B.click_handler = .proc/change_type
 	B.screen_loc = "NORTH,WEST+1"
 	B.hicon.transform.Scale(0.8)
-	B.hicon.icon = initial(builder.build_type.icon)
-	B.hicon.icon_state = initial(builder.build_type.icon_state)
-
+	var/icon/buildicon = icon(initial(builder.build_type.icon), initial(builder.build_type.icon_state))
+	buildicon.Scale(world.icon_size, world.icon_size)
+	B.hicon.icon = buildicon
 	B = new_object(/hud_object/button, "colour")
 	B.name = "Colour"
 	B.click_handler = .proc/change_colour
@@ -41,8 +41,9 @@
 	if (!path)
 		return
 	builder.build_type = path
-	B.hicon.icon = initial(path.icon)
-	B.hicon.icon_state = initial(path.icon_state)
+	var/icon/buildicon = icon(initial(builder.build_type.icon), initial(builder.build_type.icon_state))
+	buildicon.Scale(world.icon_size, world.icon_size)
+	B.hicon.icon = buildicon
 
 /hud/build/proc/change_mode(hud_object/button/B, params)
 	params = params2list(params)

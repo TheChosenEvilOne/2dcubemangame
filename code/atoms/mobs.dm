@@ -1,12 +1,30 @@
 /mob
+	maptext_y = -12
+	maptext_x = -112
+	maptext_width = 256
 	icon = 'icons/mobs.dmi'
 	say_verb = "says"
 	var/interact_range = 1.5 // close enough to sqrt(2)
 	var/can_interact = TRUE
 
+/mob/New(loc)
+	. = ..()
+	update_maptext()
+
 /mob/destroy()
 	ghostize()
-	..()
+	return ..()
+
+/mob/living/Login()
+	. = ..()
+	update_maptext()
+
+/mob/living/Logout()
+	. = ..()
+	update_maptext()
+
+/mob/proc/update_maptext()
+	return
 
 /mob/proc/ghostize()
 	if (!key)
@@ -16,6 +34,7 @@
 	var/mob/dead/ghost/G = new (loc)
 	G.name = "ghost of [key ? key : name]"
 	G.ckey = ckey
+	G.update_maptext()
 
 /mob/dead/take_damage(amount)
 	return
@@ -35,10 +54,12 @@
 	invisibility = 50
 	see_invisible = 50
 
+/mob/dead/ghost/update_maptext()
+	. = ..()
+	maptext = CENTERTEXT(MAPTEXT("[key][client ? "" : " (DC)"]"))
+
 /mob/living
 	maptext_y = -20
-	maptext_x = -112
-	maptext_width = 256
 	var/dead_state
 	var/status = 0
 	var/kill_mode = FALSE
@@ -46,15 +67,6 @@
 /mob/living/New()
 	. = ..()
 	new /hud/status(src)
-	update_maptext()
-
-/mob/living/Login()
-	. = ..()
-	update_maptext()
-
-/mob/living/Logout()
-	. = ..()
-	update_maptext()
 
 /mob/living/take_damage(amount)
 	integrity -= amount
@@ -81,7 +93,7 @@
 	update_maptext()
 	ghostize()
 
-/mob/living/proc/update_maptext()
+/mob/living/update_maptext()
 	if(status)
 		maptext = null
 		return
@@ -100,7 +112,7 @@
 			maptext_color = "#cc5500"
 		if(-INFINITY to 1)
 			maptext_color = "#dd0000"
-	maptext = CENTERTEXT(MAPTEXT("[key ? "[key][client ? "" : " (DC)"]\n" : ""][SMALLTEXT("<font color='[maptext_color]'>[health_percentage]%</font>")]"))
+	maptext = CENTERTEXT(MAPTEXT("[key ? "[name][client ? "" : " (DC)"]\n" : ""][SMALLTEXT("<font color='[maptext_color]'>[health_percentage]%</font>")]"))
 
 /mob/living/inventory
 	var/inventory_type

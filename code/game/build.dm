@@ -27,7 +27,8 @@
 		/obj/torch,
 		/obj/path,
 		/obj/chair,
-		/obj/table
+		/obj/table,
+		/obj/tree,
 	)
 
 /datum/builder/New(mob/mob)

@@ -4,7 +4,7 @@
 	icon_state = "table"
 	density = TRUE
 
-/obj/table/left_click(adjacent, params, item)
+/obj/table/left_click(adjacent, params, obj/item)
 	if (!item)
 		return
 	var/obj/item/I = item

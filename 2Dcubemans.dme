@@ -45,6 +45,7 @@
 #include "code\atoms\objects\sign.dm"
 #include "code\atoms\objects\table.dm"
 #include "code\atoms\objects\torch.dm"
+#include "code\atoms\objects\tree.dm"
 #include "code\atoms\objects\window.dm"
 #include "code\atoms\objects\z_entrance.dm"
 #include "code\atoms\objects\items\beer.dm"

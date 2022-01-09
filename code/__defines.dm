@@ -37,10 +37,12 @@ sys_##x = src											\
 
 //#define AREA_LAYER 1
 //#define TURF_LAYER 2
-  #define UNDER_OBJ_LAYER 2.9
+#define UNDER_OBJ_LAYER 2.9
 //#define OBJ_LAYER 3
-  #define ITEM_LAYER 3.1
-  #define UNDER_MOB_LAYER 3.9
+#define ITEM_LAYER 3.1
+#define UNDER_MOB_LAYER 3.9
 //#define MOB_LAYER 4
-  #define LIGHTING_LAYER 100
-  #define OVER_LIGHTING_LAYER 101
+#define ABOVE_MOB_LAYER 4.1
+#define UNDER_LIGHTING_LAYER 99
+#define LIGHTING_LAYER 100
+#define OVER_LIGHTING_LAYER 101
