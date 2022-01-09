@@ -13,3 +13,9 @@ SYSTEM_CREATE(processing)
 		return
 	O.datum_flags |= DATUM_PROCESSING
 	processing += O
+
+/system/processing/proc/stop_processing(datum/game_object/O)
+	if (!(O.datum_flags & DATUM_PROCESSING))
+		return
+	O.datum_flags &= ~DATUM_PROCESSING
+	processing -= O

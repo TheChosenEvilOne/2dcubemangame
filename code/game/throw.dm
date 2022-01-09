@@ -97,13 +97,13 @@
 
 	if (T.density)
 		if (hit_object(T) || T.hit_by(src))
-			return 0
-		return 1
+			return FALSE
+		return TRUE
 
 	for(var/k in T.contents)
 		var/atom/movable/A = k
 		if(!A.density)
 			continue
 		if (hit_object(k) || A.hit_by(src))
-			return 0
-		return 1
+			return FALSE
+		return TRUE

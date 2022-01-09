@@ -30,6 +30,7 @@
 /turf/floor/marsh
 	name = "\proper marsh"
 	icon_state = "marsh"
+	slowdown = 0.5
 
 /turf/floor/water
 	name = "\proper water"

@@ -2,7 +2,7 @@
 	icon = 'icons/mobs.dmi'
 	say_verb = "says"
 	var/interact_range = 1.5 // close enough to sqrt(2)
-	var/can_interact = 1
+	var/can_interact = TRUE
 
 /mob/destroy()
 	ghostize()
@@ -22,8 +22,8 @@
 	desc = "AAAAAAAAA!!"
 	icon_state = "ghost"
 	layer = OVER_LIGHTING_LAYER
-	density = 0
-	can_interact = 0
+	density = FALSE
+	can_interact = FALSE
 	sight = SEE_THRU
 	movement_delay = 0.5
 	invisibility = 50
@@ -32,7 +32,7 @@
 /mob/living
 	var/dead_state
 	var/status = 0
-	var/kill_mode = 0
+	var/kill_mode = FALSE
 
 /mob/living/New()
 	. = ..()
@@ -52,7 +52,7 @@
 
 /mob/living/proc/die()
 	status = 1
-	density = 0
+	density = FALSE
 	layer = UNDER_MOB_LAYER
 	icon_state = dead_state
 	ghostize()
@@ -81,7 +81,7 @@
 	desc = "A cute cubeman."
 	icon_state = "player"
 	dead_state = "player_dead"
-	rotatable = 1
+	rotatable = TRUE
 	inventory_type = /datum/inventory/player
 	//whether this player is super
 	var/is_super = FALSE

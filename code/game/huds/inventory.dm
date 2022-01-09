@@ -12,8 +12,8 @@
 
 /hud/inventory/proc/toggle_throw(hud_object/button/B)
 	if (inventory.throw_mode)
-		inventory.throw_mode = 0
+		inventory.throw_mode = FALSE
 		B.icon_state = "throw"
 	else
-		inventory.throw_mode = 1
+		inventory.throw_mode = TRUE
 		B.icon_state = "throw_a"

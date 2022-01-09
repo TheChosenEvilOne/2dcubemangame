@@ -3,7 +3,7 @@
 	var/light = 0
 	var/integrity
 	var/max_integrity = 100
-	var/rotatable = 0
+	var/rotatable = FALSE
 
 /atom/initialize(start)
 	. = ..()

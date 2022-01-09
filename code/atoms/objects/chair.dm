@@ -2,4 +2,4 @@
 	name = "chair"
 	desc = "how to sit??"
 	icon_state = "chair"
-	rotatable = 1
+	rotatable = TRUE

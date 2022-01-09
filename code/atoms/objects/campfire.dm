@@ -2,7 +2,7 @@
 	name = "campfire"
 	desc = "a nice warm campfire"
 	icon_state = "campfire"
-	density = 1
+	density = TRUE
 	light = 15
 	datum_flags = DATUM_PROCESS
 	processing_system = /system/processing/random

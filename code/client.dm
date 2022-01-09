@@ -18,14 +18,14 @@
 /client/Del()
 	if (mob)
 		for (var/hud/H in mob.huds)
-			H.hide(1)
+			H.hide(TRUE)
 	. = ..()
 
 /client/AllowUpload(filename, size)
 	if(size > 2097152)
 		src << "[filename] is too large, maximum is 2 MiB."
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /client/Command(command)
 	if (connection != "telnet")

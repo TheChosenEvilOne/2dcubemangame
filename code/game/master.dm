@@ -1,6 +1,6 @@
 /datum/master
-	var/running = 0
-	var/pause = 0
+	var/running = FALSE
+	var/pause = FALSE
 	var/allocated_cpu = 0
 	var/system/systems
 	var/system/processing_systems
@@ -30,10 +30,10 @@
 	. = ..()
 
 /datum/master/proc/begin_process()
-	set waitfor = 0
+	set waitfor = FALSE
 
-	running = 1
-	while (1)
+	running = TRUE
+	while (TRUE)
 		if (pause)
 			sleep(world.tick_lag)
 			continue
@@ -53,12 +53,12 @@
 			if (S.next_fire > world.time)
 				continue
 			S.next_fire = world.time + S.update_rate
-			S.firing = 1
+			S.firing = TRUE
 			S.allowed_cpu_time = cpu_left * S.allocated_cpu
 			allocated_cpu += S.allowed_cpu_time
 			spawn()
 				S.process()
-				S.firing = 0
+				S.firing = FALSE
 				allocated_cpu -= S.allowed_cpu_time
 
 		sleep(world.tick_lag)

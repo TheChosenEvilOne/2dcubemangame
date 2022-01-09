@@ -1,20 +1,20 @@
 /atom/movable/projectile/cannon_ball
 	name = "cannonball"
 	icon_state = "cannonball"
-	turn_icon = 0
+	turn_icon = FALSE
 
 /atom/movable/projectile/cannon_ball/projectile_hit(atom/movable/A)
-	. = 1
+	. = TRUE
 	if (!istype(A, /mob))
-		return 0
+		return FALSE
 	A.throw_at(x + dir2x(dir) * 2, y + dir2y(dir) * 2, 100, speed * 2)
 
 /obj/cannon
 	name = "cannon"
 	desc = "wh.."
 	icon_state = "cannon"
-	density = 1
-	rotatable = 1
+	density = TRUE
+	rotatable = TRUE
 
 /obj/cannon/left_click(adjacent)
 	if (!adjacent)

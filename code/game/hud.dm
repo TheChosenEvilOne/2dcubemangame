@@ -13,7 +13,7 @@
 	..()
 
 /hud
-	var/visible = 0
+	var/visible = FALSE
 	var/mob/owner
 	var/list/hud_object/ui_objects = list()
 
@@ -44,16 +44,16 @@
 /hud/proc/show()
 	if (!owner || !owner.client)
 		return
-	visible = 1
+	visible = TRUE
 	for (var/O in ui_objects)
 		ui_objects[O].show(owner.client)
 		owner.client.screen += ui_objects[O]
 
-/hud/proc/hide(logout = 0)
+/hud/proc/hide(logout = FALSE)
 	if (!owner || !owner.client)
 		return
 	if (!logout)
-		visible = 0
+		visible = FALSE
 	for (var/O in ui_objects)
 		ui_objects[O].hide(owner.client)
 		owner.client.screen -= ui_objects[O]

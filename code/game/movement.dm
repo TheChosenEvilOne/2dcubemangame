@@ -28,9 +28,10 @@
 var/static/list/opposite_dirs = list(SOUTH,NORTH,NORTH|SOUTH,WEST,SOUTHWEST,NORTHWEST,NORTH|SOUTH|WEST,EAST,SOUTHEAST,NORTHEAST,NORTH|SOUTH|EAST,WEST|EAST,WEST|EAST|NORTH,WEST|EAST|SOUTH,WEST|EAST|NORTH|SOUTH)
 
 /client/verb/MoveKey(Dir as num, State as num)
-	set hidden = 1
-	set instant = 1
-	if(!move_dir)
+	set hidden = TRUE
+	set instant = TRUE
+
+	if (!move_dir)
 		. = 1
 	var/opposite = opposite_dirs[Dir]
 	if (State)
@@ -58,12 +59,13 @@ var/static/list/opposite_dirs = list(SOUTH,NORTH,NORTH|SOUTH,WEST,SOUTHWEST,NORT
 /client/West()
 
 /client/proc/move_loop()
-	set waitfor = 0
+	set waitfor = FALSE
+
 	if (src.mloop) return
-	mloop = 1
+	mloop = TRUE
 	src.Move(mob.loc, true_dir)
 	while (src.true_dir)
 		sleep (world.tick_lag)
 		if (src.true_dir)
 			src.Move(mob.loc, true_dir)
-	mloop = 0
+	mloop = FALSE

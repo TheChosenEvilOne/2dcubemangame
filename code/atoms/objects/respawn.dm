@@ -9,7 +9,7 @@
 
 /mob/dead/ghost/proc/click_intercept(atom/object, location, control, params)
 	if (!istype(object, /obj/respawn_station))
-		return 0
+		return FALSE
 	var/mob/living/inventory/player/P = new (location)
 	P.name = client.key
 	P.ckey = ckey

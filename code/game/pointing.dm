@@ -15,4 +15,4 @@
 	spawn (22)
 		L.vis_contents -= A
 		A.destroy()
-	return 1
+	return TRUE

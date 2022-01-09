@@ -3,7 +3,7 @@ var/global/obj/server
 /obj/server
 	name = "Server"
 	icon_state = "server"
-	density = 1
+	density = TRUE
 
 /obj/server/New()
 	server = src
@@ -12,7 +12,7 @@ var/global/obj/server
 /obj/server/destroy()
 	world << "The server was destroyed..."
 	world << "this can't be good."
-	master.pause = 1
+	master.pause = TRUE
 	server = null
 	..()
 

@@ -49,6 +49,32 @@ menu "menu"
 		command = ".reconnect"
 		category = "&File"
 		saved-params = "is-checked"
+	elem 
+		name = "Icons"
+		command = ""
+		saved-params = "is-checked"
+	elem 
+		name = "Normal"
+		command = ".winset \"map1.zoom-mode=normal\""
+		category = "Icons"
+		is-checked = true
+		can-check = true
+		group = "scaling"
+		saved-params = "is-checked"
+	elem 
+		name = "Nearest neighbour"
+		command = ".winset \"map1.zoom-mode=distort\""
+		category = "Icons"
+		can-check = true
+		group = "scaling"
+		saved-params = "is-checked"
+	elem 
+		name = "Bilinear"
+		command = ".winset \"map1.zoom-mode=blur\""
+		category = "Icons"
+		can-check = true
+		group = "scaling"
+		saved-params = "is-checked"
 
 
 window "default"

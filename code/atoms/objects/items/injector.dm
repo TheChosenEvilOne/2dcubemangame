@@ -5,7 +5,7 @@
 
 /obj/item/injector/attack_self(datum/inventory/inventory, slot)
 	var/mob/living/inventory/player/injected = usr
-	if(!injected.is_super)
+	if (!injected.is_super)
 		injected.act("injects \the [src], becoming super!")
 		injected.become_super()
 	else

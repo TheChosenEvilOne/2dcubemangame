@@ -1,10 +1,10 @@
 /obj/door
 	name = "door"
 	icon_state = "door0"
-	opacity = 1
-	density = 1
+	opacity = TRUE
+	density = TRUE
 
-	var/open = 0
+	var/open = FALSE
 
 /obj/door/left_click(adjacent)
 	if (!adjacent)
@@ -20,8 +20,8 @@
 	if (open)
 		return
 
-	density = opacity = 0
-	open = 1
+	density = opacity = FALSE
+	open = TRUE
 	flick("a_door1", src)
 	icon_state = "door1"
 
@@ -29,8 +29,8 @@
 	if (!open)
 		return
 
-	density = opacity = 1
-	open = 0
+	density = opacity = TRUE
+	open = FALSE
 	flick("a_door0", src)
 	icon_state = "door0"
 
@@ -38,7 +38,7 @@
 	if (!istype(P, /atom/movable/projectile/cannon_ball))
 		return ..()
 	take_damage(integrity)
-	return 1
+	return TRUE
 
 /obj/door/automatic
 	name = "automatic door"

@@ -36,7 +36,7 @@
 
 /datum/builder/proc/click_handler(atom/object, location, control, params)
 	if (!owner.building)
-		return
+		return FALSE
 	if (params["left"])
 		if (mode == BUILDING)
 			new build_type(location)
@@ -47,10 +47,10 @@
 			object.destroy()
 		else
 			object.color = null
-	return 1
+	return TRUE
 
 /mob
-	var/building = 0
+	var/building = FALSE
 	var/datum/builder/builder
 
 /mob/proc/toggle_build()

@@ -2,7 +2,7 @@
 	name = "table"
 	desc = "it is a table, what did you expect?"
 	icon_state = "table"
-	density = 1
+	density = TRUE
 
 /obj/table/left_click(adjacent, params, item)
 	if (!item)
@@ -12,4 +12,4 @@
 	I.loc = loc
 	I.pixel_x = text2num(params["icon-x"]) - 16
 	I.pixel_y = text2num(params["icon-y"]) - 16
-	return 1
+	return TRUE

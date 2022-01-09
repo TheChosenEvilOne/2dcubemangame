@@ -19,10 +19,10 @@ SYSTEM_CREATE(light)
 			continue
 		T.lighting_overlay.set_light_level(L)
 
-		var/op = 0
+		var/op = FALSE
 		for (var/atom/A as anything in T)
 			if (A.opacity)
-				op = 1
+				op = TRUE
 				break
 		if (op)
 			continue

@@ -4,7 +4,7 @@
 
 /datum/game_object/New()
 	if (master && master.running)
-		initialize(0)
+		initialize(FALSE)
 	. = ..()
 
 /datum/game_object/proc/initialize(start)
@@ -12,5 +12,7 @@
 		master.systems[processing_system].start_processing(src)
 
 /datum/game_object/proc/destroy()
+	if (datum_flags & DATUM_PROCESSING)
+		master.systems[processing_system].stop_processing(src)
 
 /datum/game_object/proc/process()

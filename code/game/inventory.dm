@@ -2,7 +2,7 @@
 	var/id
 	var/name = "Inventory Slot"
 	var/screen_loc = "0,0"
-	var/selectable = 0
+	var/selectable = FALSE
 	var/datum/inventory/inventory
 	var/obj/item/item
 
@@ -13,15 +13,17 @@
 	id = "lhand"
 	name = "left hand"
 	screen_loc = "SOUTH,CENTER-0.5"
+	selectable = TRUE
 
 /inventory_slot/r_hand
 	id = "rhand"
 	name = "right hand"
 	screen_loc = "SOUTH,CENTER+0.5"
+	selectable = TRUE
 
 /datum/inventory
 	var/mob/parent
-	var/throw_mode = 0
+	var/throw_mode = FALSE
 	var/selected_slot
 	var/hud/inventory/hud
 	var/list/inventory_slot/slots
@@ -58,23 +60,20 @@
 /datum/inventory/proc/click_handler(atom/object, location, control, params)
 	var/obj/item/I = slots[selected_slot].item
 	if (throw_mode)
-		throw_mode = 0
+		throw_mode = FALSE
 		hud.ui_objects["throw"].icon_state = "throw"
 		if (!I)
-			return 1
+			return TRUE
 		remove_item(selected_slot)
 		I.loc = parent.loc
 		I.throw_at_atom(object, abs(I.x - object.x) + abs(I.y - object.y), keep_pos = 1)
-		return 1
+		return TRUE
 	if (!I)
-		return 0
-	if (object == I)
-		I.attack_self()
-		return 0
+		return FALSE
 	if (object.loc == null)
-		return 0
+		return FALSE
 	var/mob/living/M = parent
-	var/priority = M.kill_mode ? 1 : 0
+	var/priority = M.kill_mode
 	var/A = get_dist(usr, object) <= usr.interact_range
 	if (params["left"])
 		if (priority || !object.left_click(A, params, I))
@@ -82,7 +81,7 @@
 	if (params["right"])
 		if (priority || !object.right_click(A, params, I))
 			I.attack_right(object, A, params)
-	return 1
+	return TRUE
 
 /datum/inventory/proc/update()
 	for (var/P in slots)
@@ -90,17 +89,17 @@
 
 /datum/inventory/proc/insert_item(obj/item/I, slot)
 	if (slots[slot].item)
-		return 0
+		return FALSE
 	I.loc = null
 	slots[slot].item = I
 	I.pixel_x = I.pixel_y = 0
 	I.slot = slots[slot]
 	hud.ui_objects[slot].update_item()
-	return 1
+	return TRUE
 
 /datum/inventory/proc/remove_item(slot)
 	if (!slots[slot].item)
-		return 0
+		return null
 	var/obj/item/I = slots[slot].item
 	slots[slot].item = null
 	I.slot = null
@@ -110,8 +109,9 @@
 /datum/inventory/proc/drop_item(slot)
 	var/obj/item/I = remove_item(slot)
 	if (!I)
-		return 0
+		return null
 	I.loc = parent.loc
+	return I
 
 /datum/inventory/player
 	slots = list(
