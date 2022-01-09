@@ -71,13 +71,13 @@ menu "menu"
 		category = "&File"
 		saved-params = "is-checked"
 	elem 
-		name = "Icons"
+		name = "Scaling"
 		command = ""
 		saved-params = "is-checked"
 	elem 
 		name = "Normal"
 		command = ".winset \"map1.zoom-mode=normal\""
-		category = "Icons"
+		category = "Scaling"
 		is-checked = true
 		can-check = true
 		group = "scaling"
@@ -85,16 +85,56 @@ menu "menu"
 	elem 
 		name = "Nearest neighbour"
 		command = ".winset \"map1.zoom-mode=distort\""
-		category = "Icons"
+		category = "Scaling"
 		can-check = true
 		group = "scaling"
 		saved-params = "is-checked"
 	elem 
 		name = "Bilinear"
 		command = ".winset \"map1.zoom-mode=blur\""
-		category = "Icons"
+		category = "Scaling"
 		can-check = true
 		group = "scaling"
+		saved-params = "is-checked"
+	elem 
+		name = "Zoom"
+		command = ""
+		saved-params = "is-checked"
+	elem 
+		name = "Automatic"
+		command = ".winset \"map1.zoom=0\""
+		category = "Zoom"
+		is-checked = true
+		can-check = true
+		group = "adjust"
+		saved-params = "is-checked"
+	elem 
+		name = "1x"
+		command = ".winset \"map1.zoom=1\""
+		category = "Zoom"
+		can-check = true
+		group = "adjust"
+		saved-params = "is-checked"
+	elem 
+		name = "2x"
+		command = ".winset \"map1.zoom=2\""
+		category = "Zoom"
+		can-check = true
+		group = "adjust"
+		saved-params = "is-checked"
+	elem 
+		name = "3x"
+		command = ".winset \"map1.zoom=3\""
+		category = "Zoom"
+		can-check = true
+		group = "adjust"
+		saved-params = "is-checked"
+	elem 
+		name = "4x"
+		command = ".winset \"map1.zoom=4\""
+		category = "Zoom"
+		can-check = true
+		group = "adjust"
 		saved-params = "is-checked"
 
 
