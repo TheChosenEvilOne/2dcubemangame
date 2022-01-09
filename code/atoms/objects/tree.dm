@@ -30,7 +30,7 @@
 	return ..()
 
 /obj/item/wood/proc/make_tool(obj/item/rock, path)
-	new path(loc)
+	new path(usr.loc)
 	rock.destroy()
 	destroy()
 	return TRUE
