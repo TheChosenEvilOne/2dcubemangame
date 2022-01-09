@@ -19,6 +19,8 @@ SYSTEM_CREATE(light)
 			continue
 		T.lighting_overlay.set_light_level(L)
 
+		if (T.density)
+			continue
 		var/op = FALSE
 		for (var/atom/A as anything in T)
 			if (A.opacity)
