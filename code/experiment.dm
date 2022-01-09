@@ -16,7 +16,6 @@ var/global/list/spawn_list = list(
 	/obj/boombox
 )
 
-
 /proc/experiment()
 	var/function = input("function") as null|anything in list("item", "map gen")
 	switch (function)
