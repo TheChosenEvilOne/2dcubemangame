@@ -69,12 +69,31 @@
 	inventory.remove()
 	..()
 
+/mob/living/inventory/verb/switch_slot()
+	set name = "Switch slot"
+	set hidden = TRUE
+
+	// only works with two selectable slots, but that is fine for now.
+	for (var/id in inventory.selectable)
+		if (inventory.selected_slot == id)
+			continue
+		inventory.select_slot(id)
+		break
+
 /mob/living/inventory/verb/drop()
 	set name = "Drop"
 
 	if (!inventory.selected_slot)
 		return
 	inventory.drop_item(inventory.selected_slot)
+
+/mob/living/inventory/verb/use_hand()
+	set name = "In-hand use"
+	set hidden = TRUE
+
+	if (!inventory.selected_slot || !inventory.slots[inventory.selected_slot].item)
+		return
+	inventory.slots[inventory.selected_slot].item.attack_self(inventory, inventory.selected_slot)
 
 /mob/living/inventory/player
 	name = "Player"

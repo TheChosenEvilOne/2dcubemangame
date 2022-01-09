@@ -4,6 +4,10 @@
 #define HALF_ICON_SIZE 32
 #define ICON_SIZE 32
 
+#define NOT_ADJACENT		0
+#define WORLD_ADJACENT		1
+#define INVENTORY_ADJACENT	2
+
 #define DATUM_PROCESS			1
 #define DATUM_PROCESSING		2
 

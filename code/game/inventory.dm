@@ -25,6 +25,7 @@
 	var/mob/parent
 	var/throw_mode = FALSE
 	var/selected_slot
+	var/list/selectable
 	var/hud/inventory/hud
 	var/list/inventory_slot/slots
 
@@ -32,6 +33,7 @@
 	hud = new(mob)
 	hud.inventory = src
 	parent = mob
+	selectable = list()
 	for (var/P in slots)
 		slots -= P
 		var/inventory_slot/S = new P
@@ -42,9 +44,11 @@
 		O.slot = S
 		O.screen_loc = S.screen_loc
 		O.setup()
-		if (!selected_slot)
-			selected_slot = S.id
-			O.icon_state = "slot_a"
+		if (S.selectable)
+			selectable += S.id
+			if (selected_slot)
+				continue
+			select_slot(S.id)
 	hud.show()
 	mob.click_intercept[src] = .proc/click_handler
 
@@ -88,9 +92,17 @@
 	for (var/P in slots)
 		hud.ui_objects[P].update_item()
 
+/datum/inventory/proc/select_slot(slot)
+	if (selected_slot)
+		hud.ui_objects[selected_slot].icon_state = "slot"
+	hud.ui_objects[slot].icon_state = "slot_a"
+	selected_slot = slot
+
 /datum/inventory/proc/insert_item(obj/item/I, slot)
-	if (slots[slot].item)
+	if (!I || slots[slot].item)
 		return FALSE
+	if (I.slot)
+		remove_item(I.slot.id)
 	I.loc = null
 	slots[slot].item = I
 	I.pixel_x = I.pixel_y = 0
