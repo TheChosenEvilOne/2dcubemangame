@@ -66,7 +66,8 @@
 			return TRUE
 		remove_item(selected_slot)
 		I.loc = parent.loc
-		I.throw_at_atom(object, abs(I.x - object.x) + abs(I.y - object.y), keep_pos = 1)
+		var/range = abs(I.x - object.x) + abs(I.y - object.y)
+		I.throw_at_atom(object, range, range * 2, pixel_position = TRUE)
 		return TRUE
 	if (!I)
 		return FALSE

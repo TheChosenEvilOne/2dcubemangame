@@ -1,7 +1,7 @@
 PROCESSING_CREATE(random)
 	name = "random process"
 	update_rate = 1
-	var/update_ratio = 0.3
+	var/update_ratio = 0.1
 
 /system/processing/random/process()
 	if (!processing.len)

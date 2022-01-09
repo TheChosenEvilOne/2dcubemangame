@@ -1,91 +1,45 @@
 /atom/movable
 	var/throw_speed = 24
-	var/throw_range = 14
+	var/throw_range = 7
 
 /datum/throw_object
-	var/atom/movable/object
-	var/cur_x
-	var/cur_y
+	var/set_pixel_position
+	var/cache_move_amount
+	var/cur_x = 0
+	var/cur_y = 0
 	var/dir_x
 	var/dir_y
 	var/range
 
-/atom/movable/proc/throw_at_atom(atom/target, range, speed, keep_pos = 0)
-	throw_at(target.x, target.y, range, speed, keep_pos)
+/datum/throw_object/New(_dir_x, _dir_y, _range, pixel_position = FALSE)
+	dir_x = _dir_x
+	dir_y = _dir_y
+	cache_move_amount = (abs(_dir_x) + abs(_dir_y))
+	range = _range
+	set_pixel_position = pixel_position
 
-/atom/movable/proc/throw_at(target_x, target_y, range, speed, keep_pos = 0)
-	set waitfor = FALSE
-	if(!target_x || !target_y || !src)
+/datum/throw_object/proc/operator+=(datum/throw_object/other)
+	if(istype(other))
+		dir_x += other.dir_x
+		dir_y += other.dir_y
+		cache_move_amount = abs(dir_x) + abs(dir_y)
+		// other.range isn't the same as my range, but this will do.
+		range += other.range
+
+/atom/movable/proc/throw_at_atom(atom/target, range = throw_range, speed = throw_speed, pixel_position = FALSE)
+	throw_at(target.x, target.y, range, speed, pixel_position)
+
+/atom/movable/proc/throw_at(target_x, target_y, range, speed, pixel_position = FALSE)
+	if(!target_x || !target_y)
 		return 0
 
 	if(!speed)
 		speed = throw_speed
 	if(!range)
 		range = throw_range
-	range *= ICON_SIZE
-	var/animation_time = (range / speed * world.tick_lag) / 3
-	animate(src, transform = turn(matrix(), 120), time = animation_time, loop = 1)
-	animate(transform = turn(matrix(), 240), time = animation_time)
-	animate(transform = null, time = animation_time)
-
 	var/angle = arctan(target_x - x, target_y - y)
-	var/dx = round(cos(angle) * speed, 1)
-	var/dy = round(sin(angle) * speed, 1)
-	var/nx = 0
-	var/ny = 0
-	var/old_gs = glide_size
-	glide_size = abs(dx) + abs(dy)
-	while (range >= 0)
-		nx += dx
-		ny += dy
-
-		if (nx > HALF_ICON_SIZE)
-			var/step = get_step(src, EAST)
-			if (throw_enter(step) || !Move(step))
-				nx = HALF_ICON_SIZE
-				if (range / 2 > 1)
-					range /= 2
-					dx = -dx
-				else
-					break
-			nx -= ICON_SIZE
-		else if (nx < -HALF_ICON_SIZE)
-			var/step = get_step(src, WEST)
-			if (throw_enter(step) || !Move(step))
-				nx = -HALF_ICON_SIZE
-				if (range / 2 > 1)
-					range /= 2
-					dx = -dx
-				else
-					break
-			nx += ICON_SIZE
-		if (ny > HALF_ICON_SIZE)
-			var/step = get_step(src, NORTH)
-			if (throw_enter(step) || !Move(step))
-				ny = HALF_ICON_SIZE
-				if (range / 2 > 1)
-					range /= 2
-					dy = -dy
-				else
-					break
-			ny -= ICON_SIZE
-		else if (ny < -HALF_ICON_SIZE)
-			var/step = get_step(src, SOUTH)
-			if (throw_enter(step) || !Move(step))
-				ny = -HALF_ICON_SIZE
-				if (range / 2 > 1)
-					range /= 2
-					dy = -dy
-				else
-					break
-			ny += ICON_SIZE
-		sleep (world.tick_lag)
-		range -= glide_size
-
-	glide_size = old_gs
-	if (keep_pos)
-		pixel_x = nx
-		pixel_y = ny
+	var/datum/throw_object/T = new(round(cos(angle) * speed, 1), round(sin(angle) * speed, 1), range * ICON_SIZE, pixel_position)
+	sys_throwing.process_throw(src, T)
 
 /atom/proc/hit_by(atom/movable/A)
 

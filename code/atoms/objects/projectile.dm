@@ -30,27 +30,27 @@
 		pixel_x += dx
 		pixel_y += dy
 
-		if (pixel_x > 16)
+		if (pixel_x > HALF_ICON_SIZE)
 			var/step = get_step(src, EAST)
 			if (enter_turf(step) || !Move(step))
 				break
-			pixel_x -= 32
-		else if (pixel_x < -16)
+			pixel_x -= ICON_SIZE
+		else if (pixel_x < -HALF_ICON_SIZE)
 			var/step = get_step(src, WEST)
 			if (enter_turf(step) || !Move(step))
 				break
-			pixel_x += 32
+			pixel_x += ICON_SIZE
 
-		if (pixel_y > 16)
+		if (pixel_y > HALF_ICON_SIZE)
 			var/step = get_step(src, NORTH)
 			if (enter_turf(step) || !Move(step))
 				break
-			pixel_y -= 32
-		else if (pixel_y < -16)
+			pixel_y -= ICON_SIZE
+		else if (pixel_y < -HALF_ICON_SIZE)
 			var/step = get_step(src, SOUTH)
 			if (enter_turf(step) || !Move(step))
 				break
-			pixel_y += 32
+			pixel_y += ICON_SIZE
 		sleep (world.tick_lag)
 
 	animate(src, alpha = 0, time = 100)

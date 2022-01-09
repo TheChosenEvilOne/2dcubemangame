@@ -27,10 +27,6 @@
 		return FALSE
 	return TRUE
 
-/client/Command(command)
-	if (connection != "telnet")
-		return ..()
-
 /client/verb/who()
 	set name = "Who"
 	var msg = "<B>Players online:</B>\n"
