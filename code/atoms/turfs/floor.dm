@@ -42,15 +42,15 @@
 	icon_state = "lava"
 
 /turf/floor/water/lava
-	light = 1
+	light = 8
 	datum_flags = DATUM_PROCESS
 	processing_system = /system/processing/random
 	var/damage_amount = 5
 
-/turf/floor/water/lava/Entered(atom/atom, OldLoc)
+/turf/floor/water/lava/Entered(atom/movable/atom, OldLoc)
 	. = ..()
 	atom.take_damage(damage_amount*2)
 
 /turf/floor/water/lava/process()
-	for(var/atom/atom in src)
+	for(var/atom/movable/atom as anything in src)
 		atom.take_damage(damage_amount)
