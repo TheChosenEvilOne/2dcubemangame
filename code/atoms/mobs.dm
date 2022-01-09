@@ -88,7 +88,7 @@
 	inventory.drop_item(inventory.selected_slot)
 
 /mob/living/inventory/verb/use_hand()
-	set name = "In-hand use"
+	set name = "Use in-hand"
 	set hidden = TRUE
 
 	if (!inventory.selected_slot || !inventory.slots[inventory.selected_slot].item)
