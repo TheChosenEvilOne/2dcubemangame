@@ -8,7 +8,6 @@
 	hicon.screen_loc = screen_loc
 
 /hud_object/button/remove()
-	del hicon
 	hicon = null
 
 /hud_object/button/show(client/C)

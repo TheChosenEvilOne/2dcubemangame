@@ -4,6 +4,10 @@
 #define HALF_ICON_SIZE 32
 #define ICON_SIZE 32
 
+#define NOT_ADJACENT		0
+#define WORLD_ADJACENT		1
+#define INVENTORY_ADJACENT	2
+
 #define DATUM_PROCESS			1
 #define DATUM_PROCESSING		2
 
@@ -17,6 +21,13 @@ sys_##x = src											\
 sys_##x = src											\
 }														\
 /system/processing/##x
+
+#define MAPTEXT(text) "<span class='maptext'>[text]</span>"
+#define CENTERTEXT(text) "<span class='center'>[text]</span>"
+#define SMALLTEXT(text) "<span class='small'>[text]</span>"
+#define LARGETEXT(text) "<span class='large'>[text]</span>"
+
+#define INFINITY 1e31 //large enough
 
 #define check_cpu if (world.cpu > allowed_cpu_time) {sleep(world.tick_lag)}
 

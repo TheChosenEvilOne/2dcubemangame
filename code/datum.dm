@@ -16,3 +16,4 @@
 		master.systems[processing_system].stop_processing(src)
 
 /datum/game_object/proc/process()
+	return

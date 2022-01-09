@@ -29,6 +29,9 @@
 	invisibility = 50
 	see_invisible = 50
 
+/mob/dead/ghost/take_damage(amount)
+	return
+
 /mob/living
 	maptext_y = -20
 	maptext_width = 128
@@ -39,13 +42,27 @@
 /mob/living/New()
 	. = ..()
 	new /hud/status(src)
+	update_maptext()
+
+/mob/living/Login()
+	. = ..()
+	update_maptext()
+
+/mob/living/Logout()
+	. = ..()
+	update_maptext()
 
 /mob/living/take_damage(amount)
-	if (!status && amount >= integrity)
-		die()
-	if (integrity < -max_integrity)
-		destroy()
 	integrity -= amount
+	update_maptext()
+	if(!status && integrity <= 0)
+		die()
+	if(integrity < -max_integrity)
+		destroy()
+
+/mob/living/heal_damage(amount)
+	. = ..()
+	update_maptext()
 
 /mob/living/get_movement_delay(loc, dir, turf/T)
 	if (!istype(T))
@@ -57,7 +74,29 @@
 	density = FALSE
 	layer = UNDER_MOB_LAYER
 	icon_state = dead_state
+	update_maptext()
 	ghostize()
+
+/mob/living/proc/update_maptext()
+	if(status)
+		maptext = null
+		return
+	var/maptext_color
+	var/health_percentage = round(integrity/max_integrity*100)
+	switch(health_percentage)
+		if(100 to INFINITY)
+			maptext_color = "#00dd00"
+		if(75 to 99)
+			maptext_color = "#88bb00"
+		if(50 to 74)
+			maptext_color = "#aaaa00"
+		if(25 to 49)
+			maptext_color = "#bb8800"
+		if(2 to 24)
+			maptext_color = "#cc5500"
+		if(-INFINITY to 1)
+			maptext_color = "#dd0000"
+	maptext = CENTERTEXT(MAPTEXT("[key ? "[key][client ? "" : " (DC)"]\n" : ""][SMALLTEXT("<font color='[maptext_color]'>[health_percentage]%</font>")]"))
 
 /mob/living/inventory
 	var/inventory_type
@@ -71,12 +110,31 @@
 	inventory.remove()
 	..()
 
+/mob/living/inventory/verb/switch_slot()
+	set name = "Switch slot"
+	set hidden = TRUE
+
+	// only works with two selectable slots, but that is fine for now.
+	for (var/id in inventory.selectable)
+		if (inventory.selected_slot == id)
+			continue
+		inventory.select_slot(id)
+		break
+
 /mob/living/inventory/verb/drop()
 	set name = "Drop"
 
 	if (!inventory.selected_slot)
 		return
 	inventory.drop_item(inventory.selected_slot)
+
+/mob/living/inventory/verb/use_hand()
+	set name = "Use in-hand"
+	set hidden = TRUE
+
+	if (!inventory.selected_slot || !inventory.slots[inventory.selected_slot].item)
+		return
+	inventory.slots[inventory.selected_slot].item.attack_self(inventory, inventory.selected_slot)
 
 /mob/living/inventory/player
 	name = "Player"

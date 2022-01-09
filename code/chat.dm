@@ -8,7 +8,7 @@
 	mouse_opacity = 0
 
 /atom/movable/chat_message/New(atom/movable/A, words)
-	maptext = "<div style='text-align: center;text-shadow: 1px 1px 1px black;'>[words]</div>"
+	maptext = CENTERTEXT(MAPTEXT(LARGETEXT(words)))
 	A.vis_contents += src
 	animate(src, maptext_y = 74, alpha = 0, time = 40)
 	spawn (40)
