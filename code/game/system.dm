@@ -1,6 +1,5 @@
 /system
 	var/name = "name your damn systems"
-	var/paused = FALSE
 	var/flags = 0
 	var/update_rate = 10 // deciseconds
 	var/priority = 0

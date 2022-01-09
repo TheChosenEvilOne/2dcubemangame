@@ -87,7 +87,7 @@ SYSTEM_CREATE(throwing)
 	O.animate_movement = initial(O.animate_movement)
 
 /system/throwing/proc/process_throw(atom/movable/O, datum/throw_object/T)
-	if (paused || master.paused)
+	if (flags & S_PAUSED || master.paused)
 		return
 	if (throws[O])
 		throws[O] += T
