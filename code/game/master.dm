@@ -1,6 +1,6 @@
 /datum/master
 	var/running = FALSE
-	var/pause = FALSE
+	var/paused = FALSE
 	var/allocated_cpu = 0
 	var/system/systems
 	var/system/processing_systems
@@ -34,7 +34,7 @@
 
 	running = TRUE
 	while (TRUE)
-		if (pause)
+		if (paused)
 			sleep(world.tick_lag)
 			continue
 

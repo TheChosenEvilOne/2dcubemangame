@@ -12,7 +12,7 @@ var/global/obj/server
 /obj/server/destroy()
 	world << "The server was destroyed..."
 	world << "this can't be good."
-	master.pause = TRUE
+	master.paused = TRUE
 	server = null
 	..()
 
