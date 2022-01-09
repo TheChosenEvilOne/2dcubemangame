@@ -12,6 +12,12 @@ macro "macro"
 		name = "D+UP"
 		command = "MoveKey 4 0"
 	elem 
+		name = "F"
+		command = "flip"
+	elem 
+		name = "M"
+		command = "me "
+	elem 
 		name = "O"
 		command = "ooc "
 	elem 
@@ -33,11 +39,11 @@ macro "macro"
 		name = "W+UP"
 		command = "MoveKey 1 0"
 	elem 
-		name = "M"
-		command = "me "
+		name = "X"
+		command = "switch-slot"
 	elem 
-		name = "F"
-		command = "flip"
+		name = "Z"
+		command = "use-in-hand"
 	elem 
 		name = "F4"
 		command = "who"
@@ -47,6 +53,7 @@ macro "macro"
 	elem 
 		name = "F6"
 		command = "test"
+
 
 menu "menu"
 	elem 
@@ -98,15 +105,12 @@ window "default"
 		size = 720x501
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "2D Cubeman Game"
 		icon = 'icons\\smile.png'
 		macro = "macro"
 		menu = "menu"
-		outer-size = 736x579
-		inner-size = 720x520
 	elem "info1"
 		type = INFO
 		pos = 480,0
@@ -114,7 +118,6 @@ window "default"
 		anchor1 = 67,0
 		anchor2 = 100,51
 		saved-params = ""
-		tab-background-color = none
 	elem "input1"
 		type = INPUT
 		pos = 0,480
