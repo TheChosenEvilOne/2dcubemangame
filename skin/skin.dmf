@@ -127,4 +127,5 @@ window "default"
 		anchor2 = 67,96
 		right-click = true
 		saved-params = "zoom;letterbox;zoom-mode"
+		style = ".center { text-align: center; } .maptext { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1; } .small { font-size: 6px; } .large { font-size: 8px; }"
 

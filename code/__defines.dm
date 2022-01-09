@@ -18,6 +18,13 @@ sys_##x = src											\
 }														\
 /system/processing/##x
 
+#define MAPTEXT(text) "<span class='maptext'>[text]</span>"
+#define CENTERTEXT(text) "<span class='center'>[text]</span>"
+#define SMALLTEXT(text) "<span class='small'>[text]</span>"
+#define LARGETEXT(text) "<span class='large'>[text]</span>"
+
+#define INFINITY 1e31 //large enough
+
 #define check_cpu if (world.cpu > allowed_cpu_time) {sleep(world.tick_lag)}
 
 #define S_INIT		1

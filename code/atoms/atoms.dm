@@ -27,6 +27,12 @@
 	if (integrity <= 0)
 		destroy()
 
+/atom/proc/heal_damage(amount)
+	if(integrity + amount > max_integrity)
+		integrity = max_integrity
+		return
+	integrity += amount
+
 /atom/proc/projectile_impact(atom/movable/projectile/P)
 	take_damage(P.damage)
 
