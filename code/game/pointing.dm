@@ -14,5 +14,5 @@
 	animate(pixel_y = 0, time = 2)
 	spawn (22)
 		L.vis_contents -= A
-		del A
+		A.destroy()
 	return 1

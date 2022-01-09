@@ -40,7 +40,7 @@
 
 /client/verb/flip()
 	set name = "Flip"
-	animate(mob, transform = turn(matrix(), 120), time = 1.5, loop = 1)
+	animate(mob, transform = turn(matrix(), 120), time = 1.5, loop = 1, flags = ANIMATION_PARALLEL)
 	animate(transform = turn(matrix(), 240), time = 1.5)
 	animate(transform = null, time = 1.5)
 

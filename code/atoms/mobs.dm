@@ -90,7 +90,7 @@
 
 /mob/living/inventory/player/die()
 	//removes any special statuses
-	animate(src)
+	animate(src, flags = ANIMATION_END_NOW)
 	overlays.Cut()
 	flick("player_dying", src)
 	..()
@@ -112,16 +112,10 @@
 		is_super = TRUE
 		icon_state = "super_player"
 		color = "#ff0000"
-	animate(src, color = "#00ff00", super_animation_speed)
-	sleep(super_animation_speed)
-	if(status || !src)
-		return
-	animate(src, color = "#0000ff", super_animation_speed)
-	sleep(super_animation_speed)
-	if(status || !src)
-		return
-	animate(src, color = "#ff0000", super_animation_speed)
-	sleep(super_animation_speed)
+	animate(src, color = "#00ff00", time = super_animation_speed)
+	animate(color = "#0000ff", time = super_animation_speed)
+	animate(color = "#ff0000", time = super_animation_speed)
+	sleep(super_animation_speed * 3)
 	if(status || !src)
 		return
 	become_super(setup = FALSE)
