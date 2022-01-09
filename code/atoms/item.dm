@@ -10,7 +10,7 @@
 		slot.remove_item()
 	..()
 
-/obj/item/left_click(adjacent, params)
+/obj/item/left_click(adjacent, params, obj/item)
 	if (!adjacent)
 		return
 	if (!istype(usr, /mob/living/inventory))

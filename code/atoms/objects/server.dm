@@ -16,7 +16,7 @@ var/global/obj/server
 	server = null
 	..()
 
-/obj/server/left_click(adjacent, params)
+/obj/server/left_click(adjacent, params, obj/item)
 	if (!adjacent)
 		return
 
