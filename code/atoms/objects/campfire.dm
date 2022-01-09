@@ -6,7 +6,10 @@
 	light = 15
 	datum_flags = DATUM_PROCESS
 	processing_system = /system/processing/random
+	var/heal_amount = 1
 
 /obj/campfire/process()
-	if (prob(5))
+	if(prob(5))
 		act("crackles")
+	for(var/mob/living/mob in range(2, src))
+		mob.heal_damage(heal_amount)
