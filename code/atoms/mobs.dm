@@ -17,6 +17,12 @@
 	G.name = "ghost of [key ? key : name]"
 	G.ckey = ckey
 
+/mob/dead/take_damage(amount)
+	return
+
+/mob/dead/heal_damage(amount)
+	return
+
 /mob/dead/ghost
 	name = "ghost"
 	desc = "AAAAAAAAA!!"
@@ -31,6 +37,8 @@
 
 /mob/living
 	maptext_y = -20
+	maptext_x = -112
+	maptext_width = 256
 	var/dead_state
 	var/status = 0
 	var/kill_mode = FALSE
