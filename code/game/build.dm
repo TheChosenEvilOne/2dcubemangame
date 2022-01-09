@@ -13,7 +13,7 @@
 		/turf/wall,
 		/turf/wall/rock,
 		/turf/wall/rock/gray,
-		/turf/floor,
+		/turf/floor/gray,
 		/turf/floor/white,
 		/turf/floor/dort,
 		/turf/floor/grass,

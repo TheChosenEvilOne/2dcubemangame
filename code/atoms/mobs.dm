@@ -37,7 +37,8 @@
 
 /mob/living
 	maptext_y = -20
-	maptext_width = 128
+	maptext_x = -112
+	maptext_width = 256
 	var/dead_state
 	var/status = 0
 	var/kill_mode = FALSE

@@ -47,6 +47,10 @@
 	processing_system = /system/processing/random
 	var/damage_amount = 5
 
+/turf/floor/water/lava/Entered(atom/atom, OldLoc)
+	. = ..()
+	atom.take_damage(damage_amount*2)
+
 /turf/floor/water/lava/process()
 	for(var/atom/atom in src)
 		atom.take_damage(damage_amount)
