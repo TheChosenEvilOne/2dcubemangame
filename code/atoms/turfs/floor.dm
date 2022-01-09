@@ -36,3 +36,19 @@
 	name = "\proper water"
 	icon_state = "water"
 	slowdown = 1
+
+/turf/floor/water/lava
+	name = "\proper lava"
+	icon_state = "lava"
+	light = 8
+	datum_flags = DATUM_PROCESS
+	processing_system = /system/processing/random
+	var/damage_amount = 5
+
+/turf/floor/water/lava/Entered(atom/movable/atom, OldLoc)
+	. = ..()
+	atom.take_damage(damage_amount*2)
+
+/turf/floor/water/lava/process()
+	for(var/atom/movable/atom as anything in src)
+		atom.take_damage(damage_amount)

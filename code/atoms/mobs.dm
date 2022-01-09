@@ -1,5 +1,7 @@
 /mob
 	maptext_y = -20
+	maptext_x = -112
+	maptext_width = 256
 	icon = 'icons/mobs.dmi'
 	say_verb = "says"
 	var/interact_range = 1.5 // close enough to sqrt(2)
@@ -34,6 +36,12 @@
 	G.ckey = ckey
 	G.update_maptext()
 
+/mob/dead/take_damage(amount)
+	return
+
+/mob/dead/heal_damage(amount)
+	return
+
 /mob/dead/ghost
 	name = "ghost"
 	desc = "AAAAAAAAA!!"
@@ -48,7 +56,7 @@
 
 /mob/dead/ghost/update_maptext()
 	. = ..()
-	maptext = CENTERTEXT(MAPTEXT("[key][client ? "" : " (DC)]"))
+	maptext = CENTERTEXT(MAPTEXT("[key][client ? "" : " (DC)"]"))
 
 /mob/living
 	var/dead_state

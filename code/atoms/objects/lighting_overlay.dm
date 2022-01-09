@@ -19,3 +19,9 @@ var/const/light_mult = (255 / 15)
 		return
 	light_level = level
 	alpha = 255 - (light_mult * level)
+
+/atom/movable/lighting_overlay/take_damage(amount)
+	return
+
+/atom/movable/lighting_overlay/heal_damage(amount)
+	return
