@@ -83,7 +83,7 @@
 /mob/living/get_movement_delay(loc, dir, turf/T)
 	if (!istype(T))
 		return ..()
-	return movement_delay + T.slowdown
+	return movement_delay + T.get_slowdown(src, dir)
 
 /mob/living/proc/die()
 	status = 1

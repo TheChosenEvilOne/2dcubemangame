@@ -7,6 +7,9 @@
 /mob/proc/get_movement_delay(loc, dir, turf)
 	return movement_delay
 
+/turf/proc/get_slowdown(mob, dir)
+	return slowdown
+
 /client/Move(loc, dir)
 	if (mob.next_move > world.time)
 		return
