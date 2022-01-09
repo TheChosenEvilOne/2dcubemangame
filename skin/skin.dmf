@@ -32,7 +32,21 @@ macro "macro"
 	elem 
 		name = "W+UP"
 		command = "MoveKey 1 0"
-
+	elem 
+		name = "M"
+		command = "me "
+	elem 
+		name = "F"
+		command = "flip"
+	elem 
+		name = "F4"
+		command = "who"
+	elem 
+		name = "F5"
+		command = "build"
+	elem 
+		name = "F6"
+		command = "test"
 
 menu "menu"
 	elem 
