@@ -27,7 +27,7 @@ SYSTEM_CREATE(throwing)
 				else
 					stop_throw(O)
 					continue
-			animate(O, pixel_x = T.cur_x, pixel_y = T.cur_y)
+			animate(O, pixel_x = T.cur_x, pixel_y = T.cur_y, flags = ANIMATION_PARALLEL)
 			T.cur_x -= ICON_SIZE
 		else if (T.cur_x < -HALF_ICON_SIZE)
 			should_animate = FALSE
@@ -40,7 +40,7 @@ SYSTEM_CREATE(throwing)
 				else
 					stop_throw(O)
 					continue
-			animate(O, pixel_x = T.cur_x, pixel_y = T.cur_y)
+			animate(O, pixel_x = T.cur_x, pixel_y = T.cur_y, flags = ANIMATION_PARALLEL)
 			T.cur_x += ICON_SIZE
 		if (T.cur_y > HALF_ICON_SIZE)
 			should_animate = FALSE
@@ -53,7 +53,7 @@ SYSTEM_CREATE(throwing)
 				else
 					stop_throw(O)
 					continue
-			animate(O, pixel_x = T.cur_x, pixel_y = T.cur_y)
+			animate(O, pixel_x = T.cur_x, pixel_y = T.cur_y, flags = ANIMATION_PARALLEL)
 			T.cur_y -= ICON_SIZE
 		else if (T.cur_y < -HALF_ICON_SIZE)
 			should_animate = FALSE
@@ -66,12 +66,12 @@ SYSTEM_CREATE(throwing)
 				else
 					stop_throw(O)
 					continue
-			animate(O, pixel_x = T.cur_x, pixel_y = T.cur_y)
+			animate(O, pixel_x = T.cur_x, pixel_y = T.cur_y, flags = ANIMATION_PARALLEL)
 			T.cur_y += ICON_SIZE
 		T.range = range - T.cache_move_amount
 		if (T.set_pixel_position)
 			if (should_animate)
-				animate(O, pixel_x = T.cur_x, pixel_y = T.cur_y)
+				animate(O, pixel_x = T.cur_x, pixel_y = T.cur_y, flags = ANIMATION_PARALLEL)
 			O.pixel_x = T.cur_x
 			O.pixel_y = T.cur_y
 
