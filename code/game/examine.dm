@@ -9,7 +9,7 @@
 	var/M = examine_message()
 	if (M) usr << "[M]"
 
-/atom/left_click(adjacent, params)
+/atom/left_click(adjacent, params, obj/item)
 	if (!params["shift"])
 		return ..()
 	examine()
