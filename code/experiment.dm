@@ -14,7 +14,8 @@ var/global/list/spawn_list = list(
 	/obj/sign,
 	/obj/cannon,
 	/obj/respawn_station,
-	/obj/z_entrance,
+	/obj/z_entrance/hole,
+	/obj/z_entrance/ladder,
 	/obj/boombox
 )
 
