@@ -1,6 +1,7 @@
 /atom/movable/lighting_overlay
 	icon = 'icons/lighting.dmi'
 	layer = LIGHTING_LAYER
+	plane = LIGHTING_PLANE
 	alpha = 0
 	mouse_opacity = 0
 	var/source

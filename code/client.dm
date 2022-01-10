@@ -5,10 +5,9 @@
 /client/New()
 	. = ..()
 	for (var/P in (typesof(/plane) - /plane))
-		world << "[P]"
-		planes[P] = new P
-		planes[P].color = "red"
-		screen += planes[P]
+		var/plane/plane = new P
+		planes[P] = plane
+		screen += plane
 	if (!usr)
 		src << "<h2>Hey, welcome to 2D cubemans</h2>"
 		src << "The game is open source at: https://github.com/TheChosenEvilOne/2dcubemangame"

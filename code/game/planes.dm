@@ -1,12 +1,16 @@
 /plane
 	parent_type = /atom/movable
 	name = "plane"
-	appearance_flags = PLANE_MASTER
+	screen_loc = "1,1"
+	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
 
 /plane/initialize()
 
 /plane/world
 	plane = WORLD_PLANE
+
+/plane/lighting
+	plane = LIGHTING_PLANE
 
 /plane/ui
 	plane = UI_PLANE

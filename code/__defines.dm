@@ -29,7 +29,8 @@ sys_##x = src											\
 #define SMALLTEXT(text) "<span class='small'>[text]</span>"
 #define LARGETEXT(text) "<span class='large'>[text]</span>"
 
-#define INFINITY 1e31 //large enough
+// actual infinity, epic.
+#define INFINITY 1#INF
 
 #define check_cpu if (world.cpu > allowed_cpu_time) {sleep(world.tick_lag)}
 
@@ -51,4 +52,5 @@ sys_##x = src											\
 #define UI_LAYER 200
 
 #define WORLD_PLANE 10
+#define LIGHTING_PLANE 50
 #define UI_PLANE 100
