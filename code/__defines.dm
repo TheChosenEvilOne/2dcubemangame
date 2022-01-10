@@ -11,17 +11,19 @@
 #define DATUM_PROCESS			1
 #define DATUM_PROCESSING		2
 
-#define SYSTEM_CREATE(x) var/global/system/x/sys_##x;	\
-/system/##x/New(){										\
-sys_##x = src											\
-}														\
+#define SYSTEM_CREATE(x) 		\
+var/global/system/x/sys_##x;	\
+/system/##x/New(){				\
+sys_##x = src					\
+}								\
 /system/##x
 
 // common processing system, used for all /datum/game_objects
-#define PROCESSING_CREATE(x) var/global/system/processing/x/sys_##x;\
-/system/processing/##x/New(){										\
-sys_##x = src											\
-}														\
+#define PROCESSING_CREATE(x)			\
+var/global/system/processing/x/sys_##x;	\
+/system/processing/##x/New(){			\
+sys_##x = src							\
+}										\
 /system/processing/##x
 
 #define MAPTEXT(text) "<span class='maptext'>[text]</span>"

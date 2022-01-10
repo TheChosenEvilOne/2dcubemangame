@@ -5,15 +5,23 @@
 	var/system/systems
 	var/system/processing_systems
 
-/datum/master/New()
+/datum/master/proc/setup()
 	world.log << "Initializing master system..."
+	var/list/system/sorted = new
+	for (var/path in subtypesof(/system))
+		var/system/S = new path()
+		for (var/I in 1 to sorted.len)
+			if (S.priority <= sorted[I].priority)
+				continue
+			sorted.Insert(I + 1, S)
+		sorted += S
+
 	var/list/P = new
 	var/list/Ss = new
 	var/cat = 0
 	systems = Ss
 	processing_systems = P
-	for (var/path in subtypesof(/system))
-		var/system/S = new path()
+	for (var/system/S in sorted)
 		if (S.flags & S_INIT)
 			world.log << "Initializing [S.name]"
 			S.initialize()
@@ -21,7 +29,7 @@
 			world.log << "Processing [S.name]"
 			cat += S.allocated_cpu
 			P += S
-		Ss[path] += S
+		Ss[S.type] += S
 	// CPU allocation normalisation
 	for (var/system/S in P)
 		S.allocated_cpu /= cat

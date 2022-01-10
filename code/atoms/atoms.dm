@@ -14,10 +14,10 @@
 
 /atom/destroy()
 	if (light)
-		sys_light.propagate_light(src, sys_light.ambient_light)
+		sys_light.propagate_light(src, sys_light.ambient_light[min(sys_light.ambient_light.len, z)])
 
 /atom/proc/update_light()
-	if (!light || !sys_light) // XXX: remove sys_light check once initialisation priority is fixed
+	if (!light) // XXX: remove sys_light check once initialisation priority is fixed
 		return
 	sys_light.propagate_light(src, light)
 

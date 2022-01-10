@@ -10,7 +10,9 @@
 #endif
 
 /world/New()
+	clients = new()
 	master = new()
+	master.setup()
 	..()
 
 /world/Error(exception/E)

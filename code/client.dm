@@ -1,13 +1,17 @@
 /client
 	fps = 60
+	var/datum/admin/admin
 	var/list/plane/planes = list()
 
 /client/New()
 	. = ..()
+	clients += src
 	for (var/P in (typesof(/plane) - /plane))
 		var/plane/plane = new P
 		planes[P] = plane
 		screen += plane
+	load_admin_verbs()
+	admin = load_admin(src)
 	if (!usr)
 		src << "<h2>Hey, welcome to 2D cubemans</h2>"
 		src << "The game is open source at: https://github.com/TheChosenEvilOne/2dcubemangame"
@@ -22,6 +26,7 @@
 			H.show()
 
 /client/Del()
+	clients -= src
 	if (mob)
 		for (var/hud/H in mob.huds)
 			H.logout()

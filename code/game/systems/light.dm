@@ -3,8 +3,9 @@ SYSTEM_CREATE(light)
 	flags = S_PROCESS
 	allocated_cpu = 0.5
 	update_rate = 0
+	priority = 5
 	var/list/prop_list = list()
-	var/ambient_light = 4
+	var/list/ambient_light = list(15, 6, 0)
 
 /system/light/process()
 	while (prop_list.len)

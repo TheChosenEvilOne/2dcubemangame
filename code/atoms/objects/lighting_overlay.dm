@@ -5,13 +5,10 @@
 	alpha = 0
 	mouse_opacity = 0
 	var/source
-	var/light_level = 0
+	var/light_level
 
 /atom/movable/lighting_overlay/initialize()
-	set_light_level(4)
-	if (!sys_light) // XXX: Remove this once system priority is implemented
-		return
-	light_level = sys_light.ambient_light
+	set_light_level(sys_light.ambient_light[min(sys_light.ambient_light.len, z)])
 	sys_light.propagate_light(get_step(src, 0), light_level)
 
 var/const/light_mult = (255 / 15)

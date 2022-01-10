@@ -5,8 +5,10 @@ var/global/obj/server
 	icon_state = "server"
 	density = TRUE
 
-/obj/server/New()
+/obj/server/initialize()
 	server = src
+	if (master.paused)
+		master.paused = FALSE
 	..()
 
 /obj/server/destroy()
