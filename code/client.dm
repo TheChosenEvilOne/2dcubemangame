@@ -15,6 +15,7 @@
 		world << "<b>[src]</b> has connected."
 		return
 	else
+		world << "<b>[src]</b> has reconnected."
 		for (var/hud/H in mob.huds)
 			if (!H.visible)
 				continue
