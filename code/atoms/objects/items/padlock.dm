@@ -11,6 +11,10 @@
 	var/locked
 	var/datum/lock/pull/lock
 
+/obj/item/padlock/destroy()
+	sys_lock.unlock(locked)
+	. = ..()
+
 /obj/item/padlock/attack_left(atom/target, adjacent)
 	if (adjacent != WORLD_ADJACENT || !istype(target, /atom/movable))
 		return
