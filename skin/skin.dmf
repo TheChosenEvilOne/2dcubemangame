@@ -144,7 +144,6 @@ menu "menu"
 		group = "zoom"
 		saved-params = "is-checked"
 
-
 window "default"
 	elem "default"
 		type = MAIN
