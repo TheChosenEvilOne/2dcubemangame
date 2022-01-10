@@ -1,6 +1,7 @@
 SYSTEM_CREATE(processing)
 	name = "processing"
 	flags = S_PROCESS
+	priority = 15
 	var/list/processing = list()
 
 /system/processing/process()

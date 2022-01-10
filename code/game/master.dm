@@ -5,16 +5,43 @@
 	var/system/systems
 	var/system/processing_systems
 
+/datum/master/proc/diagnostics()
+	. = "<font size='4'><B>Master System Diagnostics</B></font>\n"
+	. += "[master.paused ? "<B>Paused</B>" : "<B>Running</B>"]\n"
+	. += "CPU: [round(world.cpu, 0.001)]\n"
+	. += "Map CPU: [round(world.map_cpu, 0.001)]\n"
+	. += "CPU allocated: [round(master.allocated_cpu, 0.001)]\n"
+	. += "Time: [world.time]\n"
+	for (var/system/S as anything in master.systems)
+		S = master.systems[S]
+		. += "<B>[S.name]</B>: [S.firing ? "\[FIRING\]":]\n"
+		. += "\tFlags: [S.flags & S_INIT ? "INITIALIZE " :][S.flags & S_PROCESS ? "PROCESS " :][S.flags & S_PAUSED ? "PAUSED " :]\n"
+		. += "\tPriority: [S.priority]\n"
+		if (S.flags & S_PROCESS)
+			. += "\tCPU allocation: [S.allocated_cpu]\n"
+			. += "\tCPU threshold: [S.allowed_cpu_time]\n"
+			. += "\tUpdate rate: [S.update_rate / 10] Hz\n"
+			. += "\tNext update in: [round((S.next_fire - world.time) / 10, 0.01)] Seconds\n"
+			if (istype(S, /system/processing))
+				var/system/processing/P = S
+				. += "\tProcessing: [P.processing.len] items\n"
+		. += S.diagnostics()
+	return .
+
 /datum/master/proc/setup()
 	world.log << "Initializing master system..."
 	var/list/system/sorted = new
 	for (var/path in subtypesof(/system))
 		var/system/S = new path()
+		var/inserted = FALSE
 		for (var/I in 1 to sorted.len)
-			if (S.priority <= sorted[I].priority)
+			if (S.priority > sorted[I].priority)
 				continue
-			sorted.Insert(I + 1, S)
-		sorted += S
+			sorted.Insert(I, S)
+			inserted = TRUE
+			break
+		if (!inserted)
+			sorted += S
 
 	var/list/P = new
 	var/list/Ss = new
@@ -29,7 +56,7 @@
 			world.log << "Processing [S.name]"
 			cat += S.allocated_cpu
 			P += S
-		Ss[S.type] += S
+		Ss[S.type] = S
 	// CPU allocation normalisation
 	for (var/system/S in P)
 		S.allocated_cpu /= cat

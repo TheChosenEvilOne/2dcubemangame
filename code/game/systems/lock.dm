@@ -20,6 +20,7 @@ SYSTEM_CREATE(lock)
 	flags = S_PROCESS
 	update_rate = 0
 	allocated_cpu = 0.2
+	priority = 20
 	var/list/datum/lock/locks = list()
 
 /system/lock/process()

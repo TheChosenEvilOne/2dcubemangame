@@ -12,3 +12,6 @@
 /system/proc/initialize()
 
 /system/proc/process()
+
+/system/proc/diagnostics()
+	return ""

@@ -1,6 +1,7 @@
 PROCESSING_CREATE(random)
 	name = "random process"
 	update_rate = 1
+	priority = 100
 	var/update_ratio = 0.1
 
 /system/processing/random/process()

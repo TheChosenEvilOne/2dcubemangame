@@ -28,3 +28,9 @@ var/global/obj/server
 		animate(pixel_x = 0, pixel_y = 0, time = 1)
 	spawn(12)
 		world.Reboot()
+
+/obj/server/right_click(adjacent, params, obj/item)
+	if (!adjacent)
+		return
+
+	usr << master.diagnostics()

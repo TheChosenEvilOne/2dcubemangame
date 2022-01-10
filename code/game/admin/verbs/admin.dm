@@ -16,3 +16,9 @@
 	if (!path)
 		return
 	new path(usr.loc)
+
+/admin_verbs/admin/proc/check_master_system()
+	set name = "Master System Health"
+	set category = "Admin"
+
+	usr << master.diagnostics()

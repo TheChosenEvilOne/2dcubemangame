@@ -3,6 +3,7 @@ SYSTEM_CREATE(throwing)
 	flags = S_PROCESS
 	update_rate = 0
 	allocated_cpu = 0.1
+	priority = 15
 	var/list/datum/throw_object/throws = list()
 
 /system/throwing/process()
