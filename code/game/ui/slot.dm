@@ -37,7 +37,7 @@
 		slicon.overlays.Cut()
 	else
 		slicon.name = slot.item.name
-		slicon.overlays += slot.item
+		slicon.overlays += new /mutable_appearance/(slot.item.appearance)
 
 /hud_object/slot_item
 	name = ""

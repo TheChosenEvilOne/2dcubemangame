@@ -108,6 +108,7 @@
 	I.pixel_x = I.pixel_y = 0
 	I.slot = slots[slot]
 	hud.ui_objects[slot].update_item()
+	I.inserted(src)
 	return TRUE
 
 /datum/inventory/proc/remove_item(slot)
@@ -117,6 +118,7 @@
 	slots[slot].item = null
 	I.slot = null
 	hud.ui_objects[slot].update_item()
+	I.removed(src)
 	return I
 
 /datum/inventory/proc/drop_item(slot)
@@ -124,6 +126,7 @@
 	if (!I)
 		return null
 	I.loc = parent.loc
+	I.dropped(src)
 	return I
 
 /datum/inventory/player

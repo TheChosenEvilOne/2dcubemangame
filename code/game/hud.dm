@@ -57,3 +57,6 @@
 	for (var/O in ui_objects)
 		ui_objects[O].hide(owner.client)
 		owner.client.screen -= ui_objects[O]
+
+/hud/proc/logout()
+	hide(TRUE)

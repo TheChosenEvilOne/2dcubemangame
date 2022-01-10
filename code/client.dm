@@ -1,8 +1,14 @@
 /client
 	fps = 60
+	var/list/plane/planes = list()
 
 /client/New()
 	. = ..()
+	for (var/P in (typesof(/plane) - /plane))
+		world << "[P]"
+		planes[P] = new P
+		planes[P].color = "red"
+		screen += planes[P]
 	if (!usr)
 		src << "<h2>Hey, welcome to 2D cubemans</h2>"
 		src << "The game is open source at: https://github.com/TheChosenEvilOne/2dcubemangame"
@@ -18,7 +24,7 @@
 /client/Del()
 	if (mob)
 		for (var/hud/H in mob.huds)
-			H.hide(TRUE)
+			H.logout()
 	. = ..()
 
 /client/AllowUpload(filename, size)

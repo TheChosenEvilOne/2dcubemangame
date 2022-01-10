@@ -3,6 +3,7 @@
 	parent_type = /atom/movable
 	name = "FUCK FUCK FUCK"
 	icon = 'icons/hud.dmi'
+	plane = UI_PLANE
 
 /hud_object/New(H)
 	hud = H
