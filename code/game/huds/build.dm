@@ -25,10 +25,10 @@
 	B.name = "Building type"
 	B.click_handler = .proc/change_type
 	B.screen_loc = "NORTH,WEST+1"
-	B.hicon.transform.Scale(0.8)
-	var/icon/buildicon = icon(initial(builder.build_type.icon), initial(builder.build_type.icon_state))
-	buildicon.Scale(world.icon_size, world.icon_size)
-	B.hicon.icon = buildicon
+	B.hicon.transform *= 0.75
+	B.hicon.icon = initial(builder.build_type.icon)
+	B.hicon.icon_state = initial(builder.build_type.icon_state)
+
 	B = new_object(/hud_object/button, "colour")
 	B.name = "Colour"
 	B.click_handler = .proc/change_colour

@@ -3,7 +3,8 @@
 
 /datum/lock/pull/moved(atom/movable/who)
 	who.glide_size = locked_to.glide_size
-	step(who, get_dir(who, last_position))
+	if (!who.Move(last_position))
+		sys_lock.unlock(who)
 
 /obj/item/padlock
 	name = "padlock"
