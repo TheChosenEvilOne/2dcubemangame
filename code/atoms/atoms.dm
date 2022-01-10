@@ -1,5 +1,6 @@
 /atom
 	parent_type = /datum/game_object
+	plane = WORLD_PLANE
 	var/light = 0
 	var/integrity
 	var/max_integrity = 100
@@ -21,6 +22,7 @@
 	sys_light.propagate_light(src, light)
 
 /atom/proc/update_appearance()
+	appearance_flags |= PIXEL_SCALE
 
 /atom/proc/take_damage(amount)
 	integrity -= amount

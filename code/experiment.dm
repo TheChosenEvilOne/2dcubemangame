@@ -9,6 +9,8 @@ var/global/list/spawn_list = list(
 	/obj/item/rock,
 	/obj/item/brush,
 	/obj/item/canvas,
+	/obj/item/magnifying_glass,
+	/obj/item/padlock,
 	/obj/sign,
 	/obj/cannon,
 	/obj/respawn_station,
@@ -28,6 +30,7 @@ var/global/list/spawn_list = list(
 			var/select = input("h") as null|anything in (typesof(/datum/map_generator) - /datum/map_generator)
 			if (!select)
 				return
-			world << "[usr] generating map at [usr.x] [usr.y] [usr.z], [select]"
 			var/datum/map_generator/G = new select()
+			G.configure()
+			world << "[usr] generating map at [usr.x] [usr.y] [usr.z], [select]"
 			G.generate(usr.x, usr.y, usr.z)

@@ -16,6 +16,8 @@
 sys_##x = src											\
 }														\
 /system/##x
+
+// common processing system, used for all /datum/game_objects
 #define PROCESSING_CREATE(x) var/global/system/processing/x/sys_##x;\
 /system/processing/##x/New(){										\
 sys_##x = src											\
@@ -27,7 +29,8 @@ sys_##x = src											\
 #define SMALLTEXT(text) "<span class='small'>[text]</span>"
 #define LARGETEXT(text) "<span class='large'>[text]</span>"
 
-#define INFINITY 1e31 //large enough
+// actual infinity, epic.
+#define INFINITY 1#INF
 
 #define check_cpu if (world.cpu > allowed_cpu_time) {sleep(world.tick_lag)}
 
@@ -46,3 +49,8 @@ sys_##x = src											\
 #define UNDER_LIGHTING_LAYER 99
 #define LIGHTING_LAYER 100
 #define OVER_LIGHTING_LAYER 101
+#define UI_LAYER 200
+
+#define WORLD_PLANE 10
+#define LIGHTING_PLANE 50
+#define UI_PLANE 100

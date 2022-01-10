@@ -174,9 +174,10 @@
 /mob/living/inventory/player/update_appearance()
 	overlays.Cut()
 	if (kill_mode)
-		overlays += mutable_appearance(icon, "face_kill", appearance_flags = RESET_COLOR)
+		overlays += mutable_appearance(icon, "face_kill", appearance_flags = RESET_COLOR | PIXEL_SCALE)
 	else
-		overlays += mutable_appearance(icon, "face", appearance_flags = RESET_COLOR)
+		overlays += mutable_appearance(icon, "face", appearance_flags = RESET_COLOR | PIXEL_SCALE)
+	..()
 
 /mob/living/inventory/player/projectile_impact(P)
 	say("OWW!!")

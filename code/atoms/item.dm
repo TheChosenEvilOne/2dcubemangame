@@ -20,6 +20,12 @@
 		return
 	M.inventory.insert_item(src, M.inventory.selected_slot)
 
+/obj/item/proc/inserted(datum/inventory/I)
+
+/obj/item/proc/dropped(datum/inventory/I)
+
+/obj/item/proc/removed(datum/inventory/I)
+
 /obj/item/proc/attack_self()
 
 /obj/item/proc/attack_left(atom/target, adjacent, params)

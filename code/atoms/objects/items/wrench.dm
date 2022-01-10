@@ -7,8 +7,10 @@
 	if (!target.rotatable || !adjacent)
 		return
 	target.dir = turn(target.dir, -90)
+	return TRUE
 
 /obj/item/wrench/attack_right(atom/target, adjacent)
 	if (!target.rotatable || !adjacent)
 		return
 	target.dir = turn(target.dir, 90)
+	return TRUE

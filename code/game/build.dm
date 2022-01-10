@@ -56,10 +56,10 @@
 	var/building = FALSE
 	var/datum/builder/builder
 
-/mob/proc/toggle_build()
+/mob/proc/toggle_build(boolean)
 	if (!builder)
 		builder = new(src)
-	building = !building
+	building = boolean
 	if (building)
 		builder.hud.show()
 		src << "enabled building."
@@ -69,4 +69,4 @@
 
 /client/verb/toggle_build()
 	set name = "Build"
-	mob.toggle_build()
+	mob.toggle_build(!mob.building)

@@ -136,7 +136,13 @@ menu "menu"
 		can-check = true
 		group = "adjust"
 		saved-params = "is-checked"
-
+	elem 
+		name = "8x"
+		command = ".winset \"map1.zoom=8\""
+		category = "Zoom"
+		can-check = true
+		group = "zoom"
+		saved-params = "is-checked"
 
 window "default"
 	elem "default"
