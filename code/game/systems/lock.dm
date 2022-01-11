@@ -25,6 +25,7 @@ SYSTEM_CREATE(lock)
 
 /system/lock/process()
 	for (var/atom/movable/who in locks)
+		check_cpu
 		var/datum/lock/L = locks[who]
 		if (L.locked_to.loc == L.last_position)
 			continue

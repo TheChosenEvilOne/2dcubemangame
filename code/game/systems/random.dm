@@ -12,6 +12,6 @@ PROCESSING_CREATE(random)
 		sleep(amount)
 		amount = 1
 	for (var/i in 1 to round(amount))
+		check_cpu
 		var/datum/game_object/O = pick(processing)
 		O.process()
-		check_cpu

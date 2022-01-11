@@ -6,8 +6,8 @@ SYSTEM_CREATE(processing)
 
 /system/processing/process()
 	for (var/datum/game_object/O as anything in processing)
-		O.process()
 		check_cpu
+		O.process()
 
 /system/processing/proc/start_processing(datum/game_object/O)
 	if (O.datum_flags & DATUM_PROCESSING)
