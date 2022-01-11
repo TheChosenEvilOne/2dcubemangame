@@ -1,5 +1,3 @@
-
-
 /mob
 	var/next_move = 0
 	var/movement_delay = 1
@@ -61,6 +59,8 @@ var/static/list/opposite_dirs = list(SOUTH,NORTH,NORTH|SOUTH,WEST,SOUTHWEST,NORT
 /client/East()
 /client/West()
 
+// DO NOT ATTEMPT TO SYSTEMIFY THIS
+// IF YOU DO, I AM PERSONALLY GOING TO EAT YOUR FACE.
 /client/proc/move_loop()
 	set waitfor = FALSE
 

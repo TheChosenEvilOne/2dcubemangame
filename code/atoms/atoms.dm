@@ -15,6 +15,7 @@
 /atom/destroy()
 	if (light)
 		sys_light.propagate_light(src, sys_light.ambient_light[min(sys_light.ambient_light.len, z)])
+	. = ..()
 
 /atom/proc/update_light()
 	if (!light) // XXX: remove sys_light check once initialisation priority is fixed
@@ -42,7 +43,7 @@
 	var/say_verb = "states"
 
 /atom/movable/destroy()
-	..()
+	. = ..()
 	loc = null
 
 /atom/movable/proc/p_possessive()

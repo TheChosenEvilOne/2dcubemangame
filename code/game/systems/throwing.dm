@@ -8,6 +8,7 @@ SYSTEM_CREATE(throwing)
 
 /system/throwing/process()
 	for (var/atom/movable/O in throws)
+		check_cpu
 		var/datum/throw_object/T = throws[O]
 		var/range = T.range
 		if (!O.loc || range <= 0)
@@ -85,7 +86,7 @@ SYSTEM_CREATE(throwing)
 	throws.Remove(O)
 	if (!T.set_pixel_position)
 		return
-	O.animate_movement = initial(O.animate_movement)
+	O.animate_movement = FORWARD_STEPS // Going to just assume this isn't going to be changed
 
 /system/throwing/proc/process_throw(atom/movable/O, datum/throw_object/T)
 	if (flags & S_PAUSED || master.paused)

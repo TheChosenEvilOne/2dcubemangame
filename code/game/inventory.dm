@@ -79,14 +79,16 @@
 		return FALSE
 	var/mob/living/M = parent
 	var/priority = M.kill_mode
-	var/A = get_dist(usr, object) <= usr.interact_range
+	var/A = distance_pixel(usr, object) <= usr.interact_range
 	if (params["left"])
 		if (priority || !object.left_click(A, params, I))
 			I.attack_left(object, A, params)
+		return TRUE
 	if (params["right"])
 		if (priority || !object.right_click(A, params, I))
 			I.attack_right(object, A, params)
-	return TRUE
+		return TRUE
+	return FALSE
 
 /datum/inventory/proc/update()
 	for (var/P in slots)

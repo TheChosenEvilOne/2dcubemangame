@@ -8,10 +8,10 @@
 /obj/item/destroy()
 	if (slot)
 		slot.remove_item()
-	..()
+	. = ..()
 
 /obj/item/left_click(adjacent, params, obj/item)
-	if (!adjacent)
+	if (adjacent != WORLD_ADJACENT)
 		return
 	if (!istype(usr, /mob/living/inventory))
 		return

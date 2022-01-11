@@ -15,6 +15,7 @@
 	var/hud_object/icon/vicon = new()
 
 /obj/item/magnifying_glass/initialize()
+	. = ..()
 	lock = new()
 	lock.item = src
 	vicon = new()

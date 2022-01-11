@@ -4,7 +4,7 @@
 	maptext_width = 256
 	icon = 'icons/mobs.dmi'
 	say_verb = "says"
-	var/interact_range = 1.5 // close enough to sqrt(2)
+	var/interact_range = 45.5 // close enough to sqrt(2) * 32
 	var/can_interact = TRUE
 
 /mob/New(loc)
@@ -13,7 +13,7 @@
 
 /mob/destroy()
 	ghostize()
-	return ..()
+	. = ..()
 
 /mob/living/Login()
 	. = ..()
@@ -124,7 +124,7 @@
 
 /mob/living/inventory/destroy()
 	inventory.remove()
-	..()
+	. = ..()
 
 /mob/living/inventory/verb/switch_slot()
 	set name = "Switch slot"

@@ -1,3 +1,7 @@
+/datum/lock/pull/locked(atom/movable/who)
+	if (istype(who, /obj/item)) // HACK: thrown items have pixel offsets set, so.
+		who.pixel_x = who.pixel_y = 0
+
 /datum/lock/pull/unlocked(atom/movable/who)
 	who.glide_size = initial(who.glide_size)
 
