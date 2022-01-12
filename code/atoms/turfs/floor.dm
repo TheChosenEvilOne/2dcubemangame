@@ -39,6 +39,7 @@
 /turf/floor/marsh
 	name = "\proper marsh"
 	icon_state = "marsh"
+	light_attenuation = 1
 	slowdown = 0.5
 
 /turf/floor/water

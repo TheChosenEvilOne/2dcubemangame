@@ -53,6 +53,8 @@ sys_##x = src							\
 
 // actual infinity, epic.
 #define INFINITY 1#INF
+#define PI 3.14159
+#define TWOROOT 1.41421
 
 #define check_cpu if (world.cpu > allowed_cpu_time) {sleep(world.tick_lag)}
 

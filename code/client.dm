@@ -48,3 +48,9 @@
 /client/verb/test()
 	set name = "Test"
 	experiment()
+
+/client/verb/hide_ui()
+	set name = "Hide UI"
+
+	var/plane/UI = planes[/plane/ui]
+	UI.alpha = UI.alpha == 255 ? 0 : 255
