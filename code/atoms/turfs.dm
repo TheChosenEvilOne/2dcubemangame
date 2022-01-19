@@ -1,5 +1,4 @@
 /turf
-	icon = 'icons/turfs.dmi'
 	datum_flags = 0
 	var/slowdown = 0
 	var/atom/movable/lighting_overlay/lighting_overlay
@@ -21,11 +20,3 @@
 		new base_turf(src)
 		return
 	new world.turf(src)
-
-/turf/floor
-
-/turf/wall
-	name = "wall"
-	icon_state = "wall"
-	density = 1
-	opacity = 1

@@ -11,6 +11,7 @@
 		/obj/door,
 		/obj/door/automatic,
 		/turf/wall,
+		/turf/wall/stonebrick,
 		/turf/wall/rock,
 		/turf/wall/rock/gray,
 		/turf/floor/gray,
@@ -26,8 +27,10 @@
 		/obj/campfire,
 		/obj/torch,
 		/obj/path,
-		/obj/chair,
-		/obj/table,
+		/obj/structure/chair,
+		/obj/structure/table,
+		/obj/structure/bush,
+		/obj/structure/vines,
 		/obj/tree,
 	)
 

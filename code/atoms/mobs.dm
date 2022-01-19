@@ -159,6 +159,8 @@
 	dead_state = "player_dead"
 	rotatable = TRUE
 	inventory_type = /datum/inventory/player
+	//whether this player is sigma
+	var/is_sigma = FALSE
 	//whether this player is super
 	var/is_super = FALSE
 	//speed at which the super animation runs, maximum 2 seconds to avoid epilepsy
@@ -173,10 +175,16 @@
 
 /mob/living/inventory/player/update_appearance()
 	overlays.Cut()
-	if (kill_mode)
-		overlays += mutable_appearance(icon, "face_kill", appearance_flags = RESET_COLOR | PIXEL_SCALE)
+	if (!is_sigma)
+		if (kill_mode)
+			overlays += mutable_appearance(icon, "face_kill", appearance_flags = RESET_COLOR | PIXEL_SCALE)
+		else
+			overlays += mutable_appearance(icon, "face", appearance_flags = RESET_COLOR | PIXEL_SCALE)
 	else
-		overlays += mutable_appearance(icon, "face", appearance_flags = RESET_COLOR | PIXEL_SCALE)
+		icon = 'icons/sigmacube.dmi'
+		icon_state = "sigmacube"
+		pixel_x = -16
+		maptext_x = initial(maptext_x) + 16
 	..()
 
 /mob/living/inventory/player/projectile_impact(P)

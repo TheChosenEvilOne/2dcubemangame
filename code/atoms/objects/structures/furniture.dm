@@ -1,10 +1,16 @@
-/obj/table
+/obj/structure/chair
+	name = "chair"
+	desc = "how to sit??"
+	icon_state = "chair"
+	rotatable = TRUE
+
+/obj/structure/table
 	name = "table"
 	desc = "it is a table, what did you expect?"
 	icon_state = "table"
 	density = TRUE
 
-/obj/table/left_click(adjacent, params, obj/item)
+/obj/structure/table/left_click(adjacent, params, obj/item)
 	if (!item)
 		return
 	var/obj/item/I = item
