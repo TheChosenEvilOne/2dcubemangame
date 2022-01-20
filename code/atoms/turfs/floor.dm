@@ -22,7 +22,9 @@
 
 /turf/floor/grass
 	name = "\proper grass"
-	icon_state = "grass"
+	icon_state = "grass0"
+	variation = 3
+	base_state = "grass"
 
 /turf/floor/wood
 	name = "\proper wooden planks"

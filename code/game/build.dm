@@ -21,6 +21,7 @@
 		/turf/floor/wood,
 		/turf/floor/sand,
 		/turf/floor/marsh,
+		/turf/floor/rocky,
 		/turf/floor/water,
 		/turf/floor/water/lava,
 		/obj/window,

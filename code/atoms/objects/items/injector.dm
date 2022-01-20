@@ -22,7 +22,7 @@
 	desc = "become the sigma cubeman."
 	icon_state = "steroids"
 
-/obj/item/injector/attack_self(datum/inventory/inventory, slot)
+/obj/item/injector/steroids/attack_self(datum/inventory/inventory, slot)
 	var/mob/living/inventory/player/injected = usr
 	if (injected.is_sigma)
 		usr << "You are already the gigachad cubeman."

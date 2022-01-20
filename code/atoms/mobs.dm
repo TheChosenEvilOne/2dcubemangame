@@ -183,7 +183,7 @@
 	else
 		icon = 'icons/sigmacube.dmi'
 		icon_state = "sigmacube"
-		pixel_x = -16
+		pixel_w = -16
 		maptext_x = initial(maptext_x) + 16
 	..()
 
