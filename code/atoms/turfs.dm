@@ -1,16 +1,17 @@
 /turf
 	datum_flags = 0
+	vis_flags = VIS_INHERIT_PLANE | VIS_UNDERLAY
 	var/slowdown = 0
-	var/atom/movable/lighting_overlay/lighting_overlay
+	var/atom/movable/abstract/lighting_overlay/lighting_overlay
 	var/base_turf
 	var/variation = 0
 	var/base_state
 
 /turf/New()
 	. = ..()
-	lighting_overlay = locate(/atom/movable/lighting_overlay) in src
+	lighting_overlay = locate(/atom/movable/abstract/lighting_overlay) in src
 	if (!lighting_overlay)
-		lighting_overlay = new /atom/movable/lighting_overlay(src)
+		lighting_overlay = new /atom/movable/abstract/lighting_overlay(src)
 	if (variation && base_state)
 		icon_state = "[base_state][rand(variation)]"
 

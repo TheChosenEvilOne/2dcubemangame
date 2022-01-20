@@ -3,6 +3,7 @@
 #define DELAY2GLIDESIZE(delay) (32 / max(ceil(delay / world.tick_lag, 1), 1))
 #define HALF_ICON_SIZE 32
 #define ICON_SIZE 32
+#define NONE 0
 
 #define NOT_ADJACENT		0
 #define WORLD_ADJACENT		1
@@ -41,6 +42,7 @@ sys_##x = src							\
 #define S_PAUSED	4
 
 //#define AREA_LAYER 1
+#define BELOW_TURF_LAYER 1.5
 //#define TURF_LAYER 2
 #define UNDER_OBJ_LAYER 2.9
 //#define OBJ_LAYER 3
@@ -53,6 +55,7 @@ sys_##x = src							\
 #define OVER_LIGHTING_LAYER 101
 #define UI_LAYER 200
 
+#define BELOW_PLANE 0
 #define WORLD_PLANE 10
 #define LIGHTING_PLANE 50
 #define UI_PLANE 100

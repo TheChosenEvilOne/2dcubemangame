@@ -24,6 +24,8 @@
 		/turf/floor/rocky,
 		/turf/floor/water,
 		/turf/floor/water/lava,
+		/turf/open/glass,
+		/turf/open/hole,
 		/obj/window,
 		/obj/campfire,
 		/obj/torch,

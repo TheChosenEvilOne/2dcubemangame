@@ -40,6 +40,7 @@
 	take_damage(P.damage)
 
 /atom/movable
+	vis_flags = VIS_INHERIT_PLANE
 	var/say_verb = "states"
 
 /atom/movable/destroy()
@@ -55,8 +56,8 @@
 
 /atom/movable/proc/say(words)
 	viewers() << "<b>[src]</b> [say_verb], \"[words]\""
-	new /atom/movable/chat_message(src, words)
+	new /atom/movable/abstract/chat_message(src, words)
 
 /atom/movable/proc/act(action)
 	viewers() << "<i><b>[src]</b> [action]</i>"
-	new /atom/movable/chat_message(src, "<i>[action]</i>")
+	new /atom/movable/abstract/chat_message(src, "<i>[action]</i>")

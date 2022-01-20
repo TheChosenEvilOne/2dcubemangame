@@ -6,6 +6,9 @@
 
 /plane/initialize()
 
+/plane/below
+	plane = BELOW_PLANE
+
 /plane/world
 	plane = WORLD_PLANE
 
