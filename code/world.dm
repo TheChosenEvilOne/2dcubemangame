@@ -5,7 +5,6 @@
 	view = 6
 	turf = /turf/floor/gray
 	mob = /mob/living/inventory/player
-	map_format = SIDE_MAP
 	maxz = 2
 #if DM_VERSION > 513
 	movement_mode = TILE_MOVEMENT_MODE
