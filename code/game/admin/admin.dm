@@ -25,6 +25,7 @@ var/global/list/admins = list("thechosenevilone")
 	C.verbs += verbs
 	..()
 
+// Tiz som prety speciel cood
 /client/proc/readmin()
 	set name = "Re-admin"
 	set category = "admin"

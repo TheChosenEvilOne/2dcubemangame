@@ -1,5 +1,6 @@
 /inventory_slot
 	var/id
+	var/icon
 	var/name = "Inventory Slot"
 	var/screen_loc = "0,0"
 	var/selectable = FALSE
@@ -11,15 +12,23 @@
 
 /inventory_slot/l_hand
 	id = "lhand"
+	icon = "lhand"
 	name = "left hand"
 	screen_loc = "SOUTH,CENTER-0.5"
 	selectable = TRUE
 
 /inventory_slot/r_hand
 	id = "rhand"
+	icon = "rhand"
 	name = "right hand"
 	screen_loc = "SOUTH,CENTER+0.5"
 	selectable = TRUE
+
+/inventory_slot/hat
+	id = "hat"
+	icon = "hat"
+	name = "hat"
+	screen_loc = "SOUTH,WEST"
 
 /datum/inventory
 	var/mob/parent
@@ -94,6 +103,9 @@
 	for (var/P in slots)
 		hud.ui_objects[P].update_item()
 
+/datum/inventory/proc/accept_item(slot, obj/item/I)
+	return TRUE
+
 /datum/inventory/proc/select_slot(slot)
 	if (selected_slot)
 		hud.ui_objects[selected_slot].icon_state = "slot"
@@ -103,6 +115,8 @@
 /datum/inventory/proc/insert_item(obj/item/I, slot)
 	if (!I || slots[slot].item)
 		return FALSE
+	if (!accept_item(slot, I))
+		return FALSE
 	if (I.slot)
 		remove_item(I.slot.id)
 	I.loc = null
@@ -110,7 +124,7 @@
 	I.pixel_x = I.pixel_y = 0
 	I.slot = slots[slot]
 	hud.ui_objects[slot].update_item()
-	I.inserted(src)
+	I.inserted(src, slot)
 	return TRUE
 
 /datum/inventory/proc/remove_item(slot)
@@ -120,7 +134,7 @@
 	slots[slot].item = null
 	I.slot = null
 	hud.ui_objects[slot].update_item()
-	I.removed(src)
+	I.removed(src, slot)
 	return I
 
 /datum/inventory/proc/drop_item(slot)
@@ -128,11 +142,19 @@
 	if (!I)
 		return null
 	I.loc = parent.loc
-	I.dropped(src)
+	I.dropped(src, slot)
 	return I
 
 /datum/inventory/player
 	slots = list(
 		/inventory_slot/l_hand,
-		/inventory_slot/r_hand
+		/inventory_slot/r_hand,
+		/inventory_slot/hat
 	)
+
+/datum/inventory/player/accept_item(slot, obj/item/I)
+	switch (slot)
+		if ("hat")
+			return istype(I, /obj/item/clothing/hat)
+		else
+			return TRUE
