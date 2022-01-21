@@ -1,9 +1,4 @@
-/admin_verbs/fun
-	name = "fun" // in quotation marks.
-
-/admin_verbs/fun/proc/epilepsy()
-	set name = "Epilepsy"
-	set category = "Fun"
+ADMIN_VERB(fun, epilepsy, Epilepsy)
 	var/client/player = input("Who to kill?", "Epilepsy") as null|anything in clients
 	if (!player)
 		return
@@ -13,9 +8,7 @@
 	animate(color = "#00ff00", time = time)
 	animate(color = "#0000ff", time = time)
 
-/admin_verbs/fun/proc/size_increase()
-	set name = "Increase Map Size"
-	set category = "Fun"
+ADMIN_VERB(fun, mapsize, Increase Map Size)
 	var/x = input("X size", "Map Size", world.maxx) as null|num
 	if (!x)
 		return

@@ -10,7 +10,7 @@
 		var/plane/plane = new P
 		planes[P] = plane
 		screen += plane
-	load_admin_verbs()
+	new /admin_verbs()
 	admin = load_admin(src)
 	if (!usr)
 		src << "<h2>Hey, welcome to 2D cubemans</h2>"

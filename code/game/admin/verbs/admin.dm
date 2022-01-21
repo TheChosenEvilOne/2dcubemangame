@@ -1,24 +1,14 @@
-/admin_verbs/admin
-	name = "admin"
-
-/admin_verbs/admin/proc/kick()
-	set name = "Kick"
-	set category = "Admin"
+ADMIN_VERB(admin, kick, Kick)
 	var/player = input("Who to kick?") as null|anything in clients
 	if (!player)
 		return
 	del(player)
 
-/admin_verbs/admin/proc/spawn_atom(path as text)
-	set name = "Spawn"
-	set category = "Admin"
-	path = text2path(path)
+ADMIN_VERB(admin, spawnatom, Spawn Atom)
+	var/path = text2path(input("Type path", "Spawn Atom") as text|null)
 	if (!path)
 		return
 	new path(usr.loc)
 
-/admin_verbs/admin/proc/check_master_system()
-	set name = "Master System Health"
-	set category = "Admin"
-
+ADMIN_VERB(admin, masterdiagonistics, Master System Diagnostics)
 	usr << master.diagnostics()

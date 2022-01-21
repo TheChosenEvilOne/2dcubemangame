@@ -9,6 +9,20 @@
 #define WORLD_ADJACENT		1
 #define INVENTORY_ADJACENT	2
 
+#define ADMIN_VERB(group, id, _name) \
+/admin_verbs/New() {\
+	..();\
+	register_admin_verb(#group, #id, /admin_verbs/verb/##id)\
+}\
+/admin_verbs/verb/##id() {\
+	set name = #_name;\
+	set category = #group;\
+	if (admin_permission_check(#group, #id)) {\
+		call(/admin_verbs/proc/##group_##id)();\
+	}\
+}\
+/admin_verbs/proc/##group_##id()
+
 #define DATUM_PROCESS			1
 #define DATUM_PROCESSING		2
 

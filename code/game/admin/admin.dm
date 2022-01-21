@@ -1,13 +1,5 @@
 // remove this once config loading is a thing.
 var/global/list/admins = list("thechosenevilone")
-var/global/list/averbs
-
-/proc/load_admin_verbs()
-	averbs = list()
-	var/types = typesof(/admin_verbs)
-	for (var/P in types)
-		var/admin_verbs/V = P
-		averbs[initial(V.name)] = typesof("[P]/proc")
 
 /proc/load_admin(client/C)
 	// load adminrank here.
@@ -17,18 +9,25 @@ var/global/list/averbs
 
 /datum/admin
 	var/client/client
+	var/permissions = list()
 	var/verbs = list()
 
 /datum/admin/New(client/C, list/perms)
 	client = C
+	permissions = perms
 	for (var/V in perms)
-		verbs += averbs[V]
+		if (perms[V])
+			for (var/id in perms[V])
+				verbs += averbs[V][id]
+		else
+			for (var/id in averbs[V])
+				verbs += averbs[V][id]
 	C.verbs += verbs
 	..()
 
 /client/proc/readmin()
 	set name = "Re-admin"
-	set category = "Admin"
+	set category = "admin"
 	verbs -= .proc/readmin
 	verbs += admin.verbs
 
