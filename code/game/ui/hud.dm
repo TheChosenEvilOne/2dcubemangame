@@ -12,7 +12,6 @@
 
 /mob/proc/remove_huds()
 	for (var/hud/H in huds)
-		world << "[H.type]"
 		H.remove()
 
 /hud

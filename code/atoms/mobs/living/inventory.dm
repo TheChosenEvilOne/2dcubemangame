@@ -83,9 +83,9 @@
 	become_super(setup = FALSE)
 
 /mob/living/inventory/player/sigma
-	name = "Player"
 	desc = "The buffest cube around."
-	pixel_x = -16
+	interact_range = 90.5 // sqrt(2) * 64
+	pixel_w = -16
 	maptext_x = -96
 	icon = 'icons/sigmacube.dmi'
 	icon_state = "alive"

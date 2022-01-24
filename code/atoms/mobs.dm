@@ -35,10 +35,9 @@
 		var/mob/M = P
 		if (!M.key || !M.client)
 			return FALSE
-		world << "???"
 		M.remove_huds()
-		update_name(M.key)
-		ckey = M.ckey
+		key = M.key
+		update_name(key)
 		return TRUE
 	else if (istext(P))
 		if (clients[P])
