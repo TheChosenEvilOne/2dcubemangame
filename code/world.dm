@@ -12,6 +12,7 @@
 /world/New()
 	clients = new()
 	master = new()
+	new /admin_verbs()
 	master.setup()
 	..()
 
@@ -19,3 +20,6 @@
 	if (server)
 		server.say(E.name)
 	..()
+
+/world/Topic(T, Addr, Master, Keys)
+	return T

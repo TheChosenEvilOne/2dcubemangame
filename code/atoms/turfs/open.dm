@@ -23,5 +23,5 @@
 	var/turf/T = locate(x, y, z + 1)
 	if (!T)
 		return ..()
-	A.loc = T
-	viewers() << "[A] falls down \the [src]!"
+	if (A.Move(T))
+		viewers() << "[A] falls down \the [src]!"

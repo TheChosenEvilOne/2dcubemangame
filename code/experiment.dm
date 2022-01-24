@@ -11,6 +11,7 @@ var/global/list/spawn_list = list(
 	/obj/item/canvas,
 	/obj/item/magnifying_glass,
 	/obj/item/padlock,
+	/obj/hat_crate,
 	/obj/sign,
 	/obj/cannon,
 	/obj/respawn_station,

@@ -5,7 +5,9 @@
 	var/in_use = FALSE
 	var/last_use = 0
 
-/obj/boombox/left_click()
+/obj/boombox/left_click(adjacent)
+	if (adjacent != WORLD_ADJACENT)
+		return
 	if (last_use > world.time)
 		usr << "It has been used too recently."
 		return

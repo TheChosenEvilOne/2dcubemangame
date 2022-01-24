@@ -1,3 +1,4 @@
+// This is awful, please rework this into something nicer.
 /obj/item/clothing
 	var/wear_slot
 	var/pixel_offset_x = 0
@@ -12,9 +13,9 @@
 	worn = new
 	worn.icon = worn_icon
 	worn.icon_state = worn_icon_state
-	worn.pixel_x = pixel_offset_x
-	worn.pixel_y = pixel_offset_y
+	worn.transform = worn.transform.Translate(pixel_offset_x, pixel_offset_y) // BYOND can't really move only the icon.
 
+// doing it this way is awful.
 /obj/item/clothing/removed(datum/inventory/I, slot)
 	if (slot == wear_slot)
 		I.parent.overlays -= worn

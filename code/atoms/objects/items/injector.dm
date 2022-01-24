@@ -5,7 +5,7 @@
 
 /obj/item/injector/attack_self(datum/inventory/inventory, slot)
 	var/mob/living/inventory/player/injected = usr
-	if (injected.is_sigma)
+	if (istype(injected, /mob/living/inventory/player/sigma))
 		usr << "Your skin is too thick for the injector to pierce!"
 		return
 	if (!injected.is_super)
@@ -24,13 +24,14 @@
 
 /obj/item/injector/steroids/attack_self(datum/inventory/inventory, slot)
 	var/mob/living/inventory/player/injected = usr
-	if (injected.is_sigma)
-		usr << "You are already the gigachad cubeman."
+	if (istype(injected, /mob/living/inventory/player/sigma))
+		usr << "You are already a gigachad cubeman."
 		return
 	if (injected.is_super)
 		usr << "You are super, you can't get buff now."
 		return
 	injected.act("injects \the [src], becoming buff!")
-	injected.is_sigma = TRUE
-	injected.update_appearance()
+	var/mob/sigma = new /mob/living/inventory/player/sigma(injected.loc)
+	sigma.set_player(injected)
+	injected.destroy()
 	destroy()

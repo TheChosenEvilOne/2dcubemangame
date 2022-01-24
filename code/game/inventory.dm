@@ -66,9 +66,9 @@
 		drop_item(P)
 		var/inventory_slot/S = slots[P]
 		S.inventory = null
-		del S
 	slots.Cut()
-	hud.remove()
+	if (hud.owner)
+		hud.remove()
 
 /datum/inventory/proc/click_handler(atom/object, location, control, params)
 	var/obj/item/I = slots[selected_slot].item
@@ -133,7 +133,8 @@
 	var/obj/item/I = slots[slot].item
 	slots[slot].item = null
 	I.slot = null
-	hud.ui_objects[slot].update_item()
+	if (hud.owner)
+		hud.ui_objects[slot].update_item()
 	I.removed(src, slot)
 	return I
 
@@ -158,3 +159,17 @@
 			return istype(I, /obj/item/clothing/hat)
 		else
 			return TRUE
+
+/datum/inventory/sigma
+	slots = list(
+		/inventory_slot/l_hand {
+			id = "lhand2"
+			screen_loc = "SOUTH,CENTER-1.5"
+		},
+		/inventory_slot/l_hand,
+		/inventory_slot/r_hand,
+		/inventory_slot/r_hand {
+			id = "rhand2"
+			screen_loc = "SOUTH,CENTER+1.5"
+		}
+	)

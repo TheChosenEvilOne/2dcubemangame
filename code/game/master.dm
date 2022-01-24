@@ -91,9 +91,12 @@
 			S.firing = TRUE
 			S.allowed_cpu_time = cpu_left * S.allocated_cpu
 			allocated_cpu += S.allowed_cpu_time
-			spawn()
-				S.process()
-				S.firing = FALSE
-				allocated_cpu -= S.allowed_cpu_time
-
+			call_process(S)
 		sleep(world.tick_lag)
+
+/datum/master/proc/call_process(system/S)
+	set waitfor = FALSE
+
+	S.process()
+	S.firing = FALSE
+	allocated_cpu -= S.allowed_cpu_time

@@ -5,12 +5,11 @@
 
 /client/New()
 	. = ..()
-	clients += src
+	clients[ckey] = src
 	for (var/P in (typesof(/plane) - /plane))
 		var/plane/plane = new P
 		planes[P] = plane
 		screen += plane
-	new /admin_verbs()
 	admin = load_admin(src)
 	if (!usr)
 		src << "<h2>Hey, welcome to 2D cubemans</h2>"
@@ -26,7 +25,7 @@
 			H.show()
 
 /client/Del()
-	clients -= src
+	clients -= ckey
 	if (mob)
 		for (var/hud/H in mob.huds)
 			H.logout()

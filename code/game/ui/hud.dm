@@ -6,11 +6,14 @@
 	for (var/hud/H in huds)
 		H.show()
 
-
 /mob/Del()
-	for (var/hud/H in huds)
-		H.remove()
+	remove_huds()
 	..()
+
+/mob/proc/remove_huds()
+	for (var/hud/H in huds)
+		world << "[H.type]"
+		H.remove()
 
 /hud
 	var/visible = FALSE
@@ -27,6 +30,7 @@
 	mob.huds += src
 
 /hud/proc/remove()
+	hide()
 	for (var/O in ui_objects)
 		ui_objects[O].remove()
 	ui_objects.Cut()
