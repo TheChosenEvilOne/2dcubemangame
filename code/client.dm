@@ -19,16 +19,9 @@
 		return
 	else
 		world << "<b>[src]</b> has reconnected."
-		for (var/hud/H in mob.huds)
-			if (!H.visible)
-				continue
-			H.show()
 
 /client/Del()
 	clients -= ckey
-	if (mob)
-		for (var/hud/H in mob.huds)
-			H.logout()
 	. = ..()
 
 /client/AllowUpload(filename, size)

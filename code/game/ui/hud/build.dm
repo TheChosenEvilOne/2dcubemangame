@@ -9,8 +9,9 @@
 	builder = null
 	. = ..()
 
-/hud/build/logout()
+/hud/build/hide()
 	owner.toggle_build(FALSE)
+	..()
 
 /hud/build/create_hud()
 	var/hud_object/button/B

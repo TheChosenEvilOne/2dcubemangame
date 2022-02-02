@@ -2,9 +2,15 @@
 	var/list/huds = list()
 
 /mob/Login()
-	..()
+	. = ..()
 	for (var/hud/H in huds)
-		H.show()
+		if (H.show_on_login)
+			H.show()
+
+/mob/Logout()
+	world.log << "a"
+	hide_huds()
+	. = ..()
 
 /mob/Del()
 	remove_huds()
@@ -14,11 +20,12 @@
 	for (var/hud/H in huds)
 		H.remove()
 
-/mob/proc/hide_huds(logout)
+/mob/proc/hide_huds()
 	for (var/hud/H in huds)
-		H.hide(logout)
+		H.hide()
 
 /hud
+	var/show_on_login = TRUE
 	var/visible = FALSE
 	var/mob/owner
 	var/list/hud_object/ui_objects = list()
@@ -59,11 +66,7 @@
 /hud/proc/hide(logout = FALSE)
 	if (!visible || !owner || !owner.client)
 		return
-	if (!logout)
-		visible = FALSE
+	visible = FALSE
 	for (var/O in ui_objects)
 		ui_objects[O].hide(owner.client)
 		owner.client.screen -= ui_objects[O]
-
-/hud/proc/logout()
-	hide(TRUE)

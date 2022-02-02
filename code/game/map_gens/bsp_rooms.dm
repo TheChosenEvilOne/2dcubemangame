@@ -6,9 +6,9 @@
 	var/wall_thickness = 2
 
 /datum/map_generator/bsp_rooms/configure()
-	depth = max(1, min(10, input("tree depth, larger number = more and smaller rooms", "BSP Dungeon", 5) as num))
-	cutoff = max(0, min(10, input("cutoff, larger number = larger rooms", "BSP Dungeon", 5) as num))
-	wall_thickness = max(0, min(3, input("wall thickness, larger number = thicker walls", "BSP Dungeon", 2) as num))
+	depth = max(1, min(10, input("tree depth, larger number = more and smaller rooms", "BSP Rooms", 5) as num))
+	cutoff = max(0, min(10, input("cutoff, larger number = larger rooms", "BSP Rooms", 5) as num))
+	wall_thickness = max(0, min(3, input("wall thickness, larger number = thicker walls", "BSP Rooms", 2) as num))
 
 /datum/map_generator/bsp_rooms/generate(x, y, z)
 	var/list/tree = list(list())
