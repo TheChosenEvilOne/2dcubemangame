@@ -2,6 +2,7 @@
 	maptext_y = -20
 	var/dead_state
 	var/datum/ai/ai
+	var/hud/status/status_hud // dunno, this seems like the best way of doing this.
 	var/status = STATUS_ALIVE
 	var/kill_mode = FALSE
 
@@ -9,10 +10,16 @@
 	. = ..()
 	if (ai)
 		ai = sys_ai.add_mob_ai(src, ai)
-	new /hud/status(src)
+	status_hud = new /hud/status(src)
+
+/mob/living/remove_huds()
+	status_hud = null
+	. = ..()
 
 /mob/living/take_damage(amount)
 	integrity -= amount
+	if (status_hud)
+		status_hud.change_health_colour(integrity / max_integrity)
 	update_maptext()
 	if(!status && integrity <= 0)
 		die()
@@ -21,6 +28,8 @@
 
 /mob/living/heal_damage(amount)
 	. = ..()
+	if (status_hud)
+		status_hud.change_health_colour(integrity / max_integrity)
 	update_maptext()
 
 /mob/living/get_movement_delay(loc, dir, turf/T)

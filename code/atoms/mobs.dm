@@ -35,14 +35,14 @@
 		var/mob/M = P
 		if (!M.key || !M.client)
 			return FALSE
-		M.remove_huds()
+		M.hide_huds(TRUE) // TECHNICALLY A LOGOUT
 		key = M.key
 		update_name(key)
 		return TRUE
 	else if (istext(P))
 		if (clients[P])
 			var/client/C = clients[P]
-			C.mob.remove_huds()
+			C.mob.hide_huds(TRUE)
 			ckey = C.ckey
 			update_name(C.key)
 			return TRUE
@@ -51,7 +51,7 @@
 		return TRUE
 	else if (istype(P, /client))
 		var/client/C = P
-		C.mob.remove_huds()
+		C.mob.hide_huds(TRUE)
 		ckey = C.ckey
 		update_name(C.key)
 		return TRUE

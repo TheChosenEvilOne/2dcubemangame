@@ -14,6 +14,10 @@
 	for (var/hud/H in huds)
 		H.remove()
 
+/mob/proc/hide_huds(logout)
+	for (var/hud/H in huds)
+		H.hide(logout)
+
 /hud
 	var/visible = FALSE
 	var/mob/owner
@@ -45,7 +49,7 @@
 	CRASH("Attempted to create invalid HUD")
 
 /hud/proc/show()
-	if (!owner || !owner.client)
+	if (visible || !owner || !owner.client)
 		return
 	visible = TRUE
 	for (var/O in ui_objects)
@@ -53,7 +57,7 @@
 		owner.client.screen += ui_objects[O]
 
 /hud/proc/hide(logout = FALSE)
-	if (!owner || !owner.client)
+	if (!visible || !owner || !owner.client)
 		return
 	if (!logout)
 		visible = FALSE
