@@ -22,6 +22,8 @@
 
 /client/Del()
 	clients -= ckey
+	if (mob)
+		mob.hide_huds(TRUE)
 	. = ..()
 
 /client/AllowUpload(filename, size)

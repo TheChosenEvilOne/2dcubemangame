@@ -8,12 +8,12 @@
 			H.show()
 
 /mob/Logout()
-	hide_huds(TRUE)
+	hide_huds()
 	. = ..()
 
 /mob/Del()
 	remove_huds()
-	..()
+	. = ..()
 
 /mob/proc/remove_huds()
 	for (var/hud/H in huds)
