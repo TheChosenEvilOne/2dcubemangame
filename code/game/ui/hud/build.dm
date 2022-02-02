@@ -9,8 +9,9 @@
 	builder = null
 	. = ..()
 
-/hud/build/hide()
-	owner.toggle_build(FALSE)
+/hud/build/hide(logout)
+	if(logout)
+		owner.toggle_build(FALSE)
 	..()
 
 /hud/build/create_hud()

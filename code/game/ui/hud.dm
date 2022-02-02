@@ -8,8 +8,7 @@
 			H.show()
 
 /mob/Logout()
-	world.log << "a"
-	hide_huds()
+	hide_huds(TRUE)
 	. = ..()
 
 /mob/Del()
@@ -20,9 +19,9 @@
 	for (var/hud/H in huds)
 		H.remove()
 
-/mob/proc/hide_huds()
+/mob/proc/hide_huds(logout)
 	for (var/hud/H in huds)
-		H.hide()
+		H.hide(logout)
 
 /hud
 	var/show_on_login = TRUE
