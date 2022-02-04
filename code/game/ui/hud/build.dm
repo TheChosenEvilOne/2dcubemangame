@@ -1,20 +1,30 @@
 /hud/build
+	var/icon_list = list()
+	var/hud/scroll_list/list
 	var/datum/builder/builder
 
-/hud/build/New(mob, b)
-	builder = b
-	. = ..(mob)
-
 /hud/build/remove()
+	list.remove()
+	list = null
 	builder = null
 	. = ..()
 
 /hud/build/hide(logout)
+	list.hide()
 	if(logout)
 		owner.toggle_build(FALSE)
 	..()
 
-/hud/build/create_hud()
+/hud/build/create_hud(mob, b)
+	builder = b
+	var/build_list = list()
+	for (var/atom/P as anything in builder.buildable)
+		var/icon/I = new /icon(initial(P.icon), initial(P.icon_state))
+		I.Scale(32, 32)
+		icon_list["[P]"] = I
+		build_list += list(list(I, initial(P.name), P))
+	list = new /hud/scroll_list(usr, 6, 6, src, .proc/select, build_list)
+	list.show_on_login = FALSE
 	var/hud_object/button/B
 
 	B = new_object(/hud_object/button, "mode")
@@ -42,13 +52,13 @@
 	if (params["right"])
 		owner.toggle_build()
 		return
-	var/atom/path = input(usr, "Select build type.") as null|anything in builder.buildable
-	if (!path)
-		return
-	builder.build_type = path
-	var/icon/buildicon = icon(initial(builder.build_type.icon), initial(builder.build_type.icon_state))
-	buildicon.Scale(world.icon_size, world.icon_size)
-	B.hicon.icon = buildicon
+	list.show()
+
+/hud/build/proc/select(atom/value)
+	list.hide()
+	var/hud_object/button/B = ui_objects["type"]
+	B.hicon.icon = icon_list["[value]"]
+	builder.build_type = value
 
 /hud/build/proc/change_mode(hud_object/button/B, params)
 	params = params2list(params)

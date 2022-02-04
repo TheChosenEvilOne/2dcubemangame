@@ -1,15 +1,20 @@
 /turf/open
 	icon = 'icons/turfs/floors.dmi'
+	var/atom/movable/below_viewer
 
 /turf/open/New()
 	. = ..()
 	var/T = locate(x, y, z + 1)
 	if (!T)
 		return
-	new /atom/movable/abstract/below_viewer(T)
+	below_viewer = new /atom/movable/abstract/below_viewer(T, src)
 
 /turf/open/Del()
-	vis_contents.Cut()
+	if (below_viewer)
+		below_viewer.loc = null
+		below_viewer.vis_contents.Cut()
+		vis_contents.Cut()
+	. = ..()
 
 /turf/open/glass
 	name = "glass floor"

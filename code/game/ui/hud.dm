@@ -31,7 +31,7 @@
 
 /hud/New(mob/mob)
 	owner = mob
-	create_hud(mob)
+	create_hud(arglist(args))
 	for (var/O in ui_objects)
 		if (!ui_objects[O].screen_loc)
 			CRASH("HUD object [O] has invalid screen location.")
@@ -49,7 +49,9 @@
 /hud/proc/new_object(path, name)
 	if (ui_objects[name])
 		CRASH("tried to replace existing ui object [name] in [src].")
-	return ui_objects[name] = new path(src)
+	var/hud_object/H = new path(src)
+	H.id = name
+	return ui_objects[name] = H
 
 /hud/proc/create_hud(mob)
 	CRASH("Attempted to create invalid HUD")

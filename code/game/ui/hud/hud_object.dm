@@ -1,5 +1,7 @@
 /hud_object
 	var/hud/hud
+	var/id
+	var/value
 	parent_type = /atom/movable
 	name = "FUCK FUCK FUCK"
 	icon = 'icons/hud.dmi'

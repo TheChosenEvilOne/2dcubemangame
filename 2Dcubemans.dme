@@ -108,6 +108,7 @@
 #include "code\game\ui\hud\build.dm"
 #include "code\game\ui\hud\hud_object.dm"
 #include "code\game\ui\hud\inventory.dm"
+#include "code\game\ui\hud\scroll_list.dm"
 #include "code\game\ui\hud\status.dm"
 #include "code\game\ui\hud\objects\button.dm"
 #include "code\game\ui\hud\objects\icon.dm"

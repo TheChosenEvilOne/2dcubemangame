@@ -43,6 +43,7 @@
 
 /hud_object/slot_item
 	name = ""
+	icon_state = "blank"
 	var/inventory_slot/slot
 
 /hud_object/slot_item/Click(location, control, params)

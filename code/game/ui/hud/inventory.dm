@@ -1,7 +1,7 @@
 /hud/inventory
 	var/datum/inventory/inventory
 
-/hud/inventory/create_hud(mob)
+/hud/inventory/create_hud()
 	var/hud_object/button/B
 
 	B = new_object(/hud_object/button, "throw")
