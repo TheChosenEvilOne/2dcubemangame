@@ -1,7 +1,7 @@
 #define ceil(x, y) -round(-x / y) * y
 #define subtypesof(x) typesof(x) - x
 #define DELAY2GLIDESIZE(delay) (32 / max(ceil(delay / world.tick_lag, 1), 1))
-#define HALF_ICON_SIZE 32
+#define HALF_ICON_SIZE 16
 #define ICON_SIZE 32
 #define NONE 0
 #define ALL_DIRECTIONS list(NORTH, SOUTH, EAST, WEST, NORTHWEST, NORTHEAST, SOUTHWEST, SOUTHEAST)
@@ -78,4 +78,4 @@ sys_##x = src							\
 #define WORLD_PLANE -80
 #define LIGHTING_PLANE -60
 #define UI_PLANE -40
-// REMEMBER, ANYTHING ABOVE PLANE 0 IS DRAWN ABOVE FOV DARKNESS
+// REMEMBER, ANYTHING ABOVE PLANE 0 IS DRAWN ABOVE FOV DARKNESS ???

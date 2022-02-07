@@ -6,7 +6,7 @@
 	. = ..()
 	var/T = locate(x, y, z + 1)
 	if (!T)
-		return
+		return TRUE
 	below_viewer = new /atom/movable/abstract/below_viewer(T, src)
 
 /turf/open/Del()
@@ -23,6 +23,11 @@
 /turf/open/hole
 	name = "hole"
 	icon_state = "hole"
+
+/turf/open/hole/New()
+	. = ..()
+	if (!.)
+		new world.turf(src)
 
 /turf/open/hole/Entered(atom/movable/A)
 	var/turf/T = locate(x, y, z + 1)

@@ -15,7 +15,7 @@
 
 /obj/item/rock
 	name = "rock"
-	desc = "rock. can be used for crafting with wood. or for throwing at others."
+	desc = "rock. can be used for crafting with wood, or for throwing at others."
 	icon_state = "rock"
 
 /obj/item/rock/hit_object(atom/A)

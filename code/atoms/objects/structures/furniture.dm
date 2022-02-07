@@ -19,3 +19,8 @@
 	I.pixel_x = text2num(params["icon-x"]) - 16
 	I.pixel_y = text2num(params["icon-y"]) - 16
 	return TRUE
+
+/obj/structure/window
+	name = "window"
+	icon_state = "window"
+	density = TRUE

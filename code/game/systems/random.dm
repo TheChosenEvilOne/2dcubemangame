@@ -2,16 +2,15 @@ PROCESSING_CREATE(random)
 	name = "random process"
 	update_rate = 1
 	priority = 100
-	var/update_ratio = 0.1
+	var/avg_rate = 6 // tick average between game object processing.
 
 /system/processing/random/process()
 	if (!processing.len)
 		return
-	var/amount = processing.len * update_ratio
-	if (amount < 1)
-		sleep(amount)
-		amount = 1
-	for (var/i in 1 to round(amount))
+	var/amount = processing.len / avg_rate
+	if (amount < avg_rate)
+		sleep(avg_rate / amount * update_rate)
+	for (var/i in 1 to ceil(amount, 1))
 		check_cpu
 		var/datum/game_object/O = pick(processing)
 		O.process()

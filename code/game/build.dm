@@ -5,6 +5,7 @@
 	var/mob/owner
 	var/hud/build/hud
 	var/mode = BUILDING
+	var/direction = SOUTH
 	var/colour = "#fff"
 	var/atom/build_type
 	var/list/buildable = list(
@@ -26,8 +27,9 @@
 		/turf/floor/water/lava,
 		/turf/open/glass,
 		/turf/open/hole,
-		/obj/window,
+		/obj/structure/window,
 		/obj/campfire,
+		/obj/conveyor,
 		/obj/torch,
 		/obj/path,
 		/obj/structure/chair,
@@ -48,7 +50,7 @@
 		return FALSE
 	if (params["left"])
 		if (mode == BUILDING)
-			new build_type(location)
+			new build_type(location).dir = direction
 		else
 			object.color = colour
 	if (params["right"])

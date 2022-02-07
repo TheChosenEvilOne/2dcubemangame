@@ -1,4 +1,5 @@
 /atom/movable/abstract
+	unmovable = TRUE
 
 /atom/movable/abstract/take_damage(amount)
 	return

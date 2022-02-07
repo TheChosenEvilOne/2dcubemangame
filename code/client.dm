@@ -11,7 +11,7 @@
 		planes[P] = plane
 		screen += plane
 	admin = load_admin(src)
-	if (!usr)
+	if (!mob)
 		src << "<h2>Hey, welcome to 2D cubemans</h2>"
 		src << "The game is open source at: https://github.com/TheChosenEvilOne/2dcubemangame"
 		src << "Your contributions are appreciated."

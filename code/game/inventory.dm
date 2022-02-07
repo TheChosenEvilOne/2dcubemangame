@@ -33,6 +33,7 @@
 /datum/inventory
 	var/mob/parent
 	var/throw_mode = FALSE
+	var/craft_mode = FALSE
 	var/selected_slot
 	var/list/selectable
 	var/hud/inventory/hud
@@ -84,6 +85,23 @@
 		return TRUE
 	if (!I)
 		return FALSE
+	if (craft_mode)
+		if (!sys_crafting.recipes[I.type])
+			goto cont
+		var/list/recipe = sys_crafting.recipes[I.type].Copy()
+		for (var/datum/crafting_recipe/R in recipe)
+			if(!R.check(object))
+				recipe -= R
+		if (recipe.len == 0)
+			goto cont
+		var/datum/crafting_recipe/R
+		if (recipe.len > 1)
+			R = input("Select recipe", "Crafting") in recipe
+		else
+			R = recipe[1]
+		R.begin_craft(I, object)
+		return TRUE
+	cont:
 	if (object.loc == null)
 		return FALSE
 	var/mob/living/M = parent

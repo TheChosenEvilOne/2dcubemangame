@@ -41,18 +41,31 @@
 
 /atom/movable
 	vis_flags = VIS_INHERIT_PLANE
+	var/unmovable = FALSE
 	var/say_verb = "states"
 
 /atom/movable/destroy()
 	. = ..()
 	loc = null
 
-/atom/movable/proc/p_possessive()
+/atom/movable/Move()
+	if (unmovable)
+		return FALSE
+	. = ..()
+
+/atom/movable/proc/p_reflexive()
 	switch (gender)
 		if ("neuter") . = "itself"
 		if ("male") . = "himself"
 		if ("female") . = "herself"
 		if ("plural") . = "themselves"
+
+/atom/movable/proc/p_possessive()
+	switch (gender)
+		if ("neuter") . = "it's"
+		if ("male") . = "his"
+		if ("female") . = "hers"
+		if ("plural") . = "theirs"
 
 /atom/movable/proc/say(words)
 	viewers() << "<b>[src]</b> [say_verb], \"[words]\""
