@@ -14,6 +14,9 @@
 #define WORLD_ADJACENT		1
 #define INVENTORY_ADJACENT	2
 
+#define GROUND	0
+#define FLYING	1
+
 #define ADMIN_VERB(group, id, _name) \
 /admin_verbs/New() {\
 	..();\

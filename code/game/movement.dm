@@ -1,3 +1,58 @@
+/atom/movable
+	var/movement_type = GROUND
+
+#define CHECK_DENSITY(T) \
+if (T){ \
+	if (T.density){ \
+		T = null; \
+	}else{ \
+		for (var/atom/movable/M in T){if (M.density) {T = null;break;}}}}
+
+/atom/movable/Move(newloc, ndir = 0, force=FALSE)
+	if (force)
+		if (newloc)
+			return loc = newloc
+		else if (ndir)
+			return loc = get_step(src, ndir)
+	if (movement_type == FLYING)
+		dir = ndir
+		return loc = get_step(src, ndir)
+	if (ndir)
+		var/diag = ndir & (ndir - 1)
+		var/turf/D = get_step(src, ndir)
+		CHECK_DENSITY(D)
+		if (diag)
+			var/turf/T1 = get_step(src, diag)
+			CHECK_DENSITY(T1)
+			var/turf/T2 = get_step(src, ndir - diag)
+			CHECK_DENSITY(T2)
+			if ((T1 || T2) && D)
+				dir = diag
+				return loc = D
+			else
+				if (T1)
+					dir = diag
+					return loc = T1
+				else if (T2)
+					dir = ndir - diag
+					return loc = T2
+		else
+			dir = ndir
+			var/turf/T1 = get_step(src, ndir)
+			CHECK_DENSITY(T1)
+			if (!T1)
+				return NONE
+			return loc = T1
+	else
+		if (istype(newloc, /turf))
+			var/turf/T = newloc
+			CHECK_DENSITY(T)
+			if (T)
+				dir = get_dir(src, T)
+				return loc = T
+		else
+			return loc = newloc
+
 /mob
 	var/next_move = 0
 	var/movement_delay = 1
@@ -16,9 +71,13 @@
 	var/delay = mob.get_movement_delay(loc, dir, T) * diag
 	mob.next_move = world.time + delay
 	mob.glide_size = DELAY2GLIDESIZE(delay)
+<<<<<<< HEAD
 	if (istype(T) && T.walk_sound)
 		playsound(usr, "walk[T.walk_sound]", vol = 400)
 	..(T)
+=======
+	mob.Move(ndir = dir)
+>>>>>>> 52bbdd3 (better movement)
 
 // From /vg/station13 - https://github.com/vgstation-coders/vgstation13
 /client
