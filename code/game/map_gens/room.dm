@@ -1,3 +1,15 @@
+/datum/map_generator/room
+	var/w
+	var/h
+
+/datum/map_generator/room/configure(_w, _h)
+	w = _w
+	h = _h
+	if (!w)
+		w = rand(5, 10)
+	if (!h)
+		h = rand(5, 10)
+
 /datum/map_generator/room/generate(x, y, z)
 	var/w = rand(5, 10)
 	var/h = rand(5, 10)

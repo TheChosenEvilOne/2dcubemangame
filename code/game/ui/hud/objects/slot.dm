@@ -4,6 +4,8 @@
 	var/inventory_slot/slot
 
 /hud_object/slot/setup()
+	if (slot.icon)
+		underlays += slot.icon
 	slicon.slot = slot
 	slicon.layer = layer+1
 	slicon.screen_loc = screen_loc
@@ -12,7 +14,7 @@
 	if (!slot.selectable)
 		if (!slot.inventory.selected_slot)
 			return
-		slot.inventory.insert_item(slot.inventory.slots[slot.inventory.selected_slot].item, slot)
+		slot.inventory.insert_item(slot.inventory.slots[slot.inventory.selected_slot].item, slot.id)
 		return
 	if (slot.inventory.selected_slot == slot)
 		return
@@ -41,6 +43,7 @@
 
 /hud_object/slot_item
 	name = ""
+	icon_state = "blank"
 	var/inventory_slot/slot
 
 /hud_object/slot_item/Click(location, control, params)

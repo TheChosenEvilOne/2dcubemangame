@@ -6,6 +6,10 @@
 
 /plane/initialize()
 
+/plane/below
+	color = "#AAA"
+	plane = BELOW_PLANE
+
 /plane/world
 	plane = WORLD_PLANE
 

@@ -5,14 +5,13 @@
 
 /client/New()
 	. = ..()
-	clients += src
+	clients[ckey] = src
 	for (var/P in (typesof(/plane) - /plane))
 		var/plane/plane = new P
 		planes[P] = plane
 		screen += plane
-	load_admin_verbs()
 	admin = load_admin(src)
-	if (!usr)
+	if (!mob)
 		src << "<h2>Hey, welcome to 2D cubemans</h2>"
 		src << "The game is open source at: https://github.com/TheChosenEvilOne/2dcubemangame"
 		src << "Your contributions are appreciated."
@@ -20,16 +19,11 @@
 		return
 	else
 		world << "<b>[src]</b> has reconnected."
-		for (var/hud/H in mob.huds)
-			if (!H.visible)
-				continue
-			H.show()
 
 /client/Del()
-	clients -= src
+	clients -= ckey
 	if (mob)
-		for (var/hud/H in mob.huds)
-			H.logout()
+		mob.hide_huds(TRUE)
 	. = ..()
 
 /client/AllowUpload(filename, size)

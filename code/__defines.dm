@@ -1,12 +1,32 @@
 #define ceil(x, y) -round(-x / y) * y
 #define subtypesof(x) typesof(x) - x
 #define DELAY2GLIDESIZE(delay) (32 / max(ceil(delay / world.tick_lag, 1), 1))
-#define HALF_ICON_SIZE 32
+#define HALF_ICON_SIZE 16
 #define ICON_SIZE 32
+#define NONE 0
+#define ALL_DIRECTIONS list(NORTH, SOUTH, EAST, WEST, NORTHWEST, NORTHEAST, SOUTHWEST, SOUTHEAST)
+#define CARDINAL_DIRECTIONS list(NORTH, SOUTH, EAST, WEST)
+
+#define STATUS_ALIVE	0
+#define STATUS_DEAD		1
 
 #define NOT_ADJACENT		0
 #define WORLD_ADJACENT		1
 #define INVENTORY_ADJACENT	2
+
+#define ADMIN_VERB(group, id, _name) \
+/admin_verbs/New() {\
+	..();\
+	register_admin_verb(#group, #id, /admin_verbs/verb/##id)\
+}\
+/admin_verbs/verb/##id() {\
+	set name = #_name;\
+	set category = #group;\
+	if (admin_permission_check(#group, #id)) {\
+		call(/admin_verbs/proc/##group_##id)();\
+	}\
+}\
+/admin_verbs/proc/##group_##id()
 
 #define DATUM_PROCESS			1
 #define DATUM_PROCESSING		2
@@ -41,6 +61,7 @@ sys_##x = src							\
 #define S_PAUSED	4
 
 //#define AREA_LAYER 1
+#define BELOW_TURF_LAYER 1.5
 //#define TURF_LAYER 2
 #define UNDER_OBJ_LAYER 2.9
 //#define OBJ_LAYER 3
@@ -53,6 +74,8 @@ sys_##x = src							\
 #define OVER_LIGHTING_LAYER 101
 #define UI_LAYER 200
 
-#define WORLD_PLANE 10
-#define LIGHTING_PLANE 50
-#define UI_PLANE 100
+#define BELOW_PLANE -100
+#define WORLD_PLANE -80
+#define LIGHTING_PLANE -60
+#define UI_PLANE -40
+// REMEMBER, ANYTHING ABOVE PLANE 0 IS DRAWN ABOVE FOV DARKNESS ???

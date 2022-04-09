@@ -1,3 +1,6 @@
+/turf/floor
+	icon = 'icons/turfs/floors.dmi'
+
 /turf/floor/gray
 	name = "gray floor"
 	icon_state = "gray"
@@ -13,9 +16,15 @@
 	variation = 1
 	base_state = "dort"
 
+/turf/floor/rocky
+	name = "rocky path"
+	icon_state = "rocky"
+
 /turf/floor/grass
 	name = "\proper grass"
-	icon_state = "grass"
+	icon_state = "grass0"
+	variation = 3
+	base_state = "grass"
 
 /turf/floor/wood
 	name = "\proper wooden planks"

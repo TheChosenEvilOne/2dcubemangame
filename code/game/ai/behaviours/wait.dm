@@ -1,0 +1,1 @@
+/datum/ai_behaviour/wait

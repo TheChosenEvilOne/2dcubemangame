@@ -1,4 +1,4 @@
-/atom/movable/chat_message
+/atom/movable/abstract/chat_message
 	appearance_flags = RESET_COLOR | RESET_ALPHA
 	maptext_width = 256
 	maptext_height = 64
@@ -7,7 +7,7 @@
 	layer = OVER_LIGHTING_LAYER
 	mouse_opacity = 0
 
-/atom/movable/chat_message/New(atom/movable/A, words)
+/atom/movable/abstract/chat_message/New(atom/movable/A, words)
 	maptext = CENTERTEXT(MAPTEXT(LARGETEXT(words)))
 	A.vis_contents += src
 	animate(src, maptext_y = 74, alpha = 0, time = 40)

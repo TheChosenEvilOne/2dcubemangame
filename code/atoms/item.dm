@@ -20,11 +20,11 @@
 		return
 	M.inventory.insert_item(src, M.inventory.selected_slot)
 
-/obj/item/proc/inserted(datum/inventory/I)
+/obj/item/proc/inserted(datum/inventory/I, slot)
 
-/obj/item/proc/dropped(datum/inventory/I)
+/obj/item/proc/dropped(datum/inventory/I, slot)
 
-/obj/item/proc/removed(datum/inventory/I)
+/obj/item/proc/removed(datum/inventory/I, slot)
 
 /obj/item/proc/attack_self()
 

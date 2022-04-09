@@ -9,7 +9,7 @@
 	var/heal_amount = 1
 
 /obj/campfire/process()
-	if(prob(5))
+	if(prob(25))
 		act("crackles")
 	for(var/mob/living/mob in range(2, src))
 		mob.heal_damage(heal_amount)
