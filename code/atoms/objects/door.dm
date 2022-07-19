@@ -20,7 +20,8 @@
 	if (open)
 		return
 
-	density = opacity = FALSE
+	set_opacity(FALSE)
+	set_density(FALSE)
 	open = TRUE
 	flick("a_door1", src)
 	icon_state = "door1"
@@ -29,7 +30,8 @@
 	if (!open)
 		return
 
-	density = opacity = TRUE
+	set_opacity(TRUE)
+	set_density(TRUE)
 	open = FALSE
 	flick("a_door0", src)
 	icon_state = "door0"

@@ -14,13 +14,15 @@
 
 /atom/destroy()
 	if (light)
-		sys_light.propagate_light(src, sys_light.ambient_light[min(sys_light.ambient_light.len, z)])
+		sys_light.remove_light(src)
 	. = ..()
 
 /atom/proc/update_light()
-	if (!light) // XXX: remove sys_light check once initialisation priority is fixed
+	if (opacity)
+		set_opacity(opacity)
+	if (!light)
 		return
-	sys_light.propagate_light(src, light)
+	sys_light.add_light(src)
 
 /atom/proc/update_appearance()
 	appearance_flags |= PIXEL_SCALE
@@ -38,6 +40,12 @@
 
 /atom/proc/projectile_impact(atom/movable/projectile/P)
 	take_damage(P.damage)
+
+/atom/proc/set_opacity(O)
+	opacity = O
+
+/atom/proc/set_density(D)
+	density = D
 
 /atom/movable
 	vis_flags = VIS_INHERIT_PLANE
@@ -74,3 +82,12 @@
 /atom/movable/proc/act(action)
 	viewers() << "<i><b>[src]</b> [action]</i>"
 	new /atom/movable/abstract/chat_message(src, "<i>[action]</i>")
+
+/atom/movable/set_opacity(O)
+	. = ..()
+	if (isturf(loc))
+		var/turf/T = loc
+		T.update_lighting(O)
+
+/atom/movable/set_density(D)
+	. = ..()

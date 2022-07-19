@@ -11,7 +11,6 @@
 
 	if (!U || !U.can_interact)
 		return
-
 	var/A = distance_pixel(U, src) <= U.interact_range
 	if (P["middle"])
 		return point()

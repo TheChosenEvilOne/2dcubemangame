@@ -49,11 +49,10 @@
 	systems = Ss
 	processing_systems = P
 	for (var/system/S in sorted)
+		world.log << "Setting up [S.name]"
 		if (S.flags & S_INIT)
-			world.log << "Initializing [S.name]"
 			S.initialize()
 		if (S.flags & S_PROCESS)
-			world.log << "Processing [S.name]"
 			cat += S.allocated_cpu
 			P += S
 		Ss[S.type] = S
