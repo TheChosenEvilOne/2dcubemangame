@@ -6,3 +6,6 @@
 
 /atom/movable/abstract/heal_damage(amount)
 	return
+
+/atom/movable/abstract/Move()
+	return

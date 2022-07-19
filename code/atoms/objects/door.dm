@@ -46,9 +46,9 @@
 	name = "automatic door"
 	icon_state = "door0"
 
-/obj/door/automatic/Cross()
+/obj/door/automatic/bump(thing)
 	. = ..()
-	if (istype(usr, /mob/dead))
+	if (istype(thing, /mob/dead))
 		return
 	if (!open)
 		open()

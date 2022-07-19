@@ -26,12 +26,12 @@
 
 /turf/open/hole/New()
 	. = ..()
-	if (!.)
+	if (.)
 		new world.turf(src)
 
-/turf/open/hole/Entered(atom/movable/A)
+/turf/open/hole/enter(atom/movable/A)
 	var/turf/T = locate(x, y, z + 1)
-	if (!T)
+	if (!T || T.bump())
 		return ..()
-	if (A.Move(T))
-		viewers() << "[A] falls down \the [src]!"
+	if (A.Move(T, force = TRUE))
+		viewers(src) << "[A] falls down \the [src]!"
