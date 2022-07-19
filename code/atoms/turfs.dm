@@ -35,4 +35,5 @@
 		ret = A.bump(thing) ? TRUE : ret
 	return ret
 
-/turf/proc/enter(thing)
+/turf/proc/enter(atom/movable/thing)
+	thing.loc = src
