@@ -2,11 +2,7 @@
 	var/movement_type = GROUND
 
 #define CHECK_DENSITY(T) \
-if (T){ \
-	if (T.density){ \
-		T = null; \
-	}else{ \
-		for (var/atom/movable/M in T){if (M.density) {T = null;break;}}}}
+if (T){if (T.bump(src)){T = null;}}
 
 /atom/movable/Move(newloc, ndir = 0, force=FALSE)
 	if (force)
@@ -19,14 +15,16 @@ if (T){ \
 		return loc = get_step(src, ndir)
 	if (ndir)
 		var/diag = ndir & (ndir - 1)
-		var/turf/D = get_step(src, ndir)
-		CHECK_DENSITY(D)
 		if (diag)
 			var/turf/T1 = get_step(src, diag)
 			CHECK_DENSITY(T1)
 			var/turf/T2 = get_step(src, ndir - diag)
 			CHECK_DENSITY(T2)
-			if ((T1 || T2) && D)
+			if (!(T1 || T2))
+				return
+			var/turf/D = get_step(src, ndir)
+			CHECK_DENSITY(D)
+			if (D)
 				dir = diag
 				return loc = D
 			else
@@ -97,13 +95,11 @@ var/static/list/opposite_dirs = list(SOUTH,NORTH,NORTH|SOUTH,WEST,SOUTHWEST,NORT
 		keypresses |= Dir
 		if (opposite & keypresses)
 			move_dir &= ~opposite
-
 	else
 		move_dir &= ~Dir
 		keypresses &= ~Dir
 		if (opposite & keypresses)
 			move_dir |= opposite
-
 		else
 			move_dir |= keypresses
 

@@ -29,3 +29,9 @@
 	for (var/atom/A as anything in lighting_overlay.sources)
 		sys_light.remove_light(A)
 		sys_light.add_light(A)
+
+/turf/bump(thing)
+	var/ret = density
+	for (var/atom/A as anything in contents)
+		ret = A.bump(thing) ? TRUE : ret
+	return ret

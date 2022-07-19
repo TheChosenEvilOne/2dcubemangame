@@ -18,6 +18,9 @@
 		sys_light.remove_light(src)
 	. = ..()
 
+/atom/proc/bump(thing)
+	return density
+
 /atom/proc/update_light()
 	if (opacity)
 		set_opacity(opacity)
