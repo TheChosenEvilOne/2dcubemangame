@@ -51,7 +51,6 @@
 
 /obj/door/automatic/bump(thing)
 	. = ..()
-	world << .
 	if (istype(thing, /mob/dead))
 		return
 	if (!open)
