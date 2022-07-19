@@ -26,33 +26,28 @@ if (T){if (T.bump(src)){T = null;}}
 			CHECK_DENSITY(D)
 			if (D)
 				dir = diag
-				D.enter(src)
-				return loc = D
+				return D.enter(src)
 			else
 				if (T1)
 					dir = diag
-					T1.enter(src)
-					return loc = T1
+					return T1.enter(src)
 				else if (T2)
 					dir = ndir - diag
-					T2.enter(src)
-					return loc = T2
+					return T2.enter(src)
 		else
 			dir = ndir
 			var/turf/T1 = get_step(src, ndir)
 			CHECK_DENSITY(T1)
 			if (!T1)
 				return NONE
-			T1.enter(src)
-			return loc = T1
+			return T1.enter(src)
 	else
 		if (istype(newloc, /turf))
 			var/turf/T = newloc
 			CHECK_DENSITY(T)
-			T.enter(src)
 			if (T)
 				dir = get_dir(src, T)
-				return loc = T
+				return T.enter(src)
 		else
 			return loc = newloc
 
