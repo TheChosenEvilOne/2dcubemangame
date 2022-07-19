@@ -21,7 +21,7 @@ var/global/list/spawn_list = list(
 )
 
 /proc/experiment()
-	var/function = input("function") as null|anything in list("item", "map gen", "test")
+	var/function = input("function") as null|anything in list("item", "map gen")
 	switch (function)
 		if ("item")
 			var/select = input("h") as null|anything in spawn_list
@@ -36,11 +36,3 @@ var/global/list/spawn_list = list(
 			G.configure()
 			world << "[usr] generating map at [usr.x] [usr.y] [usr.z], [select]"
 			G.generate(usr.x, usr.y, usr.z)
-		if ("test")
-			test2()
-
-/proc/test2()
-	for (var/r in 1 to input("radius") as num)
-		var/list/C = circle(usr.x, usr.y, r)
-		for (var/i in 1 to C.len step 2)
-			locate(C[i], C[i+1], usr.z).color = "red"

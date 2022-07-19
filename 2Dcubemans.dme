@@ -101,6 +101,7 @@
 #include "code\game\map_gens\bsp_rooms.dm"
 #include "code\game\map_gens\cave.dm"
 #include "code\game\map_gens\cellural_automata.dm"
+#include "code\game\map_gens\circle.dm"
 #include "code\game\map_gens\flood_fill.dm"
 #include "code\game\map_gens\room.dm"
 #include "code\game\systems\ai.dm"

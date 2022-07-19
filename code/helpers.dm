@@ -25,14 +25,14 @@
 	var/y = 0
 	var/o = round(1 - x)
 	while (y <= x)
-		. += list(cx + x, cy + y)
-		. += list(cx + x, cy - y)
-		. += list(cx - x, cy + y)
-		. += list(cx - x, cy - y)
-		. += list(cx + y, cy + x)
-		. += list(cx + y, cy - x)
-		. += list(cx - y, cy + x)
-		. += list(cx - y, cy - x)
+		. += list(list(cx + x, cy + y))
+		. += list(list(cx + x, cy - y))
+		. += list(list(cx - x, cy + y))
+		. += list(list(cx - x, cy - y))
+		. += list(list(cx + y, cy + x))
+		. += list(list(cx + y, cy - x))
+		. += list(list(cx - y, cy + x))
+		. += list(list(cx - y, cy - x))
 
 		y += 1
 		if (o <= 0)
