@@ -7,11 +7,12 @@
 	var/variation = 0
 	var/base_state
 
-/turf/New()
+/turf/New(atom/old)
 	lighting_overlay = locate(/atom/movable/abstract/lighting_overlay) in src
 	if (!lighting_overlay)
 		lighting_overlay = new /atom/movable/abstract/lighting_overlay(src)
-	update_lighting(opacity)
+	if (old.opacity != opacity)
+		update_lighting(opacity)
 	if (variation && base_state)
 		icon_state = "[base_state][rand(variation)]"
 	. = ..()
