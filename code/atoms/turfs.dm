@@ -13,7 +13,7 @@
 	lighting_overlay = locate(/atom/movable/abstract/lighting_overlay) in src
 	if (!lighting_overlay)
 		lighting_overlay = new /atom/movable/abstract/lighting_overlay(src)
-	if (old.opacity != opacity)
+	if (old && old.opacity != opacity)
 		update_lighting(opacity)
 	if (variation && base_state)
 		icon_state = "[base_state][rand(variation)]"
