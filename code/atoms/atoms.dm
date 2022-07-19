@@ -14,19 +14,12 @@
 
 /atom/destroy()
 	if (light)
-<<<<<<< HEAD
 		sys_light.remove_light(src)
 	. = ..()
 
 /atom/proc/update_light()
 	if (opacity)
 		set_opacity(opacity)
-=======
-		sys_light.remove_light(src, istype(src, /turf) ? src : loc)
-	. = ..()
-
-/atom/proc/update_light()
->>>>>>> 945b3b1 (lighting v6)
 	if (!light)
 		return
 	sys_light.add_light(src)
@@ -49,7 +42,6 @@
 	take_damage(P.damage)
 
 /atom/proc/set_opacity(O)
-<<<<<<< HEAD
 	opacity = O
 
 /atom/proc/set_density(D)
@@ -58,13 +50,6 @@
 /atom/movable
 	vis_flags = VIS_INHERIT_PLANE
 	var/unmovable = FALSE
-=======
-
-/atom/proc/set_density(D)
-
-/atom/movable
-	vis_flags = VIS_INHERIT_PLANE
->>>>>>> 945b3b1 (lighting v6)
 	var/say_verb = "states"
 
 /atom/movable/destroy()
