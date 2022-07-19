@@ -38,4 +38,4 @@
 	return ret
 
 /turf/proc/enter(atom/movable/thing)
-	thing.loc = src
+	return thing.loc = src
