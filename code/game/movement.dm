@@ -48,7 +48,7 @@ if (T){if (T.bump(src)){T = null;}}
 			if (T)
 				dir = get_dir(src, T)
 				return T.enter(src)
-		else
+		else if(!isnull(newloc))
 			return loc = newloc
 
 /mob
