@@ -36,3 +36,5 @@
 	for (var/atom/A as anything in contents)
 		ret = A.bump(thing) ? TRUE : ret
 	return ret
+
+/turf/proc/enter(thing)

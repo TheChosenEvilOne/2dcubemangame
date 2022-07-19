@@ -28,7 +28,7 @@
 	if (.)
 		new world.turf(src)
 
-/turf/floor/open/hole/Entered(atom/movable/A)
+/turf/floor/open/hole/enter(atom/movable/A)
 	var/turf/T = locate(x, y, z + 1)
 	if (!T)
 		return ..()
