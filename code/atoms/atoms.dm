@@ -5,6 +5,7 @@
 	var/integrity
 	var/max_integrity = 100
 	var/rotatable = FALSE
+	var/list/managed_overlays
 
 /atom/initialize(start)
 	. = ..()
@@ -25,7 +26,9 @@
 	sys_light.add_light(src)
 
 /atom/proc/update_appearance()
-	appearance_flags |= PIXEL_SCALE
+	appearance_flags |= PIXEL_SCALE|LONG_GLIDE
+	for (var/O in managed_overlays)
+		overlays += managed_overlays[O]
 
 /atom/proc/take_damage(amount)
 	integrity -= amount

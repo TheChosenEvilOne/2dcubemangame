@@ -45,6 +45,7 @@
 /obj/door/automatic
 	name = "automatic door"
 	icon_state = "door0"
+	managed_overlays = list("detector" = "overlay_autodoor")
 
 /obj/door/automatic/Cross()
 	. = ..()

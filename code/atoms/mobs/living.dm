@@ -20,6 +20,8 @@
 	integrity -= amount
 	if (status_hud)
 		status_hud.change_health_colour(integrity / max_integrity)
+	if (amount > 10)
+		client?.glorf()
 	update_maptext()
 	if(!status && integrity <= 0)
 		die()

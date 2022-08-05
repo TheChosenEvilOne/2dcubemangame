@@ -65,7 +65,7 @@
 	..()
 
 /mob/living/inventory/player/projectile_impact(P)
-	say("OWW!!")
+	client?.glorf("OWW!!")
 	. = ..()
 
 /mob/living/inventory/player/proc/become_super(setup = TRUE)

@@ -1,4 +1,5 @@
 /turf/floor
+	plane = FLOOR_PLANE
 	icon = 'icons/turfs/floors.dmi'
 
 /turf/floor/gray
@@ -59,7 +60,7 @@
 	processing_system = /system/processing/random
 	var/damage_amount = 5
 
-/turf/floor/water/lava/Crossed(atom/movable/atom)
+/turf/floor/water/lava/Entered(atom/movable/atom)
 	. = ..()
 	if(locate(/obj/path) in src)
 		return

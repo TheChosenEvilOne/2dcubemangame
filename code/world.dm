@@ -5,6 +5,7 @@
 	view = 6
 	turf = /turf/floor/gray
 	mob = /mob/dead/new_player
+	map_format = SIDE_MAP
 #if DM_VERSION > 513
 	movement_mode = TILE_MOVEMENT_MODE
 #endif

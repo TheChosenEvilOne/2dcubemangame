@@ -1,0 +1,5 @@
+[ranks]
+Host = {admin, fun, server}
+
+[admins]
+thechosenevilone = Host

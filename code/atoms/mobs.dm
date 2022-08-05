@@ -4,6 +4,7 @@
 	maptext_width = 256
 	icon = 'icons/mobs.dmi'
 	say_verb = "says"
+	plane = MOB_PLANE
 	var/interact_range = 45.5 // close enough to sqrt(2) * 32
 	var/can_interact = TRUE
 

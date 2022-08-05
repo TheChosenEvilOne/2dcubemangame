@@ -1,11 +1,10 @@
-// remove this once config loading is a thing.
-var/global/list/admins = list("thechosenevilone")
-
 /proc/load_admin(client/C)
+	var/admins = GET_CONF("admins")
+	var/ranks = GET_CONF("ranks")
 	// load adminrank here.
 	if (!(C.ckey in admins))
 		return null
-	return new /datum/admin(C, list("admin", "fun"))
+	return new /datum/admin(C, ranks[admins[C.ckey]])
 
 /datum/admin
 	var/client/client

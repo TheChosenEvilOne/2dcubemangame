@@ -31,7 +31,7 @@ macro "macro"
 		command = "MoveKey 2 0"
 	elem 
 		name = "T"
-		command = "Say "
+		command = ".winset :say.is-visible=true :say-input.focus=true"
 	elem 
 		name = "W"
 		command = "MoveKey 1 1"
@@ -44,6 +44,9 @@ macro "macro"
 	elem 
 		name = "Z"
 		command = "use-in-hand"
+	elem 
+		name = "F3"
+		command = "Admin-Say "
 	elem 
 		name = "F4"
 		command = "who"
@@ -144,11 +147,40 @@ menu "menu"
 		group = "zoom"
 		saved-params = "is-checked"
 
+
+window "chat"
+	elem "chat"
+		type = MAIN
+		pos = 281,0
+		size = 192x192
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Chat"
+		is-pane = true
+	elem "chat-output"
+		type = OUTPUT
+		pos = 0,0
+		size = 192x160
+		anchor1 = 0,0
+		anchor2 = 100,100
+		is-default = true
+		saved-params = "max-lines"
+	elem "input1"
+		type = INPUT
+		pos = 0,168
+		size = 192x20
+		anchor1 = 0,100
+		anchor2 = 100,100
+		is-default = true
+		border = sunken
+		saved-params = ""
+
 window "default"
 	elem "default"
 		type = MAIN
 		pos = 281,0
-		size = 720x501
+		size = 672x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		is-default = true
@@ -157,38 +189,210 @@ window "default"
 		icon = 'icons\\smile.png'
 		macro = "macro"
 		menu = "menu"
-	elem "info1"
-		type = INFO
-		pos = 480,0
-		size = 240x256
-		anchor1 = 67,0
-		anchor2 = 100,51
-		saved-params = ""
-	elem "input1"
-		type = INPUT
-		pos = 0,480
-		size = 720x16
-		anchor1 = 0,96
-		anchor2 = 100,99
-		border = sunken
-		saved-params = ""
-	elem "output"
-		type = OUTPUT
-		pos = 480,256
-		size = 240x224
-		anchor1 = 67,51
-		anchor2 = 100,96
-		font-family = "Comic Sans MS,Cambria"
-		is-default = true
-		saved-params = ""
-		enable-http-images = true
-	elem "map1"
+	elem "child1"
+		type = CHILD
+		pos = 0,0
+		size = 672x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		saved-params = "splitter"
+		left = "left-panel"
+		right = "right-panel"
+		is-vert = true
+		splitter = 60
+
+window "left-panel"
+	elem "left-panel"
+		type = MAIN
+		pos = 281,0
+		size = 480x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "pos;size;is-minimized;is-maximized"
+		is-pane = true
+	elem "map"
 		type = MAP
 		pos = 0,0
 		size = 480x480
 		anchor1 = 0,0
-		anchor2 = 67,96
+		anchor2 = 100,100
+		is-default = true
 		right-click = true
 		saved-params = "zoom;letterbox;zoom-mode"
 		style = ".center { text-align: center; } .maptext { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1; } .small { font-size: 6px; } .large { font-size: 8px; }"
+
+window "map2"
+	elem "map2"
+		type = MAIN
+		pos = 281,0
+		size = 192x192
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Map 2"
+		is-pane = true
+	elem "map1"
+		type = MAP
+		pos = 0,0
+		size = 192x192
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = #ffffff
+		saved-params = "zoom;letterbox;zoom-mode"
+
+window "right-panel"
+	elem "right-panel"
+		type = MAIN
+		pos = 281,0
+		size = 192x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "pos;size;is-minimized;is-maximized"
+		is-pane = true
+	elem "child2"
+		type = CHILD
+		pos = 0,0
+		size = 192x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		saved-params = "splitter"
+		left = "top"
+		right = "chat"
+		is-vert = false
+
+window "say"
+	elem "say"
+		type = MAIN
+		pos = 281,0
+		size = 364x28
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = #130082
+		is-visible = false
+		is-transparent = true
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Say"
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+	elem "say-button"
+		type = BUTTON
+		pos = 300,4
+		size = 60x20
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		text-color = #ffffff
+		background-color = #0066ff
+		saved-params = "is-checked"
+		text = "Say"
+		command = "say [[:say-input.text]]"
+		is-flat = true
+	elem "say-input"
+		type = INPUT
+		pos = 0,0
+		size = 364x28
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		font-size = 10
+		text-color = #c9c9c9
+		background-color = #001ba7
+		border = line
+		saved-params = ""
+		command = "say"
+
+window "special"
+	elem "special"
+		type = MAIN
+		pos = 281,0
+		size = 192x192
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Chat"
+		is-pane = true
+		outer-size = 208x250
+		inner-size = 192x211
+	elem "special"
+		type = OUTPUT
+		pos = 0,0
+		size = 192x192
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = #ffff99
+		border = sunken
+		saved-params = "max-lines"
+
+window "stat"
+	elem "stat"
+		type = MAIN
+		pos = 281,0
+		size = 192x192
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "pos;size;is-minimized;is-maximized"
+		is-pane = true
+	elem "info2"
+		type = INFO
+		pos = 0,0
+		size = 192x192
+		anchor1 = 0,0
+		anchor2 = 100,100
+		saved-params = ""
+
+window "top"
+	elem "top"
+		type = MAIN
+		pos = 281,0
+		size = 192x192
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "pos;size;is-minimized;is-maximized"
+		is-pane = true
+	elem "special-button"
+		type = BUTTON
+		pos = 120,0
+		size = 60x20
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "is-checked"
+		text = "Special"
+		command = ".winset :top-child.left='special'"
+		group = "top-button"
+		button-type = pushbox
+	elem "map2-button"
+		type = BUTTON
+		pos = 60,0
+		size = 60x20
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "is-checked"
+		text = "Map 2"
+		command = ".winset :top-child.left='map2'"
+		group = "top-button"
+		button-type = pushbox
+	elem "top-child"
+		type = CHILD
+		pos = 0,24
+		size = 192x168
+		anchor1 = 0,0
+		anchor2 = 100,100
+		saved-params = ""
+		left = "stat"
+		is-vert = false
+		show-splitter = false
+	elem "stat-button"
+		type = BUTTON
+		pos = 0,0
+		size = 60x20
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "is-checked"
+		text = "Stat"
+		command = ".winset :top-child.left='stat'"
+		is-checked = true
+		group = "top-button"
+		button-type = pushbox
 

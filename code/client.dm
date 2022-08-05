@@ -11,6 +11,8 @@
 		planes[P] = plane
 		screen += plane
 	admin = load_admin(src)
+	if (admin)
+		sys_vars.admins += src
 	if (!mob)
 		src << "<h2>Hey, welcome to 2D cubemans</h2>"
 		src << "The game is open source at: https://github.com/TheChosenEvilOne/2dcubemangame"
@@ -22,6 +24,8 @@
 
 /client/Del()
 	clients -= ckey
+	if (admin)
+		sys_vars.admins += src
 	if (mob)
 		mob.hide_huds(TRUE)
 	. = ..()

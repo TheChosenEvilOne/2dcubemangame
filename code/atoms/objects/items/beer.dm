@@ -7,5 +7,5 @@
 /obj/item/beer/attack_self(datum/inventory/inventory, slot)
 	usr.act("absorbs \the [src].")
 	usr.heal_damage(heal_amount)
-	hearers() << sound('sound/belch.mp3')
+	playsound(usr, 'sound/belch.mp3', vol = 100, range = 7)
 	destroy()
