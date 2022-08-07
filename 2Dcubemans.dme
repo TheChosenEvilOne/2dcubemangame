@@ -96,6 +96,7 @@
 #include "code\game\ai\state.dm"
 #include "code\game\ai\behaviours\wait.dm"
 #include "code\game\ai\behaviours\wander.dm"
+#include "code\game\chemicals\chemical_holder.dm"
 #include "code\game\crafting\recipe.dm"
 #include "code\game\crafting\recipes\campfire.dm"
 #include "code\game\crafting\recipes\pickaxe.dm"

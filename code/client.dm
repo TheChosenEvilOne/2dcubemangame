@@ -40,7 +40,7 @@
 	set name = "Who"
 	var msg = "<B>Players online:</B>\n"
 	for (var/client/C)
-		msg += "[C.key]\n"
+		msg += "[C.key][C.admin ? "- [C.admin.]" : ""]\n"
 	usr << msg
 
 /client/verb/flip()

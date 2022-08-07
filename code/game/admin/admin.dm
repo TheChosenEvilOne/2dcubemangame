@@ -4,14 +4,16 @@
 	// load adminrank here.
 	if (!(C.ckey in admins))
 		return null
-	return new /datum/admin(C, ranks[admins[C.ckey]])
+	return new /datum/admin(C, ranks[admins[C.ckey]], admins[C.ckey])
 
 /datum/admin
+	var/rank_name
 	var/client/client
 	var/permissions = list()
 	var/verbs = list()
 
-/datum/admin/New(client/C, list/perms)
+/datum/admin/New(client/C, list/perms, rank)
+	rank_name = rank
 	client = C
 	permissions = perms
 	for (var/V in perms)
