@@ -1,5 +1,4 @@
 /turf/wall
-	plane = WALL_PLANE
 	name = "wall"
 	icon = 'icons/turfs/walls.dmi'
 	icon_state = "wall"

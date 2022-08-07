@@ -79,11 +79,8 @@ sys_##x = src							\
 #define UI_LAYER 200
 
 #define BELOW_PLANE -100
-#define FLOOR_PLANE -95
-#define WALL_PLANE -85
+#define TURF_PLANE -95
 #define WORLD_PLANE -80
-#define OBJECT_PLANE -75
-#define MOB_PLANE -70
 #define LIGHTING_PLANE -60
 #define UI_PLANE -40
 // REMEMBER, ANYTHING ABOVE PLANE 0 IS DRAWN ABOVE FOV DARKNESS ???

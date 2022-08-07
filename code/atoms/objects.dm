@@ -1,3 +1,3 @@
 /obj
-	plane = OBJECT_PLANE
+	plane = WORLD_PLANE
 	icon = 'icons/objs.dmi'

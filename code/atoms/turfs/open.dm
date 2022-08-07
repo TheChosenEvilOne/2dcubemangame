@@ -25,7 +25,7 @@
 
 /turf/floor/open/hole/New()
 	. = ..()
-	if (!.)
+	if (.)
 		new world.turf(src)
 
 /turf/floor/open/hole/Entered(atom/movable/A)

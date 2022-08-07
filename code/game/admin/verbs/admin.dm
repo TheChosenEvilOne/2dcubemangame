@@ -28,7 +28,7 @@ ADMIN_VERB(admin, asay, Admin Say)
 	if (!text)
 		return
 	for (var/client/c as anything in sys_vars.admins)
-		c << output("<b>[c.key]</b>: [text]", "special")
+		c << output("<b>[usr.client.key]</b>: [text]", "special")
 
 ADMIN_VERB(admin, masterdiagonistics, Master System Diagnostics)
 	usr << master.diagnostics()

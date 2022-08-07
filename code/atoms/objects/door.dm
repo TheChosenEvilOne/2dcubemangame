@@ -20,6 +20,7 @@
 	if (open)
 		return
 
+	playsound(src, 'sound/door.ogg', vol=100, wall_attenuation=TRUE)
 	set_opacity(FALSE)
 	set_density(FALSE)
 	open = TRUE
@@ -30,6 +31,7 @@
 	if (!open)
 		return
 
+	playsound(src, 'sound/door.ogg', vol=100, wall_attenuation=TRUE)
 	set_opacity(TRUE)
 	set_density(TRUE)
 	open = FALSE

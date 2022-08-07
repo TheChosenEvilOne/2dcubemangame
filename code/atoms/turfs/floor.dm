@@ -1,5 +1,4 @@
 /turf/floor
-	plane = FLOOR_PLANE
 	icon = 'icons/turfs/floors.dmi'
 
 /turf/floor/gray
@@ -30,6 +29,7 @@
 /turf/floor/wood
 	name = "\proper wooden planks"
 	icon_state = "planks"
+	walk_sound = "wood"
 
 /turf/floor/sand
 	name = "\proper sand"
