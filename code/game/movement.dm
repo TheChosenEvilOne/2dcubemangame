@@ -64,7 +64,7 @@ if (T){if (T.bump(src)){T = null;}}
 /client/Move(loc, dir)
 	if (mob.next_move > world.time)
 		return
-	var/T = get_step(mob, dir)
+	var/turf/T = get_step(mob, dir)
 	var/diag = 1 + (0.41421 * !((dir - 1) & dir))
 	var/delay = mob.get_movement_delay(loc, dir, T) * diag
 	mob.next_move = world.time + delay
