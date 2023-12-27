@@ -16,7 +16,7 @@
 	var/delay = mob.get_movement_delay(loc, dir, T) * diag
 	mob.next_move = world.time + delay
 	mob.glide_size = DELAY2GLIDESIZE(delay)
-	if (istype(T))
+	if (istype(T) && T.walk_sound)
 		playsound(usr, "walk[T.walk_sound]", vol = 400)
 	..(T)
 
