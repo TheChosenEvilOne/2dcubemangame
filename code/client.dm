@@ -9,7 +9,6 @@
 		src << "The game is open source at: https://github.com/TheChosenEvilOne/2dcubemangame"
 		src << "Your contributions are appreciated."
 		world << "<b>[src]</b> has connected."
-		return
 	else
 		world << "<b>[src]</b> has reconnected."
 	. = ..()

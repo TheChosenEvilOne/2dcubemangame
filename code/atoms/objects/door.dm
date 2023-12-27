@@ -49,9 +49,9 @@
 	icon_state = "door0"
 	managed_overlays = list("detector" = "overlay_autodoor")
 
-/obj/door/automatic/Cross()
+/obj/door/automatic/bump(thing)
 	. = ..()
-	if (istype(usr, /mob/dead))
+	if (istype(thing, /mob/dead))
 		return
 	if (!open)
 		open()

@@ -9,11 +9,12 @@
 	var/base_state
 	var/walk_sound
 
-/turf/New()
+/turf/New(atom/old)
 	lighting_overlay = locate(/atom/movable/abstract/lighting_overlay) in src
 	if (!lighting_overlay)
 		lighting_overlay = new /atom/movable/abstract/lighting_overlay(src)
-	update_lighting(opacity)
+	if (old && old.opacity != opacity)
+		update_lighting(opacity)
 	if (variation && base_state)
 		icon_state = "[base_state][rand(variation)]"
 	. = ..()
@@ -29,3 +30,12 @@
 	for (var/atom/A as anything in lighting_overlay.sources)
 		sys_light.remove_light(A)
 		sys_light.add_light(A)
+
+/turf/bump(thing)
+	var/ret = density
+	for (var/atom/A as anything in contents)
+		ret = A.bump(thing) ? TRUE : ret
+	return ret
+
+/turf/proc/enter(atom/movable/thing)
+	return thing.loc = src
