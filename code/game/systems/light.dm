@@ -23,7 +23,8 @@ SYSTEM_CREATE(light)
 		add_queue.Remove(source)
 		var/light = source.light
 		lights[source] = list()
-		for (var/turf/T in view(light - ambient_light[source.z], source))
+		var/amli = ambient_light[min(source.z, ambient_light.len)]
+		for (var/turf/T in view(light - amli, source))
 			lights[source] += T.lighting_overlay
 			T.lighting_overlay.add_light(light  - euclidean_distance(T, source), source)
 

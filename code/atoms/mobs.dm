@@ -10,6 +10,7 @@
 
 /mob/initialize()
 	. = ..()
+	sight |= SEE_BLACKNESS
 	update_maptext()
 
 /mob/destroy()

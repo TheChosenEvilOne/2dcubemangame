@@ -13,10 +13,14 @@
 	lighting_overlay = locate(/atom/movable/abstract/lighting_overlay) in src
 	if (!lighting_overlay)
 		lighting_overlay = new /atom/movable/abstract/lighting_overlay(src)
-	if (old && old.opacity != opacity)
-		update_lighting(opacity)
+	if (old)
+		if (old.opacity != opacity) update_lighting(opacity)
+		if (old.datum_flags & DATUM_PROCESSING && (datum_flags & DATUM_PROCESSING && old.processing_system != processing_system))
+			master.systems[processing_system].stop_processing(src)
 	if (variation && base_state)
 		icon_state = "[base_state][rand(variation)]"
+	if (old.datum_flags & DATUM_PROCESSING
+		)
 	. = ..()
 
 /turf/destroy()
