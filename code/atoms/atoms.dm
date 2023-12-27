@@ -38,6 +38,9 @@
 		overlays += managed_overlays[O]
 
 /atom/proc/add_managed_overlay(name, image)
+	if (!managed_overlays) managed_overlays = list()
+	if (managed_overlays[name])
+		remove_managed_overlay(name)
 	managed_overlays[name] = image
 	overlays += image
 
