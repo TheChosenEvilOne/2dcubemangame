@@ -29,7 +29,7 @@
 	sys_light.add_light(src)
 
 /atom/proc/update_appearance()
-	appearance_flags |= PIXEL_SCALE|LONG_GLIDE
+	appearance_flags |= PIXEL_SCALE|LONG_GLIDE|TILE_BOUND
 	update_overlays()
 
 /atom/proc/update_overlays()

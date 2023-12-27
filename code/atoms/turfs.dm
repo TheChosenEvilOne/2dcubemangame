@@ -19,8 +19,6 @@
 			master.systems[processing_system].stop_processing(src)
 	if (variation && base_state)
 		icon_state = "[base_state][rand(variation)]"
-	if (old.datum_flags & DATUM_PROCESSING
-		)
 	. = ..()
 
 /turf/destroy()
