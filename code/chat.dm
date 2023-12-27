@@ -1,3 +1,6 @@
+/atom
+	var/messages = list()
+
 /atom/movable/abstract/chat_message
 	appearance_flags = RESET_COLOR | RESET_ALPHA
 	maptext_width = 256
@@ -10,10 +13,14 @@
 
 /atom/movable/abstract/chat_message/New(atom/movable/A, words)
 	maptext = CENTERTEXT(MAPTEXT(LARGETEXT(words)))
+	for (var/atom/M as anything in A.messages)
+		M.pixel_y += 16
+	A.messages += src
 	A.vis_contents += src
-	animate(src, maptext_y = 74, alpha = 0, time = 40)
+	animate(src, alpha = 0, time = 40)
 	spawn (40)
 		vis_contents -= src
+		A.messages -= src
 		del src
 
 /client/verb/ooc(words as text)
@@ -27,6 +34,7 @@
 	set name = "Say"
 	if (!words)
 		return
+//	winset(src, "say", "is-visible=false")
 	words = html_encode(words)
 	mob.say(words)
 
@@ -36,3 +44,10 @@
 		return
 	words = html_encode(words)
 	mob.act(words)
+
+/client/proc/glorf(glorf)
+/*	var/text = winget(src, "say-input", "text")
+	if (text)
+		text += "-[glorf]"
+		say(text)
+		winset(src, "say-input", "text=''")*/

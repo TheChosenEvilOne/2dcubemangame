@@ -12,6 +12,11 @@
 		ai = sys_ai.add_mob_ai(src, ai)
 	status_hud = new /hud/status(src)
 
+/mob/living/Login()
+	. = ..()
+	if (status == STATUS_DEAD)
+		ghostize()
+
 /mob/living/remove_huds()
 	status_hud = null
 	. = ..()
@@ -20,6 +25,8 @@
 	integrity -= amount
 	if (status_hud)
 		status_hud.change_health_colour(integrity / max_integrity)
+	if (amount > 10)
+		client?.glorf()
 	update_maptext()
 	if(!status && integrity <= 0)
 		die()

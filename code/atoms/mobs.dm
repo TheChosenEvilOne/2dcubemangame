@@ -4,6 +4,7 @@
 	maptext_width = 256
 	icon = 'icons/mobs.dmi'
 	say_verb = "says"
+	plane = WORLD_PLANE
 	var/interact_range = 45.5 // close enough to sqrt(2) * 32
 	var/can_interact = TRUE
 
@@ -58,7 +59,7 @@
 	return FALSE
 
 /mob/proc/ghostize()
-	if (!ckey)
+	if (!client)
 		return
 	var/mob/dead/ghost/G = new (loc)
 	G.set_player(src)

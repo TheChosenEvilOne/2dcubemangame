@@ -51,6 +51,8 @@ sys_##x = src							\
 #define SMALLTEXT(text) "<span class='small'>[text]</span>"
 #define LARGETEXT(text) "<span class='large'>[text]</span>"
 
+#define GET_CONF(conf) (sys_config.configs[conf])
+
 // actual infinity, epic.
 #define INFINITY 1#INF
 #define PI 3.14159
@@ -77,6 +79,7 @@ sys_##x = src							\
 #define UI_LAYER 200
 
 #define BELOW_PLANE -100
+#define TURF_PLANE -95
 #define WORLD_PLANE -80
 #define LIGHTING_PLANE -60
 #define UI_PLANE -40

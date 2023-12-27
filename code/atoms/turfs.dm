@@ -1,11 +1,13 @@
 /turf
 	datum_flags = 0
 	vis_flags = VIS_INHERIT_PLANE | VIS_UNDERLAY
+	plane = TURF_PLANE
 	var/slowdown = 0
 	var/atom/movable/abstract/lighting_overlay/lighting_overlay
 	var/base_turf
 	var/variation = 0
 	var/base_state
+	var/walk_sound
 
 /turf/New()
 	lighting_overlay = locate(/atom/movable/abstract/lighting_overlay) in src

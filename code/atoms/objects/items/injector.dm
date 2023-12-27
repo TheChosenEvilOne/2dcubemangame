@@ -14,7 +14,7 @@
 	else
 		injected.act("injects \the [src], becoming even MORE super!")
 		injected.super_animation_speed = max(injected.super_animation_speed - 10, 20)
-	hearers() << sound('sound/powerup.mp3')
+	playsound(injected, 'sound/powerup.mp3', vol = 100, range = 12)
 	destroy()
 
 /obj/item/injector/steroids

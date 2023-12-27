@@ -1,35 +1,34 @@
-/turf/open
-	icon = 'icons/turfs/floors.dmi'
+/turf/floor/open
 	var/atom/movable/below_viewer
 
-/turf/open/New()
+/turf/floor/open/New()
 	. = ..()
 	var/T = locate(x, y, z + 1)
 	if (!T)
 		return TRUE
 	below_viewer = new /atom/movable/abstract/below_viewer(T, src)
 
-/turf/open/Del()
+/turf/floor/open/Del()
 	if (below_viewer)
 		below_viewer.loc = null
 		below_viewer.vis_contents.Cut()
 		vis_contents.Cut()
 	. = ..()
 
-/turf/open/glass
+/turf/floor/open/glass
 	name = "glass floor"
 	icon_state = "glass"
 
-/turf/open/hole
+/turf/floor/open/hole
 	name = "hole"
 	icon_state = "hole"
 
-/turf/open/hole/New()
+/turf/floor/open/hole/New()
 	. = ..()
-	if (!.)
+	if (.)
 		new world.turf(src)
 
-/turf/open/hole/Entered(atom/movable/A)
+/turf/floor/open/hole/Entered(atom/movable/A)
 	var/turf/T = locate(x, y, z + 1)
 	if (!T)
 		return ..()

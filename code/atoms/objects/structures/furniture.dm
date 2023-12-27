@@ -24,3 +24,11 @@
 	name = "window"
 	icon_state = "window"
 	density = TRUE
+
+/obj/structure/microwave
+	name = "microwave"
+	icon_state = "microwave"
+
+/obj/structure/microwave/left_click(adjacent, params, obj/item)
+	say("wzhzhz")
+	return TRUE

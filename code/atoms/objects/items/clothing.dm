@@ -18,8 +18,8 @@
 // doing it this way is awful.
 /obj/item/clothing/removed(datum/inventory/I, slot)
 	if (slot == wear_slot)
-		I.parent.overlays -= worn
+		I.parent.remove_managed_overlay(wear_slot)
 
 /obj/item/clothing/inserted(datum/inventory/I, slot)
 	if (slot == wear_slot)
-		I.parent.overlays += worn
+		I.parent.add_managed_overlay(wear_slot, worn)

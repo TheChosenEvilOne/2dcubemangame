@@ -11,11 +11,13 @@
 /client/Move(loc, dir)
 	if (mob.next_move > world.time)
 		return
-	var/T = get_step(mob, dir)
-	var/diag = 1 + (0.41421 * ((dir - 1) & dir == 0))
+	var/turf/T = get_step(mob, dir)
+	var/diag = 1 + (0.41421 * (((dir - 1) & dir) != 0))
 	var/delay = mob.get_movement_delay(loc, dir, T) * diag
 	mob.next_move = world.time + delay
 	mob.glide_size = DELAY2GLIDESIZE(delay)
+	if (istype(T) && T.walk_sound)
+		playsound(usr, "walk[T.walk_sound]", vol = 400)
 	..(T)
 
 // From /vg/station13 - https://github.com/vgstation-coders/vgstation13

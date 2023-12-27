@@ -3,6 +3,7 @@ var/global/list/spawn_list = list(
 	/obj/item/wrench,
 	/obj/item/pickaxe,
 	/obj/item/sword,
+	/obj/item/sword/amogus,
 	/obj/item/beer,
 	/obj/item/injector,
 	/obj/item/wood,
@@ -24,12 +25,12 @@ var/global/list/spawn_list = list(
 	var/function = input("function") as null|anything in list("item", "map gen")
 	switch (function)
 		if ("item")
-			var/select = input("h") as null|anything in spawn_list
+			var/select = input("item") as null|anything in spawn_list
 			if (!select)
 				return
 			new select(usr.loc)
 		if ("map gen")
-			var/select = input("h") as null|anything in (typesof(/datum/map_generator) - /datum/map_generator)
+			var/select = input("map generation") as null|anything in (typesof(/datum/map_generator) - /datum/map_generator)
 			if (!select)
 				return
 			var/datum/map_generator/G = new select()

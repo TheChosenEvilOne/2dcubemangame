@@ -1,4 +1,4 @@
-// Don't put global variables here unless you REALLY need to.
+// Don't put global variables here (you should use a system instead) unless you REALLY need to.
 // Acceptable cases are when you need to use the variable before master has initialized.
 // Or when it is more convenient to use them directly (like the clients list).
 var/global/datum/master/master

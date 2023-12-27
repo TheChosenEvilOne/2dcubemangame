@@ -29,6 +29,7 @@
 /turf/floor/wood
 	name = "\proper wooden planks"
 	icon_state = "planks"
+	walk_sound = "wood"
 
 /turf/floor/sand
 	name = "\proper sand"
@@ -59,7 +60,7 @@
 	processing_system = /system/processing/random
 	var/damage_amount = 5
 
-/turf/floor/water/lava/Crossed(atom/movable/atom)
+/turf/floor/water/lava/Entered(atom/movable/atom)
 	. = ..()
 	if(locate(/obj/path) in src)
 		return
