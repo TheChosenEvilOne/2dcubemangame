@@ -31,7 +31,7 @@ macro "macro"
 		command = "MoveKey 2 0"
 	elem 
 		name = "T"
-		command = ".winset :say.is-visible=true :say-input.focus=true"
+		command = "Say"
 	elem 
 		name = "W"
 		command = "MoveKey 1 1"

@@ -27,8 +27,24 @@
 
 /atom/proc/update_appearance()
 	appearance_flags |= PIXEL_SCALE|LONG_GLIDE
+	update_overlays()
+
+/atom/proc/update_overlays()
+	overlays.Cut()
 	for (var/O in managed_overlays)
 		overlays += managed_overlays[O]
+
+/atom/proc/add_managed_overlay(name, image)
+	managed_overlays[name] = image
+	overlays += image
+
+/atom/proc/remove_managed_overlay(name)
+	var/img = managed_overlays[name]
+	if (!img)
+		return
+	managed_overlays.Remove(name)
+	if (!overlays.Remove(img))
+		update_overlays()
 
 /atom/proc/take_damage(amount)
 	integrity -= amount

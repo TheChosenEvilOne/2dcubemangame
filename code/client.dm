@@ -4,6 +4,14 @@
 	var/list/plane/planes = list()
 
 /client/New()
+	if (!mob)
+		src << "<h2>Hey, welcome to 2D cubemans</h2>"
+		src << "The game is open source at: https://github.com/TheChosenEvilOne/2dcubemangame"
+		src << "Your contributions are appreciated."
+		world << "<b>[src]</b> has connected."
+		return
+	else
+		world << "<b>[src]</b> has reconnected."
 	. = ..()
 	clients[ckey] = src
 	for (var/P in (typesof(/plane) - /plane))
@@ -13,14 +21,6 @@
 	admin = load_admin(src)
 	if (admin)
 		sys_vars.admins += src
-	if (!mob)
-		src << "<h2>Hey, welcome to 2D cubemans</h2>"
-		src << "The game is open source at: https://github.com/TheChosenEvilOne/2dcubemangame"
-		src << "Your contributions are appreciated."
-		world << "<b>[src]</b> has connected."
-		return
-	else
-		world << "<b>[src]</b> has reconnected."
 
 /client/Del()
 	clients -= ckey

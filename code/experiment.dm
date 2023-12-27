@@ -3,6 +3,7 @@ var/global/list/spawn_list = list(
 	/obj/item/wrench,
 	/obj/item/pickaxe,
 	/obj/item/sword,
+	/obj/item/sword/amogus,
 	/obj/item/beer,
 	/obj/item/injector,
 	/obj/item/wood,

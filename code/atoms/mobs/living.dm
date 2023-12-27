@@ -12,6 +12,11 @@
 		ai = sys_ai.add_mob_ai(src, ai)
 	status_hud = new /hud/status(src)
 
+/mob/living/Login()
+	. = ..()
+	if (status == STATUS_DEAD)
+		ghostize()
+
 /mob/living/remove_huds()
 	status_hud = null
 	. = ..()

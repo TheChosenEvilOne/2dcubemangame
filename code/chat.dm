@@ -30,11 +30,11 @@
 	words = html_encode(words)
 	world << "<div style='color: blue'><b>[src]</b>: [words]</div>"
 
-/client/verb/say(words as text|null)
+/client/verb/say(words as text)
 	set name = "Say"
 	if (!words)
 		return
-	winset(src, "say", "is-visible=false")
+//	winset(src, "say", "is-visible=false")
 	words = html_encode(words)
 	mob.say(words)
 
@@ -46,8 +46,8 @@
 	mob.act(words)
 
 /client/proc/glorf(glorf)
-	var/text = winget(src, "say-input", "text")
+/*	var/text = winget(src, "say-input", "text")
 	if (text)
 		text += "-[glorf]"
 		say(text)
-		winset(src, "say-input", "text=''")
+		winset(src, "say-input", "text=''")*/

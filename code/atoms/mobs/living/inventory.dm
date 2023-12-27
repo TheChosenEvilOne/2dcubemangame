@@ -56,13 +56,12 @@
 	flick(dying_animation, src)
 	..()
 
-/mob/living/inventory/player/update_appearance()
-	overlays.Cut()
+/mob/living/inventory/player/update_overlays()
+	. = ..()
 	if (kill_mode)
 		overlays += mutable_appearance(icon, "face_kill", appearance_flags = RESET_COLOR | PIXEL_SCALE)
 	else
 		overlays += mutable_appearance(icon, "face", appearance_flags = RESET_COLOR | PIXEL_SCALE)
-	..()
 
 /mob/living/inventory/player/projectile_impact(P)
 	client?.glorf("OWW!!")

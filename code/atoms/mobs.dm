@@ -59,7 +59,7 @@
 	return FALSE
 
 /mob/proc/ghostize()
-	if (!ckey)
+	if (!client)
 		return
 	var/mob/dead/ghost/G = new (loc)
 	G.set_player(src)
