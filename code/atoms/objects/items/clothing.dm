@@ -14,7 +14,7 @@
 	worn.icon = worn_icon
 	worn.icon_state = worn_icon_state
 	worn.transform = worn.transform.Translate(pixel_offset_x, pixel_offset_y) // BYOND can't really move only the icon.
-	worn.layer = FLOAT_LAYER + 1
+	worn.layer = FLOAT_LAYER + 0.1
 
 // doing it this way is awful.
 /obj/item/clothing/removed(datum/inventory/I, slot)
