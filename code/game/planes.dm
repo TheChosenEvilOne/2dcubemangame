@@ -17,5 +17,9 @@
 	blend_mode = BLEND_MULTIPLY
 	plane = LIGHTING_PLANE
 
+/plane/lighting/initialize()
+	filters += filter(type="drop_shadow", x=0, y=0, size=4, offset=4, color="#fff")
+	filters += filter(type="blur", size=2)
+
 /plane/ui
 	plane = UI_PLANE

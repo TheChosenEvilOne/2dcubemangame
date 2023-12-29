@@ -56,6 +56,12 @@
 /hud/proc/create_hud(mob)
 	CRASH("Attempted to create invalid HUD")
 
+/hud/proc/toggle()
+	if (!owner || !owner.client)
+		return
+	if (visible) hide(FALSE)
+	else show()
+
 /hud/proc/show()
 	if (visible || !owner || !owner.client)
 		return

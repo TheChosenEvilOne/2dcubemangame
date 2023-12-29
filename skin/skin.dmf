@@ -79,7 +79,7 @@ menu "menu"
 		saved-params = "is-checked"
 	elem 
 		name = "Normal"
-		command = ".winset \"map1.zoom-mode=normal\""
+		command = ".winset \"map.zoom-mode=normal\""
 		category = "Scaling"
 		is-checked = true
 		can-check = true
@@ -87,14 +87,14 @@ menu "menu"
 		saved-params = "is-checked"
 	elem 
 		name = "Nearest neighbour"
-		command = ".winset \"map1.zoom-mode=distort\""
+		command = ".winset \"map.zoom-mode=distort\""
 		category = "Scaling"
 		can-check = true
 		group = "scaling"
 		saved-params = "is-checked"
 	elem 
 		name = "Bilinear"
-		command = ".winset \"map1.zoom-mode=blur\""
+		command = ".winset \"map.zoom-mode=blur\""
 		category = "Scaling"
 		can-check = true
 		group = "scaling"
@@ -105,7 +105,7 @@ menu "menu"
 		saved-params = "is-checked"
 	elem 
 		name = "Automatic"
-		command = ".winset \"map1.zoom=0\""
+		command = ".winset \"map.zoom=0\""
 		category = "Zoom"
 		is-checked = true
 		can-check = true
@@ -113,35 +113,35 @@ menu "menu"
 		saved-params = "is-checked"
 	elem 
 		name = "1x"
-		command = ".winset \"map1.zoom=1\""
+		command = ".winset \"map.zoom=1\""
 		category = "Zoom"
 		can-check = true
 		group = "adjust"
 		saved-params = "is-checked"
 	elem 
 		name = "2x"
-		command = ".winset \"map1.zoom=2\""
+		command = ".winset \"map.zoom=2\""
 		category = "Zoom"
 		can-check = true
 		group = "adjust"
 		saved-params = "is-checked"
 	elem 
 		name = "3x"
-		command = ".winset \"map1.zoom=3\""
+		command = ".winset \"map.zoom=3\""
 		category = "Zoom"
 		can-check = true
 		group = "adjust"
 		saved-params = "is-checked"
 	elem 
 		name = "4x"
-		command = ".winset \"map1.zoom=4\""
+		command = ".winset \"map.zoom=4\""
 		category = "Zoom"
 		can-check = true
 		group = "adjust"
 		saved-params = "is-checked"
 	elem 
 		name = "8x"
-		command = ".winset \"map1.zoom=8\""
+		command = ".winset \"map.zoom=8\""
 		category = "Zoom"
 		can-check = true
 		group = "zoom"
@@ -221,25 +221,6 @@ window "left-panel"
 		saved-params = "zoom;letterbox;zoom-mode"
 		style = ".center { text-align: center; } .maptext { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1; } .small { font-size: 6px; } .large { font-size: 8px; }"
 
-window "map2"
-	elem "map2"
-		type = MAIN
-		pos = 281,0
-		size = 192x192
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "pos;size;is-minimized;is-maximized"
-		title = "Map 2"
-		is-pane = true
-	elem "map1"
-		type = MAP
-		pos = 0,0
-		size = 192x192
-		anchor1 = 0,0
-		anchor2 = 100,100
-		background-color = #ffffff
-		saved-params = "zoom;letterbox;zoom-mode"
-
 window "right-panel"
 	elem "right-panel"
 		type = MAIN
@@ -311,24 +292,13 @@ window "top"
 		is-pane = true
 	elem "special-button"
 		type = BUTTON
-		pos = 120,0
+		pos = 60,0
 		size = 60x20
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		saved-params = "is-checked"
 		text = "Special"
 		command = ".winset :top-child.left='special'"
-		group = "top-button"
-		button-type = pushbox
-	elem "map2-button"
-		type = BUTTON
-		pos = 60,0
-		size = 60x20
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		saved-params = "is-checked"
-		text = "Map 2"
-		command = ".winset :top-child.left='map2'"
 		group = "top-button"
 		button-type = pushbox
 	elem "top-child"

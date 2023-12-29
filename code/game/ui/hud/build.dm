@@ -58,7 +58,7 @@
 	if (params["right"])
 		owner.toggle_build()
 		return
-	list.show()
+	list.toggle()
 
 /hud/build/proc/select(atom/value)
 	list.hide()

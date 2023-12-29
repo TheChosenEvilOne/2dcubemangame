@@ -68,7 +68,7 @@
 			var/col = object.color
 			var/hud_object/button/B = hud.ui_objects["colour"]
 			colour = col
-			B.color = col
+			B.hicon.color = col
 	return TRUE
 
 /mob
