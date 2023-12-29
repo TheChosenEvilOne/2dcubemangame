@@ -60,6 +60,15 @@
 			object.destroy()
 		else
 			object.color = null
+	if (params["middle"])
+		if (mode == BUILDING)
+			if (object.type in buildable)
+				hud.select(object.type)
+		else
+			var/col = object.color
+			var/hud_object/button/B = hud.ui_objects["colour"]
+			colour = col
+			B.color = col
 	return TRUE
 
 /mob
