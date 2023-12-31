@@ -38,6 +38,7 @@
 		/obj/structure/bush,
 		/obj/structure/vines,
 		/obj/tree,
+		/obj/tree/palm,
 	)
 
 /datum/builder/New(mob/mob)

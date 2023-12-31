@@ -10,7 +10,11 @@
 	new /obj/item/wood(loc)
 	return ..()
 
-/obj/item/wood
-	name = "wood"
-	desc = "wood for crafting, slap a rock with it."
-	icon_state = "wood"
+/obj/tree/palm
+	name = "palm tree"
+	desc = "it has coconuts!"
+	icon_state = "tree_palm"
+
+/obj/tree/palm/destroy()
+	new /obj/item/coconut(loc)
+	return ..()
