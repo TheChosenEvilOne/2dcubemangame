@@ -12,7 +12,9 @@ if (T){if (T.bump(src)){T = null;}}
 			return loc = get_step(src, ndir)
 	if (movement_type == FLYING)
 		dir = ndir
-		return loc = get_step(src, ndir)
+		var/turf/T = get_step(src, ndir)
+		if (T) return loc = T
+		else return loc
 	if (ndir)
 		var/diag = ndir & (ndir - 1)
 		if (diag)
