@@ -44,3 +44,8 @@
 	name = "ushanka"
 	icon_state = "ushanka"
 	worn_icon_state = "ushanka"
+
+/obj/item/clothing/hat/pirate
+	name = "pirate hat"
+	icon_state = "pirate"
+	worn_icon_state = "pirate"
