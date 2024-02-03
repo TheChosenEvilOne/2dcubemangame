@@ -65,7 +65,7 @@ if(1) {##function}; \
 		if (_in) read = get_store(_in[2][1])
 		else read = out
 		call(src, instproc)(inst[2])
-		if (write == scratch)
+//		if (write == scratch)
 		out = write
 		scratch = read
 	out = write
