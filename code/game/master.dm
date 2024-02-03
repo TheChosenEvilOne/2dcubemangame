@@ -20,7 +20,7 @@
 		if (S.flags & S_PROCESS)
 			. += "\tCPU allocation: [S.allocated_cpu]\n"
 			. += "\tCPU threshold: [S.allowed_cpu_time]\n"
-			. += "\tUpdate rate: [1 / (S.update_rate / 10)] Hz\n"
+			. += "\tUpdate rate: [1 / (max(world.tick_lag, S.update_rate) / 10)] Hz\n"
 			. += "\tNext update in: [round((S.next_fire - world.time) / 10, 0.01)] Seconds\n"
 			if (istype(S, /system/processing))
 				var/system/processing/P = S
