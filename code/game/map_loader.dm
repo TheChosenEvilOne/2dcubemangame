@@ -47,7 +47,7 @@
 					var/px = (dx * rM[1][1] + dy * rM[1][2] + dz * rM[1][3]) - x
 					var/py = (dx * rM[2][1] + dy * rM[2][2] + dz * rM[2][3]) - y
 					var/pz = (dx * rM[3][1] + dy * rM[3][2] + dz * rM[3][3]) - z
-					var/pos = locate(px, py, pz)
+					var/pos = locate(px, py, pz + 1)
 					for (var/p in keys[k])
 						if (istype(p, /list))
 							var/path = p[1]
