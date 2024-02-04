@@ -24,6 +24,9 @@ macro "macro"
 		name = "Q"
 		command = "drop"
 	elem 
+		name = "E"
+		command = "interact"
+	elem 
 		name = "S"
 		command = "MoveKey 2 1"
 	elem 

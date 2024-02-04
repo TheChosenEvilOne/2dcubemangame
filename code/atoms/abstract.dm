@@ -1,5 +1,6 @@
 /atom/movable/abstract
 	unmovable = TRUE
+	mouse_opacity = 0
 
 /atom/movable/abstract/take_damage(amount)
 	return

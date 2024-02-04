@@ -75,7 +75,7 @@
 		var/cpu_left = 100 - world.cpu - allocated_cpu
 		if (cpu_left <= 1)
 			world << "System overloaded, no CPU time left for systems."
-		for (var/system/S in processing_systems)
+		for (var/system/S as anything in processing_systems)
 			if (S.flags & S_PAUSED)
 				continue
 

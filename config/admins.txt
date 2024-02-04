@@ -1,3 +1,6 @@
+[game]
+localhost_admin = true
+
 [ranks]
 Host = {admin, fun, server}
 

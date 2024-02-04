@@ -42,6 +42,17 @@
 		msg += "[C.key][C.admin ? " - [C.admin.rank_name]" : ""]\n"
 	usr << msg
 
+/client/verb/interact()
+	set name = "Interact"
+
+	if (!mob.can_interact)
+		return
+	
+	for (var/d in list(mob.dir, 0))
+		var/turf/T = get_step(mob, d)
+		if (!T) continue
+		var/stuff = T.contents + T
+
 /client/verb/flip()
 	set name = "Flip"
 	animate(mob, transform = turn(matrix(), 120), time = 1.5, loop = 1, flags = ANIMATION_PARALLEL)

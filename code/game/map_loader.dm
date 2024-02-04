@@ -10,19 +10,24 @@
 	var/mz = map["size"][3]
 	var/list/keys = map["keys"]
 	map = map["map"]
-	var/rx1 = 1, ry1 = 0
-	var/rx2 = 0, ry2 = -1
+	var/rM = list(
+		list( 1, 0, 0),
+		list( 0,-1, 0),
+		list( 0, 0, 1)
+	)
 	if (z + mz - 1 > world.maxz) world.maxz = z + mz - 1
 	if (centre)
-		x = x - mx / 2 * rx1 - my / 2 * ry1
-		y = y - my / 2 * ry2 - mx / 2 * rx2
+		x = x - mx / 2 * rM[1][1] - my / 2 * rM[1][2] - mz / 2 * rM[1][3]
+		y = y - mx / 2 * rM[2][1] - my / 2 * rM[2][2] - mz / 2 * rM[2][3]
+		z = z
 		for (var/dz in 0 to mz - 1)
 			for (var/dy in 0 to my - 1)
 				for (var/dx in 1 to mx)
 					var/k = map[dx + mx * dy + mx * my * dz]
-					var/px = x + (dx * rx1 + dy * ry1)
-					var/py = y + (dy * ry2 + dx * rx2) + 1
-					var/pos = locate(px, py, dz + z)
+					var/px = x + (dx * rM[1][1] + dy * rM[1][2] + dz * rM[1][3])
+					var/py = y + (dy * rM[2][2] + dx * rM[2][1] + dz * rM[2][3]) + 1
+					var/pz = z + (dz * rM[3][3] + dx * rM[3][1] + dy * rM[3][2])
+					var/pos = locate(px, py, pz)
 					for (var/p in keys[k])
 						if (istype(p, /list))
 							var/path = p[1]
@@ -32,15 +37,17 @@
 						else
 							new p(pos)
 	else
-		x = min(mx * rx1 - my * ry1, 0)
-		y = min(my * ry2 - mx * rx2, 0)
+		x = min(mx * rM[1][1] - my * rM[1][2] - mz * rM[1][3], 0)
+		y = min(my * rM[2][2] - mz * rM[2][3] - mx * rM[2][1], 0)
+		z = min(mz * rM[3][3] - mx * rM[3][1] - my * rM[3][2], 0)
 		for (var/dz in 0 to mz - 1)
 			for (var/dy in 0 to my - 1)
 				for (var/dx in 1 to mx)
 					var/k = map[dx + mx * dy + mx * my * dz]
-					var/px = (dx * rx1 + dy * ry1) - x
-					var/py = (dy * ry2 + dx * rx2) - y
-					var/pos = locate(px, py, dz + z)
+					var/px = (dx * rM[1][1] + dy * rM[1][2] + dz * rM[1][3]) - x
+					var/py = (dx * rM[2][1] + dy * rM[2][2] + dz * rM[2][3]) - y
+					var/pz = (dx * rM[3][1] + dy * rM[3][2] + dz * rM[3][3]) - z
+					var/pos = locate(px, py, pz)
 					for (var/p in keys[k])
 						if (istype(p, /list))
 							var/path = p[1]

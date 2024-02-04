@@ -34,3 +34,4 @@
 		return ..()
 	if (A.Move(T, force = TRUE))
 		viewers(src) << "[A] falls down \the [src]!"
+		A << "You fall down \the [src]!"

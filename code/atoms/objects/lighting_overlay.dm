@@ -3,7 +3,6 @@
 	layer = LIGHTING_LAYER
 	plane = LIGHTING_PLANE
 	alpha = 0
-	mouse_opacity = 0
 	color = "black"
 	var/list/sources = list()
 	var/light_level
