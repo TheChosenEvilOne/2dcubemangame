@@ -3,18 +3,16 @@
 	icon_state = "door0"
 	opacity = TRUE
 	density = TRUE
+	interactable = TRUE
 
 	var/open = FALSE
 
-/obj/door/left_click(adjacent)
-	if (!adjacent)
-		return
-
+/obj/door/interact(who)
 	if (open)
 		close()
 	else
 		open()
-	return 1
+	return TRUE
 
 /obj/door/proc/open()
 	if (open)

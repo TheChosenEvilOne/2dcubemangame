@@ -5,6 +5,7 @@
 	var/integrity
 	var/max_integrity = 100
 	var/rotatable = FALSE
+	var/interactable = FALSE
 	var/list/managed_overlays
 
 /atom/initialize(start)
@@ -29,7 +30,7 @@
 	sys_light.add_light(src)
 
 /atom/proc/update_appearance()
-	appearance_flags |= PIXEL_SCALE|LONG_GLIDE
+	appearance_flags |= PIXEL_SCALE|LONG_GLIDE|TILE_BOUND
 	update_overlays()
 
 /atom/proc/update_overlays()
@@ -65,6 +66,12 @@
 
 /atom/proc/projectile_impact(atom/movable/projectile/P)
 	take_damage(P.damage)
+
+/atom/proc/can_interact(mob/who, adjacent)
+	return interactable && adjacent
+
+/atom/proc/interact(mob/who)
+	return
 
 /atom/proc/set_opacity(O)
 	opacity = O

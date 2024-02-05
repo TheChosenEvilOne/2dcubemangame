@@ -7,9 +7,9 @@
 	maptext_height = 64
 	maptext_y = 30
 	maptext_x = -112
+	vis_flags = NONE
 	plane = UI_PLANE
 	layer = OVER_LIGHTING_LAYER
-	mouse_opacity = 0
 
 /atom/movable/abstract/chat_message/New(atom/movable/A, words)
 	maptext = CENTERTEXT(MAPTEXT(LARGETEXT(words)))

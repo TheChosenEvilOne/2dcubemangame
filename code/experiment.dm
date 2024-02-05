@@ -25,7 +25,7 @@ var/global/list/spawn_list = list(
 )
 
 /proc/experiment()
-	var/function = input("function") as null|anything in list("item", "map gen")
+	var/function = input("function") as null|anything in list("item", "map gen", "map gen 2")
 	switch (function)
 		if ("item")
 			var/select = input("item") as null|anything in spawn_list
@@ -40,3 +40,8 @@ var/global/list/spawn_list = list(
 			G.configure()
 			world << "[usr] generating map at [usr.x] [usr.y] [usr.z], [select]"
 			G.generate(usr.x, usr.y, usr.z)
+		if ("map gen 2")
+			var/program = input("map generation") as message
+			if (!program)
+				return
+			parse_mapgen(program)

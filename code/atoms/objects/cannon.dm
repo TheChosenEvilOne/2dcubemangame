@@ -15,10 +15,9 @@
 	icon_state = "cannon"
 	density = TRUE
 	rotatable = TRUE
+	interactable = TRUE
 
-/obj/cannon/left_click(adjacent)
-	if (!adjacent)
-		return
+/obj/cannon/interact(who)
 	var/atom/movable/projectile/cannon_ball/C = new(loc, get_step(src, dir), 50, 32)
 	C.dir = dir
 	C.shoot()

@@ -23,6 +23,13 @@ ADMIN_VERB(admin, spawnatom, Spawn Atom)
 		return
 	new path(usr.loc)
 
+ADMIN_VERB(admin, LoadMap, Load Map)
+	var/map_file = input("Map File") as null|file
+	if (!map_file)
+		return
+	var/center = alert("Centre map?", "Map Loading", "Yes", "No")
+	load_map(file2text(map_file), center == "Yes", x = usr.x, y = usr.y, z = usr.z)
+
 ADMIN_VERB(admin, asay, Admin Say)
 	var/text = input("Admin Say", "Admin Say") as text|null
 	if (!text)

@@ -16,9 +16,11 @@
 	master.setup()
 	..()
 
+var/global/list/exceptions = list()
 /world/Error(exception/E)
 	if (server)
 		server.say(E.name)
+	exceptions += E
 	..()
 
 /world/Topic(T, Addr, Master, Keys)

@@ -2,6 +2,7 @@
 	name = "wall"
 	icon = 'icons/turfs/walls.dmi'
 	icon_state = "wall"
+	plane = TURF_WALL_PLANE
 	density = TRUE
 	opacity = TRUE
 

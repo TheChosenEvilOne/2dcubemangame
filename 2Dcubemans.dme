@@ -81,6 +81,7 @@
 #include "code\game\examine.dm"
 #include "code\game\inventory.dm"
 #include "code\game\map_generator.dm"
+#include "code\game\map_loader.dm"
 #include "code\game\master.dm"
 #include "code\game\movement.dm"
 #include "code\game\planes.dm"

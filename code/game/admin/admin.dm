@@ -1,6 +1,10 @@
 /proc/load_admin(client/C)
+	var/static/list/localhost_addresses = list("127.0.0.1", "::1")
+
 	var/admins = GET_CONF("admins")
 	var/ranks = GET_CONF("ranks")
+	if (isnull(C.address) || (C.address in localhost_addresses))
+		return new /datum/admin(C, averbs, "localhost")
 	// load adminrank here.
 	if (!(C.ckey in admins))
 		return null

@@ -10,9 +10,7 @@
 
 /obj/item/clothing/initialize()
 	. = ..()
-	worn = new
-	worn.icon = worn_icon
-	worn.icon_state = worn_icon_state
+	worn = mutable_appearance(worn_icon, worn_icon_state)
 	worn.transform = worn.transform.Translate(pixel_offset_x, pixel_offset_y) // BYOND can't really move only the icon.
 	worn.layer = FLOAT_LAYER + 0.1
 

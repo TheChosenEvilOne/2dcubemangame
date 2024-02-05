@@ -62,3 +62,4 @@ SYSTEM_CREATE(config)
 	else
 		split += curr
 	return split
+#undef TRIM

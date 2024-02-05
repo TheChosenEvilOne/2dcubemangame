@@ -14,13 +14,13 @@
 	. += "Time: [world.time]\n"
 	for (var/system/S as anything in master.systems)
 		S = master.systems[S]
-		. += "<B>[S.name]</B>: [S.firing ? "\[FIRING\]":]\n"
-		. += "\tFlags: [S.flags & S_INIT ? "INITIALIZE " :][S.flags & S_PROCESS ? "PROCESS " :][S.flags & S_PAUSED ? "PAUSED " :]\n"
+		. += "<B>[S.name]</B>: [S.firing ? "\[FIRING\]":null]\n"
+		. += "\tFlags: [S.flags & S_INIT ? "INITIALIZE ":null][S.flags & S_PROCESS ? "PROCESS ":null][S.flags & S_PAUSED ? "PAUSED ":null]\n"
 		. += "\tPriority: [S.priority]\n"
 		if (S.flags & S_PROCESS)
 			. += "\tCPU allocation: [S.allocated_cpu]\n"
 			. += "\tCPU threshold: [S.allowed_cpu_time]\n"
-			. += "\tUpdate rate: [S.update_rate / 10] Hz\n"
+			. += "\tUpdate rate: [1 / (max(world.tick_lag, S.update_rate) / 10)] Hz\n"
 			. += "\tNext update in: [round((S.next_fire - world.time) / 10, 0.01)] Seconds\n"
 			if (istype(S, /system/processing))
 				var/system/processing/P = S
@@ -75,7 +75,7 @@
 		var/cpu_left = 100 - world.cpu - allocated_cpu
 		if (cpu_left <= 1)
 			world << "System overloaded, no CPU time left for systems."
-		for (var/system/S in processing_systems)
+		for (var/system/S as anything in processing_systems)
 			if (S.flags & S_PAUSED)
 				continue
 

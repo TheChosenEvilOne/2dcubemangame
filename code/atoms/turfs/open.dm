@@ -30,7 +30,8 @@
 
 /turf/floor/open/hole/enter(atom/movable/A)
 	var/turf/T = locate(x, y, z + 1)
-	if (!T || T.bump())
-		return ..()
-	if (A.Move(T, force = TRUE))
+	if (A.Move(T))
 		viewers(src) << "[A] falls down \the [src]!"
+		A << "You fall down \the [src]!"
+		return FALSE
+	return TRUE

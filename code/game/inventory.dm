@@ -181,13 +181,13 @@
 /datum/inventory/sigma
 	slots = list(
 		/inventory_slot/l_hand {
-			id = "lhand2"
+			id = "lhand2";
 			screen_loc = "SOUTH,CENTER-1.5"
 		},
 		/inventory_slot/l_hand,
 		/inventory_slot/r_hand,
 		/inventory_slot/r_hand {
-			id = "rhand2"
+			id = "rhand2";
 			screen_loc = "SOUTH,CENTER+1.5"
 		}
 	)

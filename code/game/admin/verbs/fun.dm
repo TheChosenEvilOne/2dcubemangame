@@ -2,6 +2,7 @@ ADMIN_VERB(fun, epilepsy, Epilepsy)
 	var/client/player = input("Who to kill?", "Epilepsy") as null|anything in clients
 	if (!player)
 		return
+	player = clients[player]
 	var/time = input("How terrible?\nTime in deciseconds\nTHERE IS NO GOING BACK.", "Epilepsy", 10) as null|num
 	var/S = player.planes[/plane/world]
 	animate(S, color = "#ff0000", loop = -1, time = time)
