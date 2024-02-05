@@ -48,10 +48,17 @@
 	if (!mob.can_interact)
 		return
 	
+	// TODO: account interaction range?
 	for (var/d in list(mob.dir, 0))
 		var/turf/T = get_step(mob, d)
 		if (!T) continue
+		// TODO: sort according to visual order.
 		var/stuff = T.contents + T
+		for (var/atom/A in stuff)
+			if (!A.can_interact(mob, TRUE))
+				continue
+			A.interact(mob)
+			return
 
 /client/verb/flip()
 	set name = "Flip"

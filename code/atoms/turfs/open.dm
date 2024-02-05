@@ -33,3 +33,5 @@
 	if (A.Move(T))
 		viewers(src) << "[A] falls down \the [src]!"
 		A << "You fall down \the [src]!"
+		return FALSE
+	return TRUE

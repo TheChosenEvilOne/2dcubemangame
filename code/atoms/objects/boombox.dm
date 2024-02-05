@@ -2,17 +2,16 @@
 	name = "boombox"
 	desc = "A device made for playing music, cool."
 	icon_state = "boombox"
+	interactable = TRUE
 	var/in_use = FALSE
 	var/last_use = 0
 
-/obj/boombox/left_click(adjacent)
-	if (adjacent != WORLD_ADJACENT)
-		return
+/obj/boombox/interact(who)
 	if (last_use > world.time)
-		usr << "It has been used too recently."
+		who << "It has been used too recently."
 		return
 	if (in_use)
-		usr << "Someone is already using that."
+		who << "Someone is already using that."
 		return
 	in_use = TRUE
 	var/sound/S = input("Select a sound file.") as null|sound

@@ -20,5 +20,7 @@
 		return right_click(A, P)
 
 /atom/proc/left_click(adjacent, params, obj/item)
+	if (can_interact(usr, adjacent))
+		interact(usr)
 
 /atom/proc/right_click(adjacent, params, obj/item)

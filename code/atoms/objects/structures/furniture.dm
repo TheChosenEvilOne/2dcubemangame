@@ -28,7 +28,7 @@
 /obj/structure/microwave
 	name = "microwave"
 	icon_state = "microwave"
+	interactable = TRUE
 
-/obj/structure/microwave/left_click(adjacent, params, obj/item)
+/obj/structure/microwave/interact(who)
 	say("wzhzhz")
-	return TRUE
